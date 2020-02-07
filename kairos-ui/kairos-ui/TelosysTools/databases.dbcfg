@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databases defaultId="1" maxId="10">
+    <db dialect="org.hibernate.dialect.MySQLDialect" driver="org.mariadb.jdbc.Driver" id="0" isolationLevel="" name="KAIROS" poolSize="1" typeName="MYSQL" url="jdbc:mysql://localhost:3306/kairosdev">
+        <property name="user" value="kairos"/>
+        <property name="password" value="kairos"/>
+        <metadata catalog="" schema="TO_BE_DEFINED" table-name-exclude="" table-name-include="" table-name-pattern="%" table-types="TABLE"/>
+    </db>
+</databases>
