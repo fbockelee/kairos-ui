@@ -20,7 +20,7 @@
         <tr *ngFor="let $LCentityName of pagedItems" (click)="edit${entity.name}(${entity.keyAttributesNamesAsString(', ', $idsPrefix, '')})">
 #foreach ( $attrib in $entity.attributes)
 	#if($attrib.isDateType())
-          <th class="mdl-data-table__cell--non-numeric">{{ ${LCentityName}.${attrib.name}   | date :'dd/MM/yyyy'}}</th>
+          <th class="mdl-data-table__cell--non-numeric">{{ ${LCentityName}.${attrib.name} }}</th>
 	#else
           <th class="mdl-data-table__cell--non-numeric">{{ ${LCentityName}.${attrib.name} }}</th>
 	#end
