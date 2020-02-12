@@ -7,8 +7,8 @@ import { MAT_DIALOG_DATA } from '@angular/material';
 @Component({
   selector: 'app-delete-dialog',
   template: `
-    <h2 md-dialog-title>Delete {{ data }}</h2>
-    <mat-dialog-content>Etes-vous sur ?</mat-dialog-content>
+    <h2 md-dialog-title>Supprimer {{ data }}</h2>
+    <mat-dialog-content>Etes-vous sûr ?</mat-dialog-content>
     <mat-dialog-actions>
         <button mat-button mat-dialog-close>Non</button>
         <button mat-button [mat-dialog-close]="true">Oui</button>

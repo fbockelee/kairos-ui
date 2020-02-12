@@ -238,7 +238,7 @@ export class $formComponentName implements OnInit {
   }
 
   update = () => {
-    this.${_entityService}.update(<${entity.name}>this.form.getRawValue()/*, this.ids*/ ).subscribe(
+    this.${_entityService}.update(this.$LCentityName).subscribe(
       result => this._notificationService.success('Success', '${entity.name} edited successfuly'),
       error => {
         if (error.status === this.NOT_FOUND_ERROR) {
@@ -260,22 +260,23 @@ export class $formComponentName implements OnInit {
       });
       dialogRef.afterClosed().subscribe(result => {
         if (result) {
-          this.deleteBadge(${entity.keyAttributesNamesAsString(', ', $entityDeletePrefix, '')});
+          this.deleteBadge(this.$LCentityName);
         }
       });
     }
   }
 
-  deleteBadge = (${entity.keyAttributesNamesAsString(', ')}): void => {
+  deleteBadge = ($LCentityName: ${entity.name}): void => {
     // Call delete service
-    this._${LCentityName}Service.delete(${entity.keyAttributesNamesAsString(', ')}).subscribe(
+    this._${LCentityName}Service.delete($LCentityName).subscribe(
       result => {
         this._router.navigate(['./${LCentityName}-list']);
 
         this._notificationService.success(
           'Deleted',
 #set ($entityDeleteNotificationPrefix = "${DOLLAR}{")
-          `The ${LCentityName} entry with the id(s)='${entity.keyAttributesNamesAsString(', ', $entityDeleteNotificationPrefix, '}')}' was deleted successfuly`);
+         // `The ${LCentityName} entry with the id(s)='${entity.keyAttributesNamesAsString(', ', $entityDeleteNotificationPrefix, '}')}' was deleted successfuly`);
+ 		`The ${LCentityName} entry with the id= was deleted successfuly`);
       },
       error => {
         if (error.status === this.NOT_FOUND_ERROR) {

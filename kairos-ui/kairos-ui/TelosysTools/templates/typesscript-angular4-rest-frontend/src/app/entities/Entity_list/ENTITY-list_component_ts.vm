@@ -40,6 +40,7 @@ export class $listComponentName implements OnInit, OnChanges {
   private listOf${entity.name}s: ${entity}[];
   private listId = '$fn.toUpperCase(${entity.name})_COMPONENT_LIST';
 
+  private $LCentityName: $entity.name;
 
   constructor(
     private $_entityService: $baseServiceName,
@@ -81,21 +82,36 @@ export class $listComponentName implements OnInit, OnChanges {
   }
 
   delete${entity.name} = ($entity.keyAttributesNamesAsString(', ')): void => {
-    // Call delete service
-    this.${_entityService}.delete($entity.keyAttributesNamesAsString(', ')).subscribe(
-      result => {
-        // Notify ${entity.name} list to refresh
-        EmitterService.get(this.listId).emit(result);
 
-        this._notificationService.success(
-          'Deleted',
-          `The $LCentityName entry with the id='$entity.keyAttributesNamesAsString(', ', '${', '}')' was deleted successfuly`);
-      },
-      error => {
-        this._notificationService.error(
-          'Error',
-          'An error occured when trying to reach the server');
-      });
+    const promise = new Promise((resolve, reject) => {
+		// Call get service
+		this.${_entityService}.get($entity.keyAttributesNamesAsString(', ')).subscribe(
+        		($LCentityName: $entity.name) => {
+          							this.$LCentityName = $LCentityName;
+          							resolve('done');
+        						},
+				error => {
+          					this._notificationService.error(error.statusText, 'Error delete');
+            				reject('error');
+        				 });
+	})
+    .then(() => {
+    	// Call delete service
+    	this.${_entityService}.delete(this.$LCentityName).subscribe(
+      			result => {
+       						 // Notify ${entity.name} list to refresh
+        					EmitterService.get(this.listId).emit(result);
+
+        					this._notificationService.success(
+          					'Deleted',
+          					`The $LCentityName entry with the id='$entity.keyAttributesNamesAsString(', ', '${', '}')' was deleted successfuly`);
+     					  },
+      			error => {
+        					this._notificationService.error(
+          					'Error',
+          					'An error occured when trying to reach the server');
+      					  });
+  	})
   }
 
   goTo${entity.name}Form($entity.keyAttributesNamesAsString(', ')) {
