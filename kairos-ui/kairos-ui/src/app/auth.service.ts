@@ -11,6 +11,7 @@ export class AuthService {
 	redirectUrl: string; // où rediriger l'utilisateur après l'authentification ?
 	// Une méthode de connexion
 	login(name: string, password: string): Observable<boolean> {
+		console.log('tentative de connection :' + name + '/' + password)
 		// Faites votre appel à un service d'authentification...
 		let isLoggedIn = (name === 'pikachu' && password === 'pikachu');
 

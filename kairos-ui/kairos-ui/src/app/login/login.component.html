@@ -1,13 +1,14 @@
 <div class="material-card-wide mdl-card mdl-shadow--2dp form-card">
   <div class="mdl-card__title mdl-card--border">
     <h2 class="mdl-card__title-text">Page de Connection</h2>
+    <p><em>{{message}}</em></p>
   </div>
-  <form [formGroup]="form" novalidate (ngSubmit)="connect()">
+  <form [formGroup]="form" novalidate (ngSubmit)="login()">
     <div class="add-edit-form">
       <mat-grid-list cols="1" rowHeight="70px">
         <mat-grid-tile [colspan]="1" [rowspan]="1">
           <mat-form-field class="form-full-width">
-            <input matInput placeholder="Utilisateur" required formControlName="user">
+            <input matInput placeholder="Utilisateur" required formControlName="name">
           </mat-form-field>
         </mat-grid-tile>
         <mat-grid-tile [colspan]="1" [rowspan]="1">

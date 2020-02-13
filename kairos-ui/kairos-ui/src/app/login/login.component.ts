@@ -1,47 +1,32 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, ɵConsole } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from './../auth.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
 	selector: 'login',
-	template: `
-    <div class='row'>
-    <div class="col s12 m4 offset-m4">
-    <div class="card hoverable">
-      <div class="card-content center">
-        <span class="card-title">Page de connexion</span>
-        <p><em>{{message}}</em></p>
-      </div>
-			<form [formGroup]="myForm" (ngSubmit)="update()">
-	      <div>
-					<label for="name">Name</label>
-	        <input type="text" id="name" formControlName="name" name="name" required>
-	      </div>
-	      <div>
-	        <label for="password">Password</label>
-	        <input type="password" id="password" formControlName="password" name="password" required>
-	      </div>
-	    </form>
-      <div class="card-action center">
-        <a (click)="login()" class="waves-effect waves-light btn"  *ngIf="!authService.isLoggedIn">Se connecter</a>
-        <a (click)="logout()" *ngIf="authService.isLoggedIn">Se déconnecter</a>
-      </div>
-    </div>
-    </div>
-    </div>
-  `
+	templateUrl: './login.component.html',
+	styleUrls:   ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit  {
+	 public form: FormGroup;
+
 	message: string = 'Vous êtes déconnecté. (pikachu/pikachu)';
-	private name: string;
-	private password: string;
-	public myForm;
-	
+	// private name: string;
+	// name = new FormControl();
+	// private password: string;
+  // password= new FormControl();
+
 	constructor(
-				public authService: AuthService, 
-				private router: Router
+				public authService: AuthService,
+				private router: Router,
+				private _formBuilder: FormBuilder
 				) { }
 
+	ngOnInit() {
+    this.form = this._formBuilder.group( {name:'', password: ''});
+	}
+	
 	// Informe l'utilisateur sur son authentfication.
 	setMessage() {
 		this.message = this.authService.isLoggedIn ?
@@ -51,16 +36,18 @@ export class LoginComponent {
 	// Connecte l'utilisateur auprès du Guard
 	login() {
 		this.message = 'Tentative de connexion en cours ...';
-		this.authService.login(this.name, this.password).subscribe(() => {
+		console.log('this.name='+this.form.get('name').value);
+
+		this.authService.login(this.form.get('name').value, this.form.get('password').value).subscribe(() => {
 			this.setMessage();
 			if (this.authService.isLoggedIn) {
 				// Récupère l'URL de redirection depuis le service d'authentification
 				// Si aucune redirection n'a été définis, redirige l'utilisateur vers la liste des pokemons.
-				let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/pokemon/all';
+				let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '';
 				// Redirige l'utilisateur
 				this.router.navigate([redirect]);
 			} else {
-				this.password = '';
+				this.form.get('password').setValue('');
 			}
 		});
 	}
