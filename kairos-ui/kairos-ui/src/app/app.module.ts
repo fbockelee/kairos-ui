@@ -89,7 +89,8 @@ import localeFrExtra from '@angular/common/locales/extra/fr';
 
 import { AuthGuard } from './auth.guard';
 import { LoginComponent } from './login/login.component';
-import { LoginRoutingModule } from './login.routing';
+import { LoginRoutingModule } from './login/login.routing';
+
 
 registerLocaleData(localeFr, 'fr-FR', localeFrExtra);
 

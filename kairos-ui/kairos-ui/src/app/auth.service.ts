@@ -1,28 +1,27 @@
+
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { of } from 'rxjs/Observable/of';
+// RxJS 6
+import { Observable } from 'rxjs/observable';
+import { of } from 'rxjs/observable/of';
 import { tap, delay } from 'rxjs/operators';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class AuthService {
+	isLoggedIn: boolean = false; // L'utilisateur est-il connecté ?
+	redirectUrl: string; // où rediriger l'utilisateur après l'authentification ?
+	// Une méthode de connexion
+	login(name: string, password: string): Observable<boolean> {
+		// Faites votre appel à un service d'authentification...
+		let isLoggedIn = (name === 'pikachu' && password === 'pikachu');
 
-  isLoggedIn: boolean; // l'utilisateur est il connecté ?
-  redirectUrl: string; // où rediriger l'utilisateur après connection
+		return of(true).pipe(
+			delay(1000),
+			tap(val => this.isLoggedIn = isLoggedIn)
+		);
+	}
 
-  constructor() { }
-
-    login(name: string, password: string): Observable<boolean> {
-    const isLoggedIn = (name === 'fbockelee' && password === 'kairos');
-
-    return of(true).pipe(
-      delay(1000), tap( val => this.isLoggedIn = isLoggedIn)
-    );
-  }
-
-  logout(): void {
-     this.isLoggedIn = false;
-  }
-
+	// Une méthode de déconnexion
+	logout(): void {
+		this.isLoggedIn = false;
+	}
 }

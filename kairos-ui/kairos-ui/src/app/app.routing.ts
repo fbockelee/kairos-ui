@@ -20,7 +20,7 @@ export const AppRouting = RouterModule.forRoot([
     { path: '', component: HomeListComponent },
     // { canActivate : [AuthGuard]},
     // { children: [
-        { path: 'menu-list', component: MenuListComponent },
+        { path: 'menu-list', component: MenuListComponent , canActivate : [AuthGuard]},
         { path: 'menu-form/:id', component: MenuFormComponent },
         { path: 'menu-form', component: MenuFormComponent },
         { path: 'consultant-list', component: ConsultantListComponent },
