@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 
 // Routing
-import { routing } from './app.routing';
+import { AppRouting } from './app.routing';
 
 // Menu Components
 import { MenuListComponent } from './entities/menu/menu-list/menu-list.component';
@@ -87,6 +87,10 @@ import localeFr from '@angular/common/locales/fr';
 import localeFrExtra from '@angular/common/locales/extra/fr';
 // import TranslateModule from  '@ngx-translate/core';
 
+import { AuthGuard } from './auth.guard';
+import { LoginComponent } from './login/login.component';
+import { LoginRoutingModule } from './login.routing';
+
 registerLocaleData(localeFr, 'fr-FR', localeFrExtra);
 
 @NgModule({
@@ -99,7 +103,8 @@ registerLocaleData(localeFr, 'fr-FR', localeFrExtra);
     NotFoundComponent,
     AboutComponent,
     DeleteDialogComponent,
-    HomeListComponent
+    HomeListComponent,
+    LoginComponent
 ],
   entryComponents: [
     DeleteDialogComponent
@@ -110,7 +115,8 @@ registerLocaleData(localeFr, 'fr-FR', localeFrExtra);
     // FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    routing,
+    LoginRoutingModule, // avant AppRouting
+    AppRouting,
     BrowserAnimationsModule,
     MatFormFieldModule,
     MatAutocompleteModule,
@@ -167,7 +173,8 @@ registerLocaleData(localeFr, 'fr-FR', localeFrExtra);
     EmitterService,
     NotificationService,
     PagerService,
-    MatDatepickerModule
+    MatDatepickerModule,
+    AuthGuard
     // DatePipe
 ],
   bootstrap: [AppComponent]

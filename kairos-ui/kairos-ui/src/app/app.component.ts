@@ -18,7 +18,7 @@ export class AppComponent implements OnInit {
   ];
 
   public optionsForNotifications = {
-    position: ['bottom', 'left'],
+    position: ['bottom', 'center'],
     timeOut: 5000,
     lastOnBottom: true,
     showProgressBar: false,

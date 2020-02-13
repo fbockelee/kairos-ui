@@ -4,6 +4,7 @@ import { Router, RouterModule } from '@angular/router';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AboutComponent } from './about/about.component';
 import { HomeListComponent } from './home-list/home-list.component';
+import { LoginComponent } from './login/login.component';
 
 // Menu
 import { MenuListComponent } from './entities/menu/menu-list/menu-list.component';
@@ -13,14 +14,19 @@ import { MenuFormComponent } from './entities/menu/menu-form/menu-form.component
 import { ConsultantListComponent } from './entities/consultant/consultant-list/consultant-list.component';
 import { ConsultantFormComponent } from './entities/consultant/consultant-form/consultant-form.component';
 
-export const routing = RouterModule.forRoot([
+import { AuthGuard } from './auth.guard';
+
+export const AppRouting = RouterModule.forRoot([
     { path: '', component: HomeListComponent },
-    { path: 'menu-list', component: MenuListComponent },
-    { path: 'menu-form/:id', component: MenuFormComponent },
-    { path: 'menu-form', component: MenuFormComponent },
-    { path: 'consultant-list', component: ConsultantListComponent },
-    { path: 'consultant-form/:id', component: ConsultantFormComponent },
-    { path: 'consultant-form', component: ConsultantFormComponent },
-    { path: 'about', component: AboutComponent },
-    { path: '**', component: NotFoundComponent }
+    // { canActivate : [AuthGuard]},
+    // { children: [
+        { path: 'menu-list', component: MenuListComponent },
+        { path: 'menu-form/:id', component: MenuFormComponent },
+        { path: 'menu-form', component: MenuFormComponent },
+        { path: 'consultant-list', component: ConsultantListComponent },
+        { path: 'consultant-form/:id', component: ConsultantFormComponent },
+        { path: 'consultant-form', component: ConsultantFormComponent },
+        { path: 'about', component: AboutComponent },
+        { path: '**', component: NotFoundComponent }
+    // ]}
 ]);
