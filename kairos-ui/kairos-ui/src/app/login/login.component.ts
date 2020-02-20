@@ -11,7 +11,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class LoginComponent implements OnInit  {
 	 public form: FormGroup;
 
-	message: string = 'Vous êtes déconnecté. (pikachu/pikachu)';
+	message = '';
 	// private name: string;
 	// name = new FormControl();
 	// private password: string;
@@ -24,9 +24,16 @@ export class LoginComponent implements OnInit  {
 				) { }
 
 	ngOnInit() {
-    this.form = this._formBuilder.group( {name:'', password: ''});
+		this.form = this._formBuilder.group( {
+																					name: '', 
+																					password: '', 
+																					datedebut: '01/01/2020'});
+		console.log(this.form.get('datedebut').value);
+		this.logout();
+		this.message = this.authService.isLoggedIn ?  'Vous êtes connecté.' :
+										'Vous êtes déconnecté. (fbockelee/kairos)';
 	}
-	
+
 	// Informe l'utilisateur sur son authentfication.
 	setMessage() {
 		this.message = this.authService.isLoggedIn ?
@@ -36,7 +43,7 @@ export class LoginComponent implements OnInit  {
 	// Connecte l'utilisateur auprès du Guard
 	login() {
 		this.message = 'Tentative de connexion en cours ...';
-		console.log('this.name='+this.form.get('name').value);
+		console.log('this.name=' + this.form.get('name').value);
 
 		this.authService.login(this.form.get('name').value, this.form.get('password').value).subscribe(() => {
 			this.setMessage();

@@ -21,6 +21,7 @@ export class PickDateAdapter extends NativeDateAdapter {
 //  }
 
  parse(value: any): Date | null {
+        console.log('parse');
         if ((typeof value === 'string') && (value.indexOf('/') > -1)) {
           const str = value.split('/');
           const year = Number(str[2]);
@@ -33,13 +34,13 @@ export class PickDateAdapter extends NativeDateAdapter {
       }
 
 format(date: Date, displayFormat: string): string {
-       // console.trace('parse');
+       console.log('format');
        if (displayFormat === 'input') {
           let day = date.getDate();
           let month = date.getMonth() + 1;
           let year = date.getFullYear();
           return this._to2digit(day) + '/' + this._to2digit(month) + '/' + year;
-       } else if (displayFormat == "inputMonth") {
+       } else if (displayFormat === 'inputMonth') {
           let month = date.getMonth() + 1;
           let year = date.getFullYear();
           return  this._to2digit(month) + '/' + year;

@@ -165,10 +165,10 @@ registerLocaleData(localeFr, 'fr-FR', localeFrExtra);
 ],
   providers: [
     { provide: 'ExternalConfigurationService', useClass: ExternalConfigurationService },
-    { provide: DateAdapter, useClass: PickDateAdapter },
+    //{ provide: DateAdapter, useClass: PickDateAdapter },
     { provide: MAT_DATE_LOCALE, useValue: 'fr-FR' },
-    { provide: MAT_DATE_FORMATS, useValue: PICK_FORMATS },
-    { provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: { useUtc: true } },
+    //{ provide: MAT_DATE_FORMATS, useValue: PICK_FORMATS },
+    //{ provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: { useUtc: true } },
     ConsultantService,
     MenuService,
     EmitterService,

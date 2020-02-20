@@ -18,14 +18,15 @@ import { AuthGuard } from './auth.guard';
 
 export const AppRouting = RouterModule.forRoot([
     { path: '', component: HomeListComponent },
-    // { canActivate : [AuthGuard]},
-    // { children: [
+    // { canActivate : [AuthGuard],
+    //  children: [
         { path: 'menu-list', component: MenuListComponent , canActivate : [AuthGuard]},
-        { path: 'menu-form/:id', component: MenuFormComponent },
-        { path: 'menu-form', component: MenuFormComponent },
-        { path: 'consultant-list', component: ConsultantListComponent },
-        { path: 'consultant-form/:id', component: ConsultantFormComponent },
-        { path: 'consultant-form', component: ConsultantFormComponent },
+        { path: 'menu-form/:id', component: MenuFormComponent , canActivate : [AuthGuard]},
+        { path: 'menu-form', component: MenuFormComponent , canActivate : [AuthGuard]},
+        { path: 'consultant-list', component: ConsultantListComponent , canActivate : [AuthGuard]},
+        { path: 'consultant-form/:id', component: ConsultantFormComponent , canActivate : [AuthGuard]},
+        { path: 'consultant-form', component: ConsultantFormComponent , canActivate : [AuthGuard]},
+        { path: 'deconnect', component: LoginComponent },
         { path: 'about', component: AboutComponent },
         { path: '**', component: NotFoundComponent }
     // ]}
