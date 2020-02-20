@@ -21,7 +21,7 @@ export class PickDateAdapter extends NativeDateAdapter {
 //  }
 
  parse(value: any): Date | null {
-        console.log('parse');
+       // console.log('parse'+value);
         if ((typeof value === 'string') && (value.indexOf('/') > -1)) {
           const str = value.split('/');
           const year = Number(str[2]);
@@ -33,9 +33,13 @@ export class PickDateAdapter extends NativeDateAdapter {
         return isNaN(timestamp) ? null : new Date(timestamp);
       }
 
-format(date: Date, displayFormat: string): string {
-       console.log('format');
+format(date: Date, displayFormat: Object): string {
+      //console.log('format '+ displayFormat + '/'+date);
+      return super.format(date, displayFormat);
+
+       //console.log('format '+ displayFormat + '/'+date);
        if (displayFormat === 'input') {
+         //console.log('entree input');
           let day = date.getDate();
           let month = date.getMonth() + 1;
           let year = date.getFullYear();

@@ -6,6 +6,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+// import { map } from 'rjxs/operators';
 
 // Components imports
 import { DeleteDialogComponent } from './../../../delete-dialog/delete-dialog.component';
@@ -241,6 +242,21 @@ export class ConsultantFormComponent implements OnInit {
   }
 
   update = () => {
+    //let consultant2: Consultant;
+    // consultant2
+    // .map(this.consultant)
+    // .map(this.form.value);
+
+    //this.consultant.map(this.form.value);
+    //console.log(JSON.stringify( this.consultant ));
+    //console.log(JSON.stringify( this.form.value ));
+    //consultant2 = this.consultant;
+    Object.assign(this.consultant,this.form.value);
+    //console.log(JSON.stringify( consultant2 ));
+
+    //console.log(this.consultant.codepostal); //ancienne valeur
+    //console.log(this.form.get('codepostal').value); //la nouvelle mais sans links
+    // this._consultantService.update(this.consultant).subscribe(
     this._consultantService.update(this.consultant).subscribe(
       result => this._notificationService.success('Success', 'Consultant edited successfuly'),
       error => {
