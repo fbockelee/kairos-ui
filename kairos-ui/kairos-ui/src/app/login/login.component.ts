@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit  {
 																					name: '', 
 																					password: '', 
 																					datedebut: '01/01/2020'});
-		console.log(this.form.get('datedebut').value);
+		// console.log(this.form.get('datedebut').value);
 		this.logout();
 		this.message = this.authService.isLoggedIn ?  'Vous êtes connecté.' :
 										'Vous êtes déconnecté. (fbockelee/kairos)';
@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit  {
 	// Connecte l'utilisateur auprès du Guard
 	login() {
 		this.message = 'Tentative de connexion en cours ...';
-		console.log('this.name=' + this.form.get('name').value);
+		// console.log('this.name=' + this.form.get('name').value);
 
 		this.authService.login(this.form.get('name').value, this.form.get('password').value).subscribe(() => {
 			this.setMessage();

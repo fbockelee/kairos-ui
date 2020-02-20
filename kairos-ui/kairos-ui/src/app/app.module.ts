@@ -91,6 +91,8 @@ import { AuthGuard } from './auth.guard';
 import { LoginComponent } from './login/login.component';
 import { LoginRoutingModule } from './login/login.routing';
 
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AngularDateHttpInterceptor } from './interceptors/AngularDateHttp.interceptor';
 
 registerLocaleData(localeFr, 'fr-FR', localeFrExtra);
 
@@ -175,7 +177,12 @@ registerLocaleData(localeFr, 'fr-FR', localeFrExtra);
     NotificationService,
     PagerService,
     MatDatepickerModule,
-    AuthGuard
+    AuthGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AngularDateHttpInterceptor,
+      multi: true
+    }
     // DatePipe
 ],
   bootstrap: [AppComponent]
