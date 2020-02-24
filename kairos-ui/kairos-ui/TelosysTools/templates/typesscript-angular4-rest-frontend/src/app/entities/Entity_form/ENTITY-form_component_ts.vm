@@ -238,6 +238,7 @@ export class $formComponentName implements OnInit {
   }
 
   update = () => {
+	Object.assign(this.$LCentityName,this.form.value);
     this.${_entityService}.update(this.$LCentityName).subscribe(
       result => this._notificationService.success('Success', '${entity.name} edited successfuly'),
       error => {
