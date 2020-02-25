@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Telosys Database Repository --><root>
-<tableList databaseId="0" databaseName="KAIROS" databaseProductName="MariaDB" generation="2020-01-20 12:36:51">
+<tableList databaseId="0" databaseName="KAIROS" databaseProductName="MariaDB" generation="2020-02-24 13:10:52">
 <table catalog="kairosdev" databaseComment="" databaseType="TABLE" javaBean="Alerte" name="alerte" schema="">
 <column dbComment="" dbDefaultValue="" dbName="code" dbNotNull="true" dbPosition="1" dbPrimaryKey="true" dbSize="32" dbTypeName="VARCHAR" inputType="text" javaName="code" javaType="java.lang.String" jdbcTypeCode="12" label="Code" maxLength="32" notEmpty="true" notNull="true" selected="true"/>
 <column dbComment="" dbDefaultValue="" dbName="description" dbNotNull="false" dbPosition="2" dbSize="100" dbTypeName="VARCHAR" inputType="text" javaName="description" javaType="java.lang.String" jdbcTypeCode="12" label="Description" maxLength="100" notNull="false" selected="true"/>
@@ -52,7 +52,7 @@
 <column dbAutoIncremented="true" dbComment="Id consultant" dbDefaultValue="" dbName="consultantid" dbNotNull="true" dbPosition="1" dbPrimaryKey="true" dbSize="10" dbTypeName="INT" inputType="number" javaName="consultantid" javaType="java.lang.Integer" jdbcTypeCode="4" label="Consultantid" notNull="true" selected="true"/>
 <column dbComment="Nom" dbDefaultValue="" dbName="nom" dbNotNull="false" dbPosition="2" dbSize="255" dbTypeName="VARCHAR" inputType="text" javaName="nom" javaType="java.lang.String" jdbcTypeCode="12" label="Nom" maxLength="255" notNull="false" selected="true"/>
 <column dbComment="Prénom" dbDefaultValue="" dbName="prenom" dbNotNull="false" dbPosition="3" dbSize="255" dbTypeName="VARCHAR" inputType="text" javaName="prenom" javaType="java.lang.String" jdbcTypeCode="12" label="Prenom" maxLength="255" notNull="false" selected="true"/>
-<column dbComment="Trigramme" dbDefaultValue="" dbName="trigramme" dbNotNull="false" dbPosition="4" dbSize="255" dbTypeName="VARCHAR" inputType="text" javaName="trigramme" javaType="java.lang.String" jdbcTypeCode="12" label="Trigramme" maxLength="255" notNull="false" selected="true"/>
+<column dbComment="Trigramme" dbDefaultValue="" dbName="trigramme" dbNotNull="false" dbPosition="4" dbSize="3" dbTypeName="VARCHAR" inputType="text" javaName="trigramme" javaType="java.lang.String" jdbcTypeCode="12" label="Trigramme" maxLength="3" notNull="false" selected="true"/>
 <column dbComment="Login" dbDefaultValue="" dbName="user_login" dbNotNull="false" dbPosition="5" dbSize="255" dbTypeName="VARCHAR" inputType="text" javaName="userLogin" javaType="java.lang.String" jdbcTypeCode="12" label="User login" maxLength="255" notNull="false" selected="true"/>
 <column dbComment="Mot de passe" dbDefaultValue="" dbName="user_password" dbNotNull="false" dbPosition="6" dbSize="30" dbTypeName="VARCHAR" inputType="text" javaName="userPassword" javaType="java.lang.String" jdbcTypeCode="12" label="User password" maxLength="30" notNull="false" selected="true"/>
 <column dbComment="Adresse 1" dbDefaultValue="" dbName="adresse1" dbNotNull="false" dbPosition="7" dbSize="255" dbTypeName="VARCHAR" inputType="text" javaName="adresse1" javaType="java.lang.String" jdbcTypeCode="12" label="Adresse1" maxLength="255" notNull="false" selected="true"/>

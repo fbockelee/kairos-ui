@@ -21,29 +21,30 @@ export class AuthService {
 	// Une méthode de connexion
 	login(name: string, password: string): Observable<boolean> {
 
-		let csearch : Consultant;
-		//let cfind: Consultant;
-		//let isLoggedIn = (name === 'fbockelee' && password === 'kairos');
+		// let csearch : Consultant;
+		// let cfind: Consultant;
+		// let isLoggedIn = (name === 'fbockelee' && password === 'kairos');
 		let isLoggedIn = false;
 
 
 
-		//csearch = new Consultant();
-		//csearch.userLogin = name ;
-		//csearch.userPassword = password;
+		// csearch = new Consultant();
+		// csearch.userLogin = name ;
+		// csearch.userPassword = password;
 
 		console.log('tentative de connection :' + name + '/' + password);
 
-		let options: any = {params: [
+		const options: any = {params: [
+										{key: 'exactMatch', value: '1'},
 										{key: 'userLogin', value: name},
 										{key: 'userPassword', value: password}
 									]};
 	  
 		this._consultantService.getAll(options).subscribe(
 				(data: Consultant[]) => {
-					console.log(''+data.length);
+					console.log('' + data.length);
 					//this._consultantService.
-					if ( data.length > 0 ) {
+					if ( data.length === 1 ) {
 						isLoggedIn = true;
 					}
 				},

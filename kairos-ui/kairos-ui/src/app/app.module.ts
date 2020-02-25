@@ -77,9 +77,9 @@ import {AngularHalModule} from 'angular4-hal';
 import {ExternalConfigurationService} from './ExternalConfigurationService';
 
 // import { DatePipe } from '@angular/common';
-import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
+import { DateAdapter, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatMomentDateModule, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
-import { PickDateAdapter, PICK_FORMATS } from './adapter/pickdate.adapter';
+// import { PickDateAdapter, PICK_FORMATS } from './adapter/pickdate.adapter';
 import { PlatformModule} from '@angular/cdk/platform';
 
 import { registerLocaleData } from '@angular/common';
@@ -168,9 +168,7 @@ registerLocaleData(localeFr, 'fr-FR', localeFrExtra);
 ],
   providers: [
     { provide: 'ExternalConfigurationService', useClass: ExternalConfigurationService },
-    // { provide: DateAdapter, useClass: PickDateAdapter },
     { provide: MAT_DATE_LOCALE, useValue: 'fr-FR' },
-    //{ provide: MAT_DATE_FORMATS, useValue: PICK_FORMATS },
     { provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: { useUtc: true } },
     ConsultantService,
     MenuService,
@@ -191,8 +189,5 @@ registerLocaleData(localeFr, 'fr-FR', localeFrExtra);
 export class AppModule {
      constructor(private dateAdapter: DateAdapter<Date>){
        dateAdapter.setLocale('fr-FR');
-//      translate.addLangs(['en', 'de', 'fr']);
-//      translate.setDefaultLang('en');
-//      translate.use('en');
    }
  }
