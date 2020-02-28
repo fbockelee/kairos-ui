@@ -1,0 +1,13 @@
+#set( $jdbcTool = $loader.newInstance("JdbcTool") )
+$jdbcTool.setDriverClassName("org.mariadb.jdbc.Driver")
+$jdbcTool.setDriverJarFile("D:/sts-bundle/workspace/kairos-ui/TelosysTools/lib/mariadb-java-client-2.5.3.jar")
+#set( $connection = $jdbcTool.getConnection("jdbc:mysql://localhost:3306/kairosdev", "kairos", "kairos") )
+
+#set ( $LCentityName = $fn.uncapitalize($entity.name) )
+#foreach ( $attrib in $entity.attributes)
+		${entity.name}
+			${attrib.name}
+			localisation=$jdbcTool.getAttr("${entity.name}","${attrib.name}","localisation")
+			POSITION=$jdbcTool.getAttr("${entity.name}","${attrib.name}","POSITION")
+#end
+$jdbcTool.disconnect()

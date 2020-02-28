@@ -9,59 +9,64 @@
  	<mat-card-content class="register-container">
   	<form [formGroup]="form" novalidate (ngSubmit)="save()">
     <div class="add-edit-form">
-      <mat-grid-list cols="1" rowHeight="70px">
+      <mat-grid-list cols="2" rowHeight="70px">
         <mat-grid-tile [colspan]="1" [rowspan]="1">
-          <mat-form-field class="form-full-width">
-            <input matInput placeholder="consultantid(disabled)" required maxlength="10" formControlName="consultantid">
+          <mat-form-field class="form-full-width"  style="width:100px !important">
+            <input matInput placeholder="Identifiant(disabled)" required maxlength="10" formControlName="consultantid">
           </mat-form-field>
         </mat-grid-tile>
        <mat-grid-tile [colspan]="1" [rowspan]="1">
-          <mat-form-field class="form-full-width">
-            <input matInput placeholder="nom"  maxlength="255" formControlName="nom">
+          <mat-form-field class="form-full-width" style="width:30px !important">
+            <input matInput placeholder="Trigramme"  maxlength="3" formControlName="trigramme">
+			          </mat-form-field>
+        </mat-grid-tile>	        
+       <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <mat-form-field class="form-full-width" style="width:2550px !important">
+            <input matInput placeholder="Nom"  maxlength="255" formControlName="nom">
 			          </mat-form-field>
         </mat-grid-tile>	
        <mat-grid-tile [colspan]="1" [rowspan]="1">
-          <mat-form-field class="form-full-width">
-            <input matInput placeholder="prenom"  maxlength="255" formControlName="prenom">
+          <mat-form-field class="form-full-width"  style="width:2550px !important">
+            <input matInput placeholder="Prénom"  maxlength="255" formControlName="prenom">
 			          </mat-form-field>
         </mat-grid-tile>	
+      </mat-grid-list>
+
+      <mat-tab-group>
+      <mat-tab label="One">
+        <mat-grid-list cols="1" rowHeight="70px">
        <mat-grid-tile [colspan]="1" [rowspan]="1">
-          <mat-form-field class="form-full-width">
-            <input matInput placeholder="trigramme"  maxlength="3" formControlName="trigramme">
-			          </mat-form-field>
-        </mat-grid-tile>	
-       <mat-grid-tile [colspan]="1" [rowspan]="1">
-          <mat-form-field class="form-full-width">
+          <mat-form-field class="form-full-width" style="width:2550px !important">
             <input matInput placeholder="userLogin"  maxlength="255" formControlName="userLogin">
 			          </mat-form-field>
         </mat-grid-tile>	
        <mat-grid-tile [colspan]="1" [rowspan]="1">
-          <mat-form-field class="form-full-width">
+          <mat-form-field class="form-full-width" style="width:300px !important">
             <input matInput placeholder="userPassword"  maxlength="30" formControlName="userPassword">
 			          </mat-form-field>
         </mat-grid-tile>	
        <mat-grid-tile [colspan]="1" [rowspan]="1">
-          <mat-form-field class="form-full-width">
+          <mat-form-field class="form-full-width" style="width:2550px !important">
             <input matInput placeholder="adresse1"  maxlength="255" formControlName="adresse1">
 			          </mat-form-field>
         </mat-grid-tile>	
        <mat-grid-tile [colspan]="1" [rowspan]="1">
-          <mat-form-field class="form-full-width">
+          <mat-form-field class="form-full-width" floatLabel="always" style="width:2550px !important">
             <input matInput placeholder="adresse2"  maxlength="255" formControlName="adresse2">
 			          </mat-form-field>
         </mat-grid-tile>	
        <mat-grid-tile [colspan]="1" [rowspan]="1">
-          <mat-form-field class="form-full-width">
+          <mat-form-field class="form-full-width" style="width:200px !important">
             <input matInput placeholder="telPortable"  maxlength="20" formControlName="telPortable">
 			          </mat-form-field>
         </mat-grid-tile>	
        <mat-grid-tile [colspan]="1" [rowspan]="1">
-          <mat-form-field class="form-full-width">
+          <mat-form-field class="form-full-width" style="width:200px !important">
             <input matInput placeholder="telTravail"  maxlength="20" formControlName="telTravail">
 			          </mat-form-field>
         </mat-grid-tile>	
        <mat-grid-tile [colspan]="1" [rowspan]="1">
-          <mat-form-field class="form-full-width">
+          <mat-form-field class="form-full-width" style="width:200px !important">
             <input matInput placeholder="telDomicile"  maxlength="20" formControlName="telDomicile">
 			          </mat-form-field>
         </mat-grid-tile>	
@@ -111,6 +116,10 @@
             <mat-datepicker #pickerdatenaissance></mat-datepicker>
 			          </mat-form-field>
         </mat-grid-tile>
+        </mat-grid-list>
+      </mat-tab>
+      <mat-tab label="Two">
+        <mat-grid-list cols="1" rowHeight="70px">
        <mat-grid-tile [colspan]="1" [rowspan]="1">
           <mat-form-field class="form-full-width">
             <input matInput placeholder="telimei"  maxlength="50" formControlName="telimei">
@@ -178,6 +187,10 @@
             <input matInput placeholder="vehprotauxspec"  maxlength="10" formControlName="vehprotauxspec">
 			          </mat-form-field>
         </mat-grid-tile>	
+        </mat-grid-list>
+      </mat-tab>
+      <mat-tab label="Three">
+        <mat-grid-list cols="1" rowHeight="70px">
        <mat-grid-tile [colspan]="1" [rowspan]="1">
           <mat-form-field class="form-full-width">
             <input matInput placeholder="ordmodele"  maxlength="100" formControlName="ordmodele">
@@ -234,8 +247,10 @@
           <mat-form-field class="form-full-width">
             <input matInput placeholder="comptendf"  maxlength="255" formControlName="comptendf">
 			          </mat-form-field>
-        </mat-grid-tile>	
-      </mat-grid-list>
+        </mat-grid-tile>
+        </mat-grid-list>
+        </mat-tab>  
+        </mat-tab-group>
     </div>
     <mat-card-actions>
         <button mat-raised-button type="button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button" (click)="initForm()">

@@ -1,0 +1,24 @@
+
+
+
+		Menu
+			codemenu
+			localisation=entete
+			POSITION=1
+		Menu
+			url
+			localisation=tab_2
+			POSITION=2
+		Menu
+			image
+			localisation=tab_2
+			POSITION=3
+		Menu
+			nom
+			localisation=tab_1
+			POSITION=4
+		Menu
+			profils
+			localisation=tab_2
+			POSITION=5
+
