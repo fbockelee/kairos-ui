@@ -70,6 +70,14 @@ export class AuthService {
 		);
 	}
 
+	getConnectedConsultant(): Consultant {
+		return JSON.parse(localStorage.getItem(STORAGE_CONNECTED_CONSULTANT));
+	}
+
+	getCurrentConsultant(): Consultant {
+		return JSON.parse(localStorage.getItem(STORAGE_CURRENT_CONSULTANT));
+	}
+
 	// Une méthode de déconnexion
 	logout(): void {
 		this.isLoggedIn = false;

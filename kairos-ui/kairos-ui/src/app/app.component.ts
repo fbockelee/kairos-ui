@@ -5,6 +5,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 // Services imports
 import { ConsultantService } from './entities/consultant/services/consultant.service';
+import { AuthService } from './auth.service';
+
 // Models imports
 import { Consultant } from './entities/consultant/consultant.model';
 
@@ -17,6 +19,9 @@ export class AppComponent implements OnInit {
 
   title: String = 'Home';
   public form: FormGroup;
+  public currentConsultant: Consultant = new Consultant();
+  public connectedConsultant: Consultant = new Consultant();
+
 
   public listOfConsultants: Consultant[];
 
@@ -40,6 +45,7 @@ export class AppComponent implements OnInit {
     private _notificationService: NotificationService,
     private _formBuilder: FormBuilder,
     private _consultantService: ConsultantService,
+    private _authService: AuthService,
     ) { }
 
   ngOnInit() {
@@ -53,6 +59,9 @@ export class AppComponent implements OnInit {
     this.form = this._formBuilder.group({
           consultant: ''
     });
+    this.currentConsultant = this._authService.getCurrentConsultant();
+    this.connectedConsultant= this._authService.getConnectedConsultant();
+    console.log(this.currentConsultant);
     this._consultantService.getAll(options).subscribe(
       (data: Consultant[]) => {
         this.listOfConsultants = data;
