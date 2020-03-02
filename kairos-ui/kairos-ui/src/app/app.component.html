@@ -8,6 +8,18 @@
       <!-- Add spacer, to align navigation to the right -->
       <div class="mdl-layout-spacer"></div>
       <!-- Navigation. We hide it in small screens. -->
+      <nav class="mdl-navigation mdl-layout--large-screen-only mdl-navigation__link">
+          Consultant
+      </nav>
+      <nav class="mdl-navigation mdl-layout--large-screen-only">
+      <form [formGroup]="form" novalidate>
+      <mat-form-field>
+          <mat-select>
+              <mat-option *ngFor="let c of listOfConsultants" [value]="c.consultantid">{{c.nom}} {{c.prenom}}</mat-option>          
+          </mat-select>
+      </mat-form-field>     
+      </form>
+      </nav>
       <nav class="mdl-navigation mdl-layout--large-screen-only">
         <a routerLink="about" class="mdl-navigation__link" href="">A propos</a>
       </nav>

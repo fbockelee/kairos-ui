@@ -94,6 +94,8 @@ import { LoginRoutingModule } from './login/login.routing';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AngularDateHttpInterceptor } from './interceptors/AngularDateHttp.interceptor';
 
+import {WebStorageModule, LocalStorageService} from "angular-localstorage";
+
 registerLocaleData(localeFr, 'fr-FR', localeFrExtra);
 
 @NgModule({
@@ -163,8 +165,9 @@ registerLocaleData(localeFr, 'fr-FR', localeFrExtra);
     // MdNativeDateModule,
     SimpleNotificationsModule.forRoot(),
     AngularHalModule.forRoot(),
-    MatMomentDateModule // permet de gérer la timezone
+    MatMomentDateModule, // permet de gérer la timezone
     // DatePipe
+    // WebStorageModule
 ],
   providers: [
     { provide: 'ExternalConfigurationService', useClass: ExternalConfigurationService },
@@ -181,7 +184,8 @@ registerLocaleData(localeFr, 'fr-FR', localeFrExtra);
       provide: HTTP_INTERCEPTORS,
       useClass: AngularDateHttpInterceptor,
       multi: true
-    }
+    },
+    // LocalStorageService
     // DatePipe
 ],
   bootstrap: [AppComponent]

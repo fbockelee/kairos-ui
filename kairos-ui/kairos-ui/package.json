@@ -26,6 +26,7 @@
     "@angular/router": "^7.2.0",
     "@ngx-translate/core": "^11.0.1",
     "@types/underscore": "^1.9.4",
+    "angular-localstorage": "^1.1.5",
     "angular2-notifications": "^2.0.0",
     "angular4-hal": "^7.9.1",
     "core-js": "^2.5.4",

@@ -2,6 +2,11 @@
 
 import { NotificationService } from './services/notification.service';
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+// Services imports
+import { ConsultantService } from './entities/consultant/services/consultant.service';
+// Models imports
+import { Consultant } from './entities/consultant/consultant.model';
 
 @Component({
   selector: 'app-root',
@@ -11,6 +16,10 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit {
 
   title: String = 'Home';
+  public form: FormGroup;
+
+  public listOfConsultants: Consultant[];
+
 
   public navigation = [
     { title: 'Menu', routerLink: 'menu-list' },
@@ -28,9 +37,31 @@ export class AppComponent implements OnInit {
   };
 
   constructor(
-    private _notificationService: NotificationService) { }
+    private _notificationService: NotificationService,
+    private _formBuilder: FormBuilder,
+    private _consultantService: ConsultantService,
+    ) { }
 
   ngOnInit() {
+    const options: any = {params: [
+                    {key: 'sort', value: 'nom'}
+                    ],
+                    notPaged:true
+                  };
+
     this._notificationService.init();
+    this.form = this._formBuilder.group({
+          consultant: ''
+    });
+    this._consultantService.getAll(options).subscribe(
+      (data: Consultant[]) => {
+        this.listOfConsultants = data;
+        //this.setPage(1);
+      },
+      error => {
+        this._notificationService.error(
+          'Error',
+          'An error occured when trying to reach the server');
+    });
   }
 }

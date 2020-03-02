@@ -8,6 +8,10 @@ import { tap, delay } from 'rxjs/operators';
 import {Consultant} from './entities/consultant/consultant.model';
 import {ConsultantService} from './entities/consultant/services/consultant.service';
 
+// import {LocalStorage, SessionStorage} from "angular-localstorage";
+const STORAGE_CURRENT_CONSULTANT = 'currentConsultant';
+const STORAGE_CONNECTED_CONSULTANT = 'connectedConsultant';
+
 @Injectable()
 export class AuthService {
 
@@ -39,13 +43,17 @@ export class AuthService {
 										{key: 'userLogin', value: name},
 										{key: 'userPassword', value: password}
 									]};
-	  
+
 		this._consultantService.getAll(options).subscribe(
 				(data: Consultant[]) => {
 					console.log('' + data.length);
 					//this._consultantService.
 					if ( data.length === 1 ) {
 						isLoggedIn = true;
+						localStorage.setItem(STORAGE_CONNECTED_CONSULTANT,JSON.stringify(data[0]));
+						localStorage.setItem(STORAGE_CURRENT_CONSULTANT,JSON.stringify(data[0]));
+						// SessionStorage.setItem('connectedConsultant',JSON.stringify(data[0]));
+						// SessionStorage.setItem('currentConsultant',JSON.stringify(data[0]));
 					}
 				},
 				error => {
@@ -65,5 +73,7 @@ export class AuthService {
 	// Une méthode de déconnexion
 	logout(): void {
 		this.isLoggedIn = false;
+		localStorage.removeItem(STORAGE_CONNECTED_CONSULTANT);
+		localStorage.removeItem(STORAGE_CURRENT_CONSULTANT);
 	}
 }
