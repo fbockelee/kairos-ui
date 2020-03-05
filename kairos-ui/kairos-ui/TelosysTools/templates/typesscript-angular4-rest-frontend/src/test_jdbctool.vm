@@ -1,23 +1,14 @@
 #set( $jdbcTool = $loader.newInstance("JdbcTool") )
-$jdbcTool.setDriverClassName("org.mariadb.jdbc.Driver")
-$jdbcTool.setDriverJarFile("D:/sts-bundle/workspace/kairos-ui/TelosysTools/lib/mariadb-java-client-2.5.3.jar")
-#set( $connection = $jdbcTool.getConnection("jdbc:mysql://localhost:3306/kairosdev", "kairos", "kairos") )
-
-#set($sorter = $loader.newInstance("org.apache.velocity.tools.generic.SortTool") )
-
-#set ( $extAttributes=$jdbcTool.getExtAttributes("${entity.name}"))
-
-#foreach ( $extattrib in $sorter.sort($extAttributes,["ext2", "ext3"]))
-#foreach ( $iattrib in $entity.attributes)
-#if( ${iattrib.name} == ${extattrib.columnname} )
-#set ($attrib = $iattrib)
-#end
-#end
+$jdbcTool.setAllFromConfig($project.specificVariables)##
+$jdbcTool.setOrderby("ORDER BY ext2, ext4, ext3")##
+#set( $extAttributes=$jdbcTool.getExtAttributes($entity))
+##
+#foreach ( $extattrib in $extAttributes )
+#set ($attrib = $entity.attributes.get($extattrib.index))
 		$attrib.name
-		${extattrib.tablename}
-			${extattrib.columnname}
-			${extattrib.ext2}
-			${extattrib.ext3}
 #end
 
-$jdbcTool.disconnect()
+#foreach ( $attrib2 in $entity.attributes )
+		$attrib2.name
+#end
+
