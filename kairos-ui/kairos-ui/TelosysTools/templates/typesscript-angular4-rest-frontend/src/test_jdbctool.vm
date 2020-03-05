@@ -3,11 +3,21 @@ $jdbcTool.setDriverClassName("org.mariadb.jdbc.Driver")
 $jdbcTool.setDriverJarFile("D:/sts-bundle/workspace/kairos-ui/TelosysTools/lib/mariadb-java-client-2.5.3.jar")
 #set( $connection = $jdbcTool.getConnection("jdbc:mysql://localhost:3306/kairosdev", "kairos", "kairos") )
 
-#set ( $LCentityName = $fn.uncapitalize($entity.name) )
-#foreach ( $attrib in $entity.attributes)
-		${entity.name}
-			${attrib.name}
-			localisation=$jdbcTool.getAttr("${entity.name}","${attrib.name}","localisation")
-			POSITION=$jdbcTool.getAttr("${entity.name}","${attrib.name}","POSITION")
+#set($sorter = $loader.newInstance("org.apache.velocity.tools.generic.SortTool") )
+
+#set ( $extAttributes=$jdbcTool.getExtAttributes("${entity.name}"))
+
+#foreach ( $extattrib in $sorter.sort($extAttributes,["ext2", "ext3"]))
+#foreach ( $iattrib in $entity.attributes)
+#if( ${iattrib.name} == ${extattrib.columnname} )
+#set ($attrib = $iattrib)
 #end
+#end
+		$attrib.name
+		${extattrib.tablename}
+			${extattrib.columnname}
+			${extattrib.ext2}
+			${extattrib.ext3}
+#end
+
 $jdbcTool.disconnect()

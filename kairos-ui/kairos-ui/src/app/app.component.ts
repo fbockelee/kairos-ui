@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 // Services imports
 import { ConsultantService } from './entities/consultant/services/consultant.service';
-import { AuthService } from './auth.service';
+import { AuthService } from './services/auth.service';
 
 // Models imports
 import { Consultant } from './entities/consultant/consultant.model';

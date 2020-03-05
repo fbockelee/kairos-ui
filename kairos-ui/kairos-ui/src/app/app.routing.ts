@@ -17,7 +17,11 @@ import { ConsultantFormComponent } from './entities/consultant/consultant-form/c
 import { AuthGuard } from './auth.guard';
 
 export const AppRouting = RouterModule.forRoot([
-    { path: '', component: HomeListComponent },
+    { path: '', 
+      //component: HomeListComponent
+      redirectTo: 'login',
+      pathMatch: 'full' 
+    },
     // { canActivate : [AuthGuard],
     //  children: [
         { path: 'menu-list', component: MenuListComponent , canActivate : [AuthGuard]},
@@ -28,6 +32,9 @@ export const AppRouting = RouterModule.forRoot([
         { path: 'consultant-form', component: ConsultantFormComponent , canActivate : [AuthGuard]},
         { path: 'deconnect', component: LoginComponent },
         { path: 'about', component: AboutComponent },
-        { path: '**', component: NotFoundComponent }
+    { path: '**',
+      redirectTo: 'login',
+      //component: NotFoundComponent 
+    }
     // ]}
 ]);

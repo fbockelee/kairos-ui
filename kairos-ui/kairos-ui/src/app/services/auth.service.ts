@@ -5,8 +5,8 @@ import { Observable } from 'rxjs/observable';
 import { of } from 'rxjs/observable/of';
 import { tap, delay } from 'rxjs/operators';
 
-import {Consultant} from './entities/consultant/consultant.model';
-import {ConsultantService} from './entities/consultant/services/consultant.service';
+import {Consultant} from './../entities/consultant/consultant.model';
+import {ConsultantService} from './../entities/consultant/services/consultant.service';
 
 // import {LocalStorage, SessionStorage} from "angular-localstorage";
 const STORAGE_CURRENT_CONSULTANT = 'currentConsultant';

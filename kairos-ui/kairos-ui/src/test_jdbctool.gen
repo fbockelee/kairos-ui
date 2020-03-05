@@ -1,14 +1,11 @@
 
 
 
+
 		Menu
 			codemenu
 			localisation=entete
 			POSITION=1
-		Menu
-			url
-			localisation=tab_2
-			POSITION=2
 		Menu
 			image
 			localisation=tab_2
@@ -16,9 +13,41 @@
 		Menu
 			nom
 			localisation=tab_1
-			POSITION=4
+			POSITION=1
 		Menu
 			profils
 			localisation=tab_2
-			POSITION=5
+			POSITION=1
+		Menu
+			url
+			localisation=tab_2
+			POSITION=2
+
+
+		codemenu
+		menu
+			codemenu
+			entete
+			1
+		nom
+		menu
+			nom
+			tab_1
+			1
+		profils
+		menu
+			profils
+			tab_2
+			1
+		url
+		menu
+			url
+			tab_2
+			2
+		image
+		menu
+			image
+			tab_2
+			3
+
 
