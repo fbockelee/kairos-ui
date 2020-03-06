@@ -5,10 +5,8 @@ $jdbcTool.setOrderby("ORDER BY ext2, ext4, ext3")##
 ##
 #foreach ( $extattrib in $extAttributes )
 #set ($attrib = $entity.attributes.get($extattrib.index))
-		$attrib.name
+		$attrib.name : $extattrib.ext1
 #end
 
-#foreach ( $attrib2 in $entity.attributes )
-		$attrib2.name
-#end
+
 
