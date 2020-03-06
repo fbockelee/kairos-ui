@@ -1,8 +1,25 @@
-		codemenu : Code menu
-		nom : Nom
-		profils : Profils
-		url : Acc?s URL
-		image : Image
+Entertabs/Leavetabs
+		codemenu : entete : false : false 
+		nom : tab_1 : true : false 
+		profils : tab_2 : false : false 
+		url : tab_2 : false : false 
+		image : tab_2 : false : true 
+ : 
 
+Entertab/Leavetab
+		codemenu : entete : false :  false 
+		nom : tab_1 : true :  true 
+		profils : tab_2 : true :  false 
+		url : tab_2 : false :  false 
+		image : tab_2 : false :  true 
+ : 
+
+Enterbloc/Leavebloc
+		codemenu : entete : true : true
+		nom : tab_1 : true : true
+		profils : tab_2 : true : false
+		url : tab_2 : false : false
+		image : tab_2 : false : true
+ : 
 
 

@@ -16,21 +16,13 @@ $jdbcTool.setOrderby("ORDER BY ext2, ext4, ext3")##
  	<mat-card-content class="register-container">
   	<form [formGroup]="form" novalidate (ngSubmit)="save()">
     <div class="add-edit-form">
+      <mat-grid-list cols="1" rowHeight="70px">
 #foreach ( $extattrib in $extAttributes)
 #set ($attrib = $entity.attributes.get($extattrib.index))
 #if ($attrib.isDatabaseNotNull())
 	#set ($requiredmode = "required ")
 #else
 	#set ($requiredmode = "")
-#end
-#if ($extattrib.entertabs)
-      <mat-tab-group>
-#end
-#if ($extattrib.entertab)
-      <mat-tab label="${extattrib.ext2}">
-#end
-#if ($extattrib.enterbloc)
-      <mat-grid-list cols="1" rowHeight="70px">
 #end
 #if ($attrib.isKeyElement() && !$attrib.isFK())
         <mat-grid-tile [colspan]="1" [rowspan]="1">
@@ -111,16 +103,8 @@ $jdbcTool.setOrderby("ORDER BY ext2, ext4, ext3")##
           </mat-form-field>
         </mat-grid-tile>	
 #end
-#if ($extattrib.leavebloc)
+#end
       </mat-grid-list>
-#end
-#if ($extattrib.leavetab)
-      </mat-tab>
-#end
-#if ($extattrib.leavetabs)
-      </mat-tab-group>
-#end
-#end
     </div>
     <mat-card-actions>
         <button mat-raised-button type="button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button" (click)="initForm()">

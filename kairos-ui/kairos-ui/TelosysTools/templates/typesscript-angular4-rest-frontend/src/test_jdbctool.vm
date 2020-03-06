@@ -3,10 +3,22 @@ $jdbcTool.setAllFromConfig($project.specificVariables)##
 $jdbcTool.setOrderby("ORDER BY ext2, ext4, ext3")##
 #set( $extAttributes=$jdbcTool.getExtAttributes($entity))
 ##
+Entertabs/Leavetabs
 #foreach ( $extattrib in $extAttributes )
 #set ($attrib = $entity.attributes.get($extattrib.index))
-		$attrib.name : $extattrib.ext1
-#end
+		$attrib.name : $extattrib.ext2 : $extattrib.entertabs : $extattrib.leavetabs 
+#end : 
 
+Entertab/Leavetab
+#foreach ( $extattrib in $extAttributes )
+#set ($attrib = $entity.attributes.get($extattrib.index))
+		$attrib.name : $extattrib.ext2 : $extattrib.entertab :  $extattrib.leavetab 
+#end : 
+
+Enterbloc/Leavebloc
+#foreach ( $extattrib in $extAttributes )
+#set ($attrib = $entity.attributes.get($extattrib.index))
+		$attrib.name : $extattrib.ext2 : $extattrib.enterbloc : $extattrib.leavebloc
+#end : 
 
 
