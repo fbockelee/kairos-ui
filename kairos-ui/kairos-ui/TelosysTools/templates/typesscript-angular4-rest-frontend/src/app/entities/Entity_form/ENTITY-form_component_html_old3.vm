@@ -30,22 +30,16 @@ $jdbcTool.setOrderby("ORDER BY ext2, ext4, ext3")##
       <mat-tab label="${extattrib.ext2}">
 #end
 #if ($extattrib.enterbloc)
-      <mat-grid-list cols="10" rowHeight="70px">
+      <mat-grid-list cols="1" rowHeight="70px">
 #end
 #if ($attrib.isKeyElement() && !$attrib.isFK())
-        <mat-grid-tile [colspan]="4">
-			${extattrib.ext1}
-        </mat-grid-tile>
-        <mat-grid-tile [colspan]="6">
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
           <mat-form-field class="form-full-width">
             <input matInput placeholder="${extattrib.ext1}#if($attrib.isAutoIncremented())(disabled)#else #end" required maxlength="${attrib.databaseSize}" formControlName="${attrib.name}">
           </mat-form-field>
         </mat-grid-tile>
 #elseif ($attrib.isDateType())
-        <mat-grid-tile [colspan]="4">
-			${extattrib.ext1}
-        </mat-grid-tile>
-        <mat-grid-tile [colspan]="6">
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
           <mat-form-field class="form-full-width">
             <input matInput [matDatepicker]="picker${attrib.name}" placeholder="${extattrib.ext1}" ${requiredmode} formControlName="${attrib.name}">
             <mat-datepicker-toggle matSuffix [for]="picker${attrib.name}"></mat-datepicker-toggle>
@@ -60,10 +54,7 @@ $jdbcTool.setOrderby("ORDER BY ext2, ext4, ext3")##
 #elseif ( $attrib.isFK() && $attrib.isKeyElement())
 #set($referencedEntity = $fn.uncapitalize($attrib.referencedEntityName))
 #set($keyAttrib = $attrib.referencedEntity.keyAttribute.name)
-        <mat-grid-tile [colspan]="4">
-			${extattrib.ext1}
-        </mat-grid-tile>
-        <mat-grid-tile [colspan]="6">
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
           <mat-select placeholder="${extattrib.ext1}" formControlName="${attrib.name}" name="${referencedEntity}" class="form-full-width">
             <mat-option [value]="">
               N/A
@@ -87,10 +78,7 @@ $jdbcTool.setOrderby("ORDER BY ext2, ext4, ext3")##
 #elseif ( $attrib.isFK() )
 #set($referencedEntity = $fn.uncapitalize($attrib.referencedEntityName))
 #set($keyAttrib = $attrib.referencedEntity.keyAttribute.name)
-        <mat-grid-tile [colspan]="4">
-			${extattrib.ext1}
-        </mat-grid-tile>
-        <mat-grid-tile [colspan]="6">
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
           <mat-select placeholder="${extattrib.ext1}" formControlName="${attrib.name}" name="${referencedEntity}" class="form-full-width">
             <mat-option [value]="">
               N/A
@@ -112,10 +100,7 @@ $jdbcTool.setOrderby("ORDER BY ext2, ext4, ext3")##
           </mat-select>
         </mat-grid-tile>
 #else
-       <mat-grid-tile [colspan]="4">
-			${extattrib.ext1}
-       </mat-grid-tile>
-       <mat-grid-tile [colspan]="6">
+       <mat-grid-tile [colspan]="1" [rowspan]="1">
           <mat-form-field class="form-full-width">
             <input matInput placeholder="${extattrib.ext1}" ${requiredmode} maxlength="${attrib.databaseSize}" formControlName="${attrib.name}">
 			#if ($attrib.isDatabaseNotNull())

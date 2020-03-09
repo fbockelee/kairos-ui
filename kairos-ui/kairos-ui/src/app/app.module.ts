@@ -96,6 +96,8 @@ import { AngularDateHttpInterceptor } from './interceptors/AngularDateHttp.inter
 
 import {WebStorageModule, LocalStorageService} from "angular-localstorage";
 
+// import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
 registerLocaleData(localeFr, 'fr-FR', localeFrExtra);
 
 @NgModule({
@@ -168,6 +170,7 @@ registerLocaleData(localeFr, 'fr-FR', localeFrExtra);
     MatMomentDateModule, // permet de gérer la timezone
     // DatePipe
     // WebStorageModule
+    // NgbModule, // Bootstrap
 ],
   providers: [
     { provide: 'ExternalConfigurationService', useClass: ExternalConfigurationService },
