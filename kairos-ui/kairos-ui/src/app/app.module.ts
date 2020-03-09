@@ -96,6 +96,7 @@ import { AngularDateHttpInterceptor } from './interceptors/AngularDateHttp.inter
 
 import {WebStorageModule, LocalStorageService} from "angular-localstorage";
 
+import {FlexLayoutModule} from '@angular/flex-layout';
 // import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 registerLocaleData(localeFr, 'fr-FR', localeFrExtra);
@@ -171,6 +172,7 @@ registerLocaleData(localeFr, 'fr-FR', localeFrExtra);
     // DatePipe
     // WebStorageModule
     // NgbModule, // Bootstrap
+    FlexLayoutModule,
 ],
   providers: [
     { provide: 'ExternalConfigurationService', useClass: ExternalConfigurationService },
