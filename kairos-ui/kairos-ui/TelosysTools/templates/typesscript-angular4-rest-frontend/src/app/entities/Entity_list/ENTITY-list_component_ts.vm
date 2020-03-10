@@ -42,6 +42,13 @@ export class $listComponentName implements OnInit, OnChanges {
 
   private $LCentityName: $entity.name;
 
+#set ($displayedColumns = "")
+#foreach ( $attrib in $entity.attributes)
+#set ($displayedColumns = "${displayedColumns}'${attrib.name}',")
+#end
+#set ($displayedColumns = "${displayedColumns}'_delete'")
+  displayedColumns: string[] = [${displayedColumns}];
+
   constructor(
     private $_entityService: $baseServiceName,
     private _router: Router,
