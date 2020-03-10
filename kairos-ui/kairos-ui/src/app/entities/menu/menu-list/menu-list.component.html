@@ -3,7 +3,7 @@
 <mat-card>
   	<mat-card-header>
       	<mat-card-title>
-          {{ title }} <a mat-raised-button class="card-header-button" routerLink="../menu-form"><mat-icon>add</mat-icon>Créer</a>
+          {{ title }} <a mat-raised-button class="card-header-button" routerLink="../menu-form"><mat-icon>add</mat-icon>Crï¿½er</a>
         </mat-card-title>
     </mat-card-header>
     <mat-card-content class="login-container">
@@ -38,8 +38,8 @@
               <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
               <tr mat-row *matRowDef="let menu; columns: displayedColumns;"  (click)="editMenu(menu.codemenu)"></tr>
         </table>
-        <div class="footer">
+        <mat-card-footer>
           <mat-paginator class="paginator--centered" pageSize="10" showFirstLastButtons color="primary" hidePageSize="true" ></mat-paginator>
-        </div>
+        </mat-card-footer>
     </mat-card-content>
  </mat-card>
