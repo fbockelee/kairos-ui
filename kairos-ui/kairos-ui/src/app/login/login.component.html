@@ -1,12 +1,11 @@
-<mat-card>
+<div class="basic-container">
+<mat-card  class="login-card">
+    <form [formGroup]="form" novalidate (ngSubmit)="login()">
   	<mat-card-header>
-      	<mat-card-title>
-          <h2 class="mdl-card__title-text">Page de Connection</h2>
-          <p><em>{{message}}</em></p>
-      	</mat-card-title>
+      	<mat-card-title>Page de Connection</mat-card-title>
+        <mat-card-subtitle>{{message}}</mat-card-subtitle>
   	</mat-card-header>
     <mat-card-content class="login-container">
-      <form [formGroup]="form" novalidate (ngSubmit)="login()">
           <mat-grid-list cols="1" rowHeight="70px">
             <mat-grid-tile [colspan]="1" [rowspan]="1">
               <mat-form-field class="form-full-width">
@@ -19,11 +18,10 @@
               </mat-form-field>
             </mat-grid-tile>
           </mat-grid-list>
-        <mat-card-actions>
-          <button mat-raised-button type="submit" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary">
-              Se connecter
-          </button>
-        </mat-card-actions>
-      </form>
     </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button type="submit" color="primary">Se connecter</button>
+    </mat-card-actions>
+    </form>
 </mat-card>
+</div>

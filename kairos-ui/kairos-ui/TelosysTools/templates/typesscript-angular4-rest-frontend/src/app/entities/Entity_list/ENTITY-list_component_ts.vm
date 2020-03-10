@@ -9,7 +9,6 @@ import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material';
 
 // Services imports
-import { PagerService } from './../../../services/pager.service';
 import { EmitterService } from './../../../services/emitter.service';
 import { NotificationService } from './../../../services/notification.service';
 import { $baseServiceName } from './../services/$fn.uncapitalize($LCentityNameService)';
@@ -22,6 +21,10 @@ import { DeleteDialogComponent } from './../../../delete-dialog/delete-dialog.co
 
 import { DatePipe } from '@angular/common';
 
+import {ViewChild} from '@angular/core';
+import {MatPaginator} from '@angular/material/paginator';
+import {MatTableDataSource} from '@angular/material/table';
+
 @Component({
   selector: 'app-${LCentityName}-list',
   templateUrl: './${LCentityName}-list.component.html',
@@ -32,10 +35,8 @@ export class $listComponentName implements OnInit, OnChanges {
 
   public title = 'Liste de ${entity.name}s';
 
-  // pager object
-  public pager: any = {};
-  // paged items
-  public pagedItems: any[];
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  public dataSource: MatTableDataSource<${entity}>;
 
   private listOf${entity.name}s: ${entity}[];
   private listId = '$fn.toUpperCase(${entity.name})_COMPONENT_LIST';
@@ -53,7 +54,6 @@ export class $listComponentName implements OnInit, OnChanges {
     private $_entityService: $baseServiceName,
     private _router: Router,
     private _notificationService: NotificationService,
-    private pagerService: PagerService,
     public dialog: MatDialog) { }
 
   ngOnInit() {
@@ -74,7 +74,8 @@ export class $listComponentName implements OnInit, OnChanges {
     this._${LCentityName}Service.getAll({ notPaged: true }).subscribe(
       (data: ${entity.name}[]) => {
         this.listOf${entity.name}s = data;
-        this.setPage(1);
+        this.dataSource = new MatTableDataSource<${entity}>(this.listOf${entity.name}s);
+        this.dataSource.paginator = this.paginator;
       },
       error => {
         this._notificationService.error(
@@ -136,15 +137,4 @@ export class $listComponentName implements OnInit, OnChanges {
     });
   }
 
-  setPage(page: number) {
-    if (page < 1 || page > this.pager.totalPages) {
-      return;
-    }
-
-    // get pager object from service
-    this.pager = this.pagerService.getPager(this.listOf${entity.name}s.length, page);
-
-    // get current page of items
-    this.pagedItems = this.listOf${entity.name}s.slice(this.pager.startIndex, this.pager.endIndex + 1);
-  }
 }
