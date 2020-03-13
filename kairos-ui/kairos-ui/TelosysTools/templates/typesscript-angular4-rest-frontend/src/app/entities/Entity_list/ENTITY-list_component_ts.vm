@@ -12,6 +12,7 @@ import { MatDialog } from '@angular/material';
 import { EmitterService } from './../../../services/emitter.service';
 import { NotificationService } from './../../../services/notification.service';
 import { $baseServiceName } from './../services/$fn.uncapitalize($LCentityNameService)';
+import { ApplicationStateService } from './../../../services/application-state.service';
 
 // Models imports
 import { $entity.name } from '../$fn.uncapitalize($LCentityNameModel)';
@@ -43,12 +44,11 @@ export class $listComponentName implements OnInit, OnChanges {
 
   private $LCentityName: $entity.name;
 
-#set ($displayedColumns = "")
+  private columnDefinitions = [
 #foreach ( $attrib in $entity.attributes)
-#set ($displayedColumns = "${displayedColumns}'${attrib.name}',")
+      { def: '${attrib.name}', showMobile: true },
 #end
-#set ($displayedColumns = "${displayedColumns}'_delete'")
-  displayedColumns: string[] = [${displayedColumns}];
+	];
 
   constructor(
     private $_entityService: $baseServiceName,
@@ -66,6 +66,17 @@ export class $listComponentName implements OnInit, OnChanges {
   }
 
   ngOnChanges() { }
+
+
+  /**
+   * Get displayed columns (responsive)
+   */
+  getDisplayedColumns(): string[] {
+	  const isMobile = ApplicationStateService.getIsMobileResolution();
+	  return this.columnDefinitions
+	    .filter(cd => !isMobile || cd.showMobile)
+	    .map(cd => cd.def);
+	}
 
   /**
    * Get all ${entity.name} using the service ${entity.name}Service

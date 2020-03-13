@@ -71,7 +71,9 @@ import { ConsultantService } from './entities/consultant/services/consultant.ser
 
 import { EmitterService } from './services/emitter.service';
 import { NotificationService } from './services/notification.service';
-import { PagerService } from './services/pager.service';
+// import { PagerService } from './services/pager.service';
+
+import { ApplicationStateService } from './services/application-state.service';
 
 import {AngularHalModule} from 'angular4-hal';
 import {ExternalConfigurationService} from './ExternalConfigurationService';
@@ -182,7 +184,8 @@ registerLocaleData(localeFr, 'fr-FR', localeFrExtra);
     MenuService,
     EmitterService,
     NotificationService,
-    PagerService,
+	ApplicationStateService,
+    //PagerService,
     MatDatepickerModule,
     AuthGuard,
     {

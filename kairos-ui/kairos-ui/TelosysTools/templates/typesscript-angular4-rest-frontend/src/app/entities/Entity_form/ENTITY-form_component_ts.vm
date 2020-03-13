@@ -46,7 +46,7 @@ export class $formComponentName implements OnInit {
   public title = 'Formulaire ${entity.name}';
   public form: FormGroup;
 
-  private $LCentityName: ${entity.name};
+  public $LCentityName: ${entity.name};
   private ids;
 
 #if ($attrsFKs.size() > 0)

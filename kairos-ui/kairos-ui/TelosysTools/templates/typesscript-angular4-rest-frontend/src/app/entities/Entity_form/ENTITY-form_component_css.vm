@@ -5,6 +5,13 @@
   width: 100%;
 }
  
-.form-full-width {
-  width: 100%;
+.mat-form-field {
+	display: flex;
+  	flex-direction: column;
+}
+
+.field_left {
+	width: 100%; 
+    display: flex; 
+	align-items: flex-start;
 }
