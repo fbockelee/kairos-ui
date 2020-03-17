@@ -78,7 +78,7 @@ import { ApplicationStateService } from './services/application-state.service';
 import {AngularHalModule} from 'angular4-hal';
 import {ExternalConfigurationService} from './ExternalConfigurationService';
 
-// import { DatePipe } from '@angular/common';
+//import { DatePipe } from '@angular/common';
 import { DateAdapter, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatMomentDateModule, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 // import { PickDateAdapter, PICK_FORMATS } from './adapter/pickdate.adapter';
@@ -171,7 +171,7 @@ registerLocaleData(localeFr, 'fr-FR', localeFrExtra);
     SimpleNotificationsModule.forRoot(),
     AngularHalModule.forRoot(),
     MatMomentDateModule, // permet de gérer la timezone
-    // DatePipe
+    // DatePipe,
     // WebStorageModule
     // NgbModule, // Bootstrap
     FlexLayoutModule,
