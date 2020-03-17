@@ -25,14 +25,14 @@
      <div fxFlex fxLayout fxLayoutAlign="flex-end"  fxHide.xs>
         <ul fxLayout fxLayoutGap="20px"  class="navigation-items">
             <li>
-              <span *ngIf="currentConsultant" >
+              <span *ngIf="currentConsultant">
                   Consultant
               </span>
             </li>
             <li>
               <form [formGroup]="form" novalidate>
-              <span *ngIf="currentConsultant">
-              <mat-form-field>
+              <span *ngIf="currentConsultant" style="width:280px;">
+              <mat-form-field [style.width.px]=280>
                   <mat-select [(value)]="currentConsultant.consultantid">
                       <mat-option *ngFor="let c of listOfConsultants" [value]="c.consultantid">{{c.nom}} {{c.prenom}}</mat-option>          
                   </mat-select>
