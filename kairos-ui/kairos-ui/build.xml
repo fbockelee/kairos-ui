@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+ 
+<project name="kairos-ui" default="convert-utf8" basedir=".">
+    <property name="src" location="src"/>
+    <property name="build" location="build"/>
+
+    <target name="clean">
+    	<mkdir dir="${build}"/>
+    	<mkdir dir="${build}/convertbefore"/>
+    	<mkdir dir="${build}/convertafter"/>
+
+        <delete dir="${build}/convertbefore"/>
+    </target>
+
+    <target name="convert-utf8" depends="clean">
+    	<copy todir="${build}/convertbefore" overwrite="yes" encoding="CP1252" outputencoding="UTF-8">
+    		<fileset dir="${src}/app/entities" includes="**/*.html"/> 
+    	</copy>
+    </target>
+  
+</project>
