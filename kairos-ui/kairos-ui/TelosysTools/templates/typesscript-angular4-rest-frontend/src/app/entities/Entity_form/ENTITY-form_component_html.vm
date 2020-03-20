@@ -122,14 +122,28 @@ $jdbcTool.setOrderby("ORDER BY ext2, ext4, ext3")##
             </mat-option>
           </mat-select>
         </mat-grid-tile>
-#else
+#elseif ( $attrib.isBooleanType())
        <mat-grid-tile [colspan]="4">
 			<div class="label_right">${extattrib.ext1}</div>
        </mat-grid-tile>
        <mat-grid-tile [colspan]="6">
 		  <div style="width: 100%; display: flex; align-items: flex-start;">
+          <mat-checkbox formControlName="${attrib.name}">
+          </mat-checkbox>
+		  </div>
+        </mat-grid-tile>	
+#else
+       <mat-grid-tile [colspan]="4">
+			<div class="label_right">${extattrib.ext1}</div>
+       </mat-grid-tile>
+       <mat-grid-tile [colspan]="6">
+#set ($field_align="")
+#if ($attrib.isNumberType())
+#set ($field_align="text-align: right;")
+#end
+		  <div style="width: 100%; display: flex; align-items: flex-start;">
           <mat-form-field style="width:${attrib.databaseSize}0px !important">
-            <input matInput ${requiredmode} maxlength="${attrib.databaseSize}" formControlName="${attrib.name}">
+            <input matInput ${requiredmode} maxlength="${attrib.databaseSize}" formControlName="${attrib.name}" style="${field_align}">
 #if ($attrib.isDatabaseNotNull())
             <mat-error *ngIf="!form.controls.${attrib.name}.valid">
               ${attrib.name} is required
