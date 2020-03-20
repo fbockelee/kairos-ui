@@ -14,7 +14,7 @@ import { AppRouting } from './app.routing';
 import { MenuListComponent } from './entities/menu/menu-list/menu-list.component';
 import { MenuFormComponent } from './entities/menu/menu-form/menu-form.component';
 
-// Menu Components
+// Consultant Components
 import { ConsultantListComponent } from './entities/consultant/consultant-list/consultant-list.component';
 import { ConsultantFormComponent } from './entities/consultant/consultant-form/consultant-form.component';
 
@@ -92,7 +92,7 @@ registerLocaleData(localeFr, 'fr-FR', localeFrExtra);
     CommonModule,
     ReactiveFormsModule,
     HttpClientModule,
-    LoginRoutingModule, // avant AppRouting
+    LoginRoutingModule, // doit être avant AppRouting
     AppRouting,
     BrowserAnimationsModule,
 	MaterialModule,
@@ -112,7 +112,6 @@ registerLocaleData(localeFr, 'fr-FR', localeFrExtra);
     EmitterService,
     NotificationService,
 	ApplicationStateService,
-    //PagerService,
     MatDatepickerModule,
     AuthGuard,
     {

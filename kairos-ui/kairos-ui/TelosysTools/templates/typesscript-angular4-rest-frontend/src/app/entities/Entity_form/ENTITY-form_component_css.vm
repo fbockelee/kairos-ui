@@ -15,3 +15,8 @@
     display: flex; 
 	align-items: flex-start;
 }
+
+.label_right {
+	position: absolute;
+	right: 20px;
+}
