@@ -18,6 +18,10 @@ import { MenuFormComponent } from './entities/menu/menu-form/menu-form.component
 import { ConsultantListComponent } from './entities/consultant/consultant-list/consultant-list.component';
 import { ConsultantFormComponent } from './entities/consultant/consultant-form/consultant-form.component';
 
+// Liste Components
+import { ListeListComponent } from './entities/liste/liste-list/liste-list.component';
+import { ListeFormComponent } from './entities/liste/liste-form/liste-form.component';
+
 // Other Components
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AboutComponent } from './about/about.component';
@@ -35,6 +39,7 @@ import { MaterialModule} from './material-module'
 // Services
 import { MenuService } from './entities/menu/services/menu.service';
 import { ConsultantService } from './entities/consultant/services/consultant.service';
+import { ListeService } from './entities/liste/services/liste.service';
 
 
 import { EmitterService } from './services/emitter.service';
@@ -78,6 +83,8 @@ registerLocaleData(localeFr, 'fr-FR', localeFrExtra);
     MenuFormComponent,
     ConsultantListComponent,
     ConsultantFormComponent,
+    ListeListComponent,
+    ListeFormComponent,
     NotFoundComponent,
     AboutComponent,
     DeleteDialogComponent,
@@ -109,6 +116,7 @@ registerLocaleData(localeFr, 'fr-FR', localeFrExtra);
     { provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: { useUtc: true } },
     ConsultantService,
     MenuService,
+	ListeService,
     EmitterService,
     NotificationService,
 	ApplicationStateService,

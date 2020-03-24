@@ -28,7 +28,8 @@ export class AppComponent implements OnInit {
 
   public navigation = [
     { title: 'Menu', routerLink: 'menu-list' },
-    { title: 'Consultant', routerLink: 'consultant-list' }
+    { title: 'Consultant', routerLink: 'consultant-list' },
+	{ title: 'Liste', routerLink: 'liste-list' }
   ];
 
   public optionsForNotifications = {

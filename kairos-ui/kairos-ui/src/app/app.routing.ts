@@ -14,6 +14,10 @@ import { MenuFormComponent } from './entities/menu/menu-form/menu-form.component
 import { ConsultantListComponent } from './entities/consultant/consultant-list/consultant-list.component';
 import { ConsultantFormComponent } from './entities/consultant/consultant-form/consultant-form.component';
 
+// Liste
+import { ListeListComponent } from './entities/liste/liste-list/liste-list.component';
+import { ListeFormComponent } from './entities/liste/liste-form/liste-form.component';
+
 import { AuthGuard } from './auth.guard';
 
 export const AppRouting = RouterModule.forRoot([
@@ -30,6 +34,9 @@ export const AppRouting = RouterModule.forRoot([
         { path: 'consultant-list', component: ConsultantListComponent , canActivate : [AuthGuard]},
         { path: 'consultant-form/:id', component: ConsultantFormComponent , canActivate : [AuthGuard]},
         { path: 'consultant-form', component: ConsultantFormComponent , canActivate : [AuthGuard]},
+        { path: 'liste-list', component: ListeListComponent , canActivate : [AuthGuard]},
+        { path: 'liste-form/:id', component: ListeFormComponent , canActivate : [AuthGuard]},
+        { path: 'liste-form', component: ListeFormComponent , canActivate : [AuthGuard]},
         { path: 'deconnect', component: LoginComponent },
         { path: 'about', component: AboutComponent },
     { path: '**',

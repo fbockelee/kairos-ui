@@ -17,6 +17,10 @@ import { Consultant } from './../consultant.model';
 import { ConsultantService } from './../services/consultant.service';
 import * as _ from 'underscore';
 
+// Pour gestion des listes
+import { ListeService } from './../../../entities/liste/services/liste.service';
+import { Liste } from './../../../entities/liste/liste.model';
+
 @Component({
   selector: 'app-consultant-form',
   templateUrl: './consultant-form.component.html',
@@ -36,7 +40,11 @@ export class ConsultantFormComponent implements OnInit {
   public consultant: Consultant;
   private ids;
 
+  // Pour gestion des listes
+  public listOfSOCIETE: Liste[];
+
   constructor(
+	private _listeService: ListeService,         // Pour gestion des listes 
     private _consultantService: ConsultantService,
     private _route: ActivatedRoute,
     private _router: Router,
@@ -60,6 +68,8 @@ export class ConsultantFormComponent implements OnInit {
     if (!_.isEmpty(this.ids)) {
       this.load();
     }
+	console.log('Avant lancement 1')
+	this.listOfSOCIETE = this.getLOV ('SOCIETE');
   }
 
   getNewForm = (consultant?: Consultant) => {
@@ -289,4 +299,29 @@ export class ConsultantFormComponent implements OnInit {
         }
       });
   }
+
+  /**
+   * Get all LOV using the service ListeService
+   */
+  getLOV = (nomliste : string): Liste[] => {
+    const options: any = {params: [
+					{key: 'nomliste', value: nomliste },
+					{key: 'exactMatch', value: '1'},
+                    {key: 'sort', value: 'ordretri'}
+					],
+                    notPaged:true
+                  };
+	
+    this._listeService.searchByNomliste(nomliste/*,options*/ ).subscribe(
+      (data: Liste[]) => {
+        this.listOfSOCIETE = data;
+		return data;
+      },
+      error => {
+        this._notificationService.error(
+          'Error',
+          'An error occured when trying to reach the server');
+    });
+	return null;
+  }  
 }
