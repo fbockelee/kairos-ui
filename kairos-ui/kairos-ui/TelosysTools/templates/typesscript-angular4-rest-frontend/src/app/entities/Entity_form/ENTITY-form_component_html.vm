@@ -131,6 +131,19 @@ $jdbcTool.setOrderby("ORDER BY ext2, ext4, ext3")##
           <mat-checkbox formControlName="${attrib.name}">
           </mat-checkbox>
 		  </div>
+        </mat-grid-tile>
+#elseif ( $extattrib.ext7 != '')
+       <mat-grid-tile [colspan]="4">
+			<div class="label_right">${extattrib.ext1}</div>
+       </mat-grid-tile>
+	   <mat-grid-tile [colspan]="6">
+		  <div style="width: 100%; display: flex; align-items: flex-start;">
+          <mat-form-field style="width:400px !important">
+			  <select matNativeControl maxlength="${attrib.databaseSize}" formControlName="${attrib.name}">
+			  	<option *ngFor="let lov of listOf${extattrib.ext7}" value="{{lov.codeelement}}">{{lov.nomelement}}</option>
+			  </select>            
+          </mat-form-field>
+		  </div>
         </mat-grid-tile>	
 #else
        <mat-grid-tile [colspan]="4">

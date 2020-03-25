@@ -1,4 +1,8 @@
 #parse("include/entitiesNamesRef.vm")
+#set( $jdbcTool = $loader.newInstance("JdbcTool") )
+$jdbcTool.setAllFromConfig($project.specificVariables)##
+$jdbcTool.setOrderby("ORDER BY ext2, ext4, ext3")##
+#set( $extAttributes=$jdbcTool.getExtFieldAttributes($entity))
 #set ( $LCentityName = $fn.uncapitalize($entity.name) )
 #set ( $LCentityNameWithDot = $fn.uncapitalize($entity.name) + "." )
 #set ( $_entityService = "_" + $fn.uncapitalize($baseServiceName) )
@@ -30,13 +34,18 @@ import { ${referencedEntity}Service } from './../../${fn.uncapitalize($reference
 #end
 import * as _ from 'underscore';
 
+// Pour gestion des listes
+import { ListeService } from './../../../entities/liste/services/liste.service';
+import { Liste } from './../../../entities/liste/liste.model';
+
+import { Lov } from './../../../common/lov';
 @Component({
   selector: 'app-${LCentityName}-form',
   templateUrl: './${LCentityName}-form.component.html',
   styleUrls: ['./${LCentityName}-form.component.css'],
   providers: [DatePipe]
 })
-export class $formComponentName implements OnInit {
+export class $formComponentName extends Lov implements OnInit {
 
   // HTTP status code
   readonly NOT_FOUND_ERROR = 404;
@@ -49,6 +58,13 @@ export class $formComponentName implements OnInit {
   public $LCentityName: ${entity.name};
   private ids;
 
+  // Définition des LOV
+#foreach ( $extattrib in $extAttributes)
+#if ($extattrib.ext7!='')
+  public listOf${extattrib.ext7}: Liste[];
+#end
+#end
+
 #if ($attrsFKs.size() > 0)
 #foreach ( $entitiesFK in $attrsFKs)
   // $entitiesFK Select
@@ -58,6 +74,7 @@ export class $formComponentName implements OnInit {
 #end
 #end
   constructor(
+	private _listeService: ListeService,         // Pour gestion des listes 
 #if ($attrsFKs.size() > 0)
 #foreach ( $entitiesFK in $attrsFKs)
     private _${fn.uncapitalize($entitiesFK)}Service: ${entitiesFK}Service,
@@ -68,7 +85,9 @@ export class $formComponentName implements OnInit {
     private _router: Router,
     private _formBuilder: FormBuilder,
     private _notificationService: NotificationService,
-    public dialog: MatDialog) { }
+    public dialog: MatDialog) {
+		super(_listeService,_notificationService);
+ 	}
 
   ngOnInit() {
     this.getIdFromRouteParams();
@@ -101,6 +120,15 @@ export class $formComponentName implements OnInit {
     if (!_.isEmpty(this.ids)) {
       this.load();
     }
+
+	/* Chargement des LOVs */
+#foreach ( $extattrib in $extAttributes)
+#if ($extattrib.ext7!='')
+	this.getLOV ('${extattrib.ext7}').then(data => {
+		this.listOf${extattrib.ext7} = data; 
+	});
+#end
+#end
   }
 
   getNewForm = (${LCentityName}?: ${entity}) => {
