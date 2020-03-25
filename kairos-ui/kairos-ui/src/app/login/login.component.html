@@ -1,6 +1,6 @@
 <div class="basic-container">
 <mat-card  class="login-card">
-    <form [formGroup]="form" novalidate (ngSubmit)="login()">
+    <form [formGroup]="form" novalidate (ngSubmit)="login()" autocomplete="on">
   	<mat-card-header>
       	<mat-card-title>Page de Connection</mat-card-title>
         <mat-card-subtitle>{{message}}</mat-card-subtitle>
@@ -10,12 +10,12 @@
           <mat-grid-list cols="1" rowHeight="70px">
             <mat-grid-tile [colspan]="1" [rowspan]="1">
               <mat-form-field class="form-full-width">
-                <input matInput placeholder="Utilisateur" required formControlName="name">
+                <input matInput placeholder="Utilisateur" required formControlName="name"  autocomplete="username">
               </mat-form-field>
             </mat-grid-tile>
             <mat-grid-tile [colspan]="1" [rowspan]="1">
               <mat-form-field class="form-full-width">
-                <input matInput placeholder="Mot de passe" type="password" required formControlName="password">
+                <input matInput placeholder="Mot de passe" type="password" autocomplete="current-password" required formControlName="password">
               </mat-form-field>
             </mat-grid-tile>
           </mat-grid-list>
