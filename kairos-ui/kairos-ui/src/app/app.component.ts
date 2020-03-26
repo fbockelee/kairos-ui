@@ -6,6 +6,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 // Services imports
 import { ConsultantService } from './entities/consultant/services/consultant.service';
 import { AuthService } from './services/auth.service';
+import { EmitterService } from './services/emitter.service';
+import { Router } from '@angular/router';
 
 // Models imports
 import { Consultant } from './entities/consultant/consultant.model';
@@ -46,6 +48,7 @@ export class AppComponent implements OnInit {
     private _notificationService: NotificationService,
     private _formBuilder: FormBuilder,
     private _consultantService: ConsultantService,
+	private _router: Router,
     private _authService: AuthService,
     ) { }
 
@@ -60,9 +63,10 @@ export class AppComponent implements OnInit {
     this.form = this._formBuilder.group({
           consultant: ''
     });
+
     this.currentConsultant = this._authService.getCurrentConsultant();
     this.connectedConsultant= this._authService.getConnectedConsultant();
-    console.log(this.currentConsultant);
+    //console.log(this.currentConsultant);
     this._consultantService.getAll(options).subscribe(
       (data: Consultant[]) => {
         this.listOfConsultants = data;
@@ -73,5 +77,27 @@ export class AppComponent implements OnInit {
           'Error',
           'An error occured when trying to reach the server');
     });
+
+	// Détecter les connections, reconnections
+	EmitterService.get(this._authService.authId).subscribe((result: String) => {
+		// Rafraichir App
+    	//this.currentConsultant = this._authService.getCurrentConsultant();
+    	//this.connectedConsultant= this._authService.getConnectedConsultant();
+		//this.getAllListes();
+		//this._router.navigate(['/menu-list']);
+		if ( result == this._authService.authIdConnect) {
+		    this.currentConsultant = this._authService.getCurrentConsultant();
+		    this.connectedConsultant= this._authService.getConnectedConsultant();
+			this._router.navigate(['/menu-list']); // Page par défaut : peut être mettre autre chose ?
+		}
+		else {
+		    this.currentConsultant = null;
+		    this.connectedConsultant= null;
+			this._router.navigate(['/']); //Etant déconnecté on va arriver au login
+		}
+		
+		//this._router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
+   		//this._router.navigate(['/']));
+	});
   }
 }

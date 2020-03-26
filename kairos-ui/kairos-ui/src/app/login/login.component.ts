@@ -53,13 +53,13 @@ export class LoginComponent implements OnInit  {
 			if (this._authService.isLoggedIn) {
 				// Récupère l'URL de redirection depuis le service d'authentification
 				// Si aucune redirection n'a été définis, redirige l'utilisateur vers la liste des pokemons.
-				let redirect = this._authService.redirectUrl ? this._authService.redirectUrl : '';
+				//let redirect = this._authService.redirectUrl ? this._authService.redirectUrl : '';
 				// Redirige l'utilisateur
 				//this.router.navigate([redirect]);
 				//this._router.routeReuseStrategy.shouldReuseRoute = () => false;
 				//this._router.onSameUrlNavigation = 'reload';
 				// this.eventLogin.emit();
-				this._router.navigate(['/menu-list']);
+				//this._router.navigate(['/menu-list']);
 			} else {
 				this.form.get('password').setValue('');
 			}
