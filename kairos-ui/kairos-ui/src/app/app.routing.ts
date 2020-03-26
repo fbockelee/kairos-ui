@@ -35,7 +35,7 @@ export const AppRouting = RouterModule.forRoot([
         { path: 'consultant-form/:id', component: ConsultantFormComponent , canActivate : [AuthGuard]},
         { path: 'consultant-form', component: ConsultantFormComponent , canActivate : [AuthGuard]},
         { path: 'liste-list', component: ListeListComponent , canActivate : [AuthGuard]},
-        { path: 'liste-form/:id', component: ListeFormComponent , canActivate : [AuthGuard]},
+        { path: 'liste-form/:id1/:id2', component: ListeFormComponent , canActivate : [AuthGuard]},
         { path: 'liste-form', component: ListeFormComponent , canActivate : [AuthGuard]},
         { path: 'deconnect', component: LoginComponent },
         { path: 'about', component: AboutComponent },

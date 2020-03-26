@@ -205,7 +205,16 @@ export class $formComponentName extends Lov implements OnInit {
 
 
   load = () => {
-    this.${_entityService}.get(this.ids).subscribe(
+	// Concaténer les ids mais séparé par / et non ,
+	var param : String = '';
+	
+	for (var i=0;i<this.ids.length;i++) {
+		param = param + this.ids[i];
+		if (i != (this.ids.length-1)) {
+			param = param + '/';
+		}
+	}
+    this.${_entityService}.get(param).subscribe(
       ($LCentityName: ${entity.name}) => {
 #set ($entityObjectMapping = "")
 #foreach ( $attrib in $entity.attributes)
