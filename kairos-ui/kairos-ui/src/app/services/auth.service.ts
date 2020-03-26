@@ -8,6 +8,8 @@ import { tap, delay } from 'rxjs/operators';
 import {Consultant} from './../entities/consultant/consultant.model';
 import {ConsultantService} from './../entities/consultant/services/consultant.service';
 
+import { EmitterService } from './../services/emitter.service';
+
 // import {LocalStorage, SessionStorage} from "angular-localstorage";
 const STORAGE_CURRENT_CONSULTANT = 'currentConsultant';
 const STORAGE_CONNECTED_CONSULTANT = 'connectedConsultant';
@@ -18,6 +20,10 @@ export class AuthService {
 	isLoggedIn = false; // L'utilisateur est-il connecté ?
 	redirectUrl: string; // où rediriger l'utilisateur après l'authentification ?
 
+	public authId 			= 'AUTH_SERVICE';
+	public authIdConnect 	= 'CONNECTED';
+	public authIdDisconnect = 'DISCCONNECTED';
+	
 	constructor(
     	private _consultantService: ConsultantService,
     ) { }
@@ -66,7 +72,11 @@ export class AuthService {
 
 		return of(true).pipe(
 			delay(1000),
-			tap(val => this.isLoggedIn = isLoggedIn)
+			tap(val => {
+							this.isLoggedIn = isLoggedIn;
+							// Notify Liste list to refresh
+        					EmitterService.get(this.authId).emit(this.authIdConnect);							
+					   })
 		);
 	}
 
@@ -83,5 +93,6 @@ export class AuthService {
 		this.isLoggedIn = false;
 		localStorage.removeItem(STORAGE_CONNECTED_CONSULTANT);
 		localStorage.removeItem(STORAGE_CURRENT_CONSULTANT);
+		EmitterService.get(this.authId).emit(this.authIdDisconnect);
 	}
 }

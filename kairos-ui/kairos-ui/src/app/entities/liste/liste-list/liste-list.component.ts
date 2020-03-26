@@ -82,6 +82,7 @@ export class ListeListComponent implements OnInit, OnChanges {
    * Get all Liste using the service ListeService
    */
   getAllListes = (): void => {
+	console.log('Appel getAllListes');
     this._listeService.getAll({ notPaged: true }).subscribe(
       (data: Liste[]) => {
         this.listOfListes = data;
