@@ -4,6 +4,9 @@ import { Router, RouterModule } from '@angular/router';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AboutComponent } from './about/about.component';
 import { HomeListComponent } from './home-list/home-list.component';
+import { LoginComponent } from './login/login.component';
+
+import { AuthGuard } from './auth.guard';
 
 #foreach ($entity in $selectedEntities)
 #set ( $listComponentName = $entity.name + "ListComponent" )
@@ -16,25 +19,35 @@ import { $listComponentName } from '$listComponentPath';
 import { $formComponentName } from '$formComponentPath';
 
 #end
-export const routing = RouterModule.forRoot([
-    { path: '', component: HomeListComponent },
+export const AppRouting = RouterModule.forRoot([
+    { path: '', 
+      //component: HomeListComponent
+      redirectTo: 'login',
+      pathMatch: 'full' 
+    },
+    // { canActivate : [AuthGuard],
+    //  children: [
 #foreach ($entity in $selectedEntities)
 #set ( $listComponentName = $entity.name + "ListComponent" )
 #set ( $formComponentName = $entity.name + "FormComponent" )
 #set ( $listPath = $fn.uncapitalize($entity.name) + "-list" )
 #set ( $formPath = $fn.uncapitalize($entity.name) + "-form" )
-    { path: '$listPath', component: $listComponentName },
+        { path: '$listPath', component: $listComponentName, canActivate : [AuthGuard]},
 #if ($entity.keyAttributesCount > 1)
 #set ( $formPathID = $formPath )
 #foreach ($keyAttrib in $entity.keyAttributes)
 #set( $formPathID = $formPathID + "/:id${foreach.count}" )
 #end
-	{ path: '$formPathID', component: $formComponentName },
+        { path: '$formPathID', component: $formComponentName, canActivate : [AuthGuard] },
 #else
-    { path: '${formPath}/:id', component: $formComponentName },
+        { path: '${formPath}/:id', component: $formComponentName, canActivate : [AuthGuard] },
 #end
-    { path: '$formPath', component: $formComponentName },
+        { path: '$formPath', component: $formComponentName, canActivate : [AuthGuard] },
 #end
-    { path: 'about', component: AboutComponent },
-    { path: '**', component: NotFoundComponent }
+        { path: 'deconnect', component: LoginComponent },
+        { path: 'about', component: AboutComponent },
+    { path: '**',
+      redirectTo: 'login',
+      //component: NotFoundComponent 
+    }
 ]);
