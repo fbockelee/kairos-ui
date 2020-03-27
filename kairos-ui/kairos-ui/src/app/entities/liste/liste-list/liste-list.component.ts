@@ -3,7 +3,7 @@
 // Modules imports
 import { Component, OnInit, OnChanges, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 
 // Services imports
 import { EmitterService } from './../../../services/emitter.service';

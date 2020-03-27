@@ -1,4 +1,4 @@
-import { NativeDateAdapter } from '@angular/material';
+import { NativeDateAdapter } from '@angular/material/core';
 import { formatDate } from '@angular/common';
 import { MatDateFormats } from '@angular/material/core';
 // import { Platform } from '@angular/cdk/platform';
