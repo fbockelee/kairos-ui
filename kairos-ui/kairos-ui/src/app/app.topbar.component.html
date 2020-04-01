@@ -3,10 +3,12 @@
         <i class="fa fa-bars"></i>
     </a>
     <img class="logo" src="assets/images/primeng-example-logo.png"/>
-    <h3 class="topbar-button">Consultant</h3>
+    <span style="width:280px;">
+    <div class="menu-btn">Consultant</div>
 	<p-dropdown [options]="listOfConsultants" [(ngModel)]="selectedConsultant" placeholder="Choisir un consultant" 
-	  optionLabel="nom" optionCode="consultantid" [showClear]="true" topbar-button></p-dropdown>
-
+	  optionLabel="nom" optionCode="consultantid" [showClear]="true" menu-btn>
+	  </p-dropdown>
+    </span>
     <a routerLink="about"> 
     	<button pButton type="button" label="A propos" iconPos="right" icon="pi pi-arrow-right" class="topbar-button"></button>
     </a>

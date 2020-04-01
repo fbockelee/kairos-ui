@@ -1,10 +1,12 @@
-// import { CommonModule } from '@angular/common';
+import { CommonModule } from '@angular/common';  
+import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule} from '@angular/forms';
 import { Component } from '@angular/core';
 import { AppComponent } from './app.component';
 //import {DropDown} from 'primeng/dropdown';
 import {SelectItem} from 'primeng/api';
 import { NotificationService } from './services/notification.service';
+import { AuthService } from './services/auth.service';
 
 import { ConsultantService } from './entities/consultant/services/consultant.service';
 import { Consultant } from './entities/consultant/consultant.model';
@@ -21,7 +23,8 @@ export class AppTopBarComponent {
 	
     constructor(public app: AppComponent,
 				private _consultantService: ConsultantService,
-				private _notificationService: NotificationService
+				private _notificationService: NotificationService,
+				private _authService : AuthService
 				) { 
 
 	    const options: any = {params: [
@@ -29,7 +32,8 @@ export class AppTopBarComponent {
 	                    ],
 	                    notPaged:true
 	                  };
-	
+		this.selectedConsultant = this._authService.getCurrentConsultant();
+		
 	    this._consultantService.getAll(options).subscribe(
 	      (data: Consultant[]) => {
 	        this.listOfConsultants = data;
