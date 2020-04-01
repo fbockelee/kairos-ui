@@ -51,7 +51,7 @@ import { SimpleNotificationsModule } from 'angular2-notifications';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 
 import { MaterialModule} from './material-module'
-//import { PrimengModule}  from './primeng-module'
+import { PrimengModule}  from './primeng-module'
 
 
 // Services
@@ -92,8 +92,8 @@ import {WebStorageModule, LocalStorageService} from "angular-localstorage";
 import {FlexLayoutModule} from '@angular/flex-layout';
 // import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
-import { ScrollPanelModule } from 'primeng/scrollpanel';
-import { ButtonModule } from 'primeng/button';
+// import { ScrollPanelModule } from 'primeng/scrollpanel';
+// import { ButtonModule } from 'primeng/button';
 
 registerLocaleData(localeFr, 'fr-FR', localeFrExtra);
 
@@ -137,9 +137,9 @@ registerLocaleData(localeFr, 'fr-FR', localeFrExtra);
     AngularHalModule.forRoot(),
     MatMomentDateModule, // permet de gérer la timezone
     FlexLayoutModule,
-	//PrimengModule, // PrimeNg
-    ScrollPanelModule,
-     ButtonModule	
+	PrimengModule, // PrimeNg
+    //ScrollPanelModule,
+    //ButtonModule	
 	//AppMenuModule,
     //AppTopBarModule,
     //AppFooterModule,

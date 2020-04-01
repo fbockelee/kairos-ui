@@ -23,50 +23,13 @@ export class AppMenuComponent implements OnInit, AfterViewInit {
         this.model = [
             { label: 'Dashboard', routerLink: ['/'] },
             {
-                label: 'Menu Hierarchy',
+                label: 'Entités',
                 items: [
-                    {
-                        label: 'Submenu 1',
-                        items: [
-                            {
-                                label: 'Submenu 1.1',
-                                items: [
-                                    { label: 'Submenu 1.1.1' },
-                                    { label: 'Submenu 1.1.2' },
-                                    { label: 'Submenu 1.1.3' },
-                                ]
-                            },
-                            {
-                                label: 'Submenu 1.2',
-                                items: [
-                                    { label: 'Submenu 1.2.1' },
-                                    { label: 'Submenu 1.2.2' }
-                                ]
-                            },
+                         { label: 'Menu', routerLink: 'menu-list'  },
+                         { label: 'Consultant', routerLink: 'consultant-list'  },
+                         { label: 'Liste', routerLink: 'liste-list'  },
                         ]
-                    },
-                    {
-                        label: 'Submenu 2',
-                        items: [
-                            {
-                                label: 'Submenu 2.1',
-                                items: [
-                                    { label: 'Submenu 2.1.1' },
-                                    { label: 'Submenu 2.1.2' },
-                                    { label: 'Submenu 2.1.3' }
-                                ]
-                            },
-                            {
-                                label: 'Submenu 2.2',
-                                items: [
-                                    { label: 'Submenu 2.2.1' },
-                                    { label: 'Submenu 2.2.2' }
-                                ]
-                            },
-                        ]
-                    }
-                ]
-            }
+             }
         ];
     }
 }

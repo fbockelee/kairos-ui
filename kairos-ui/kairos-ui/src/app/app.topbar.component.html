@@ -3,7 +3,20 @@
         <i class="fa fa-bars"></i>
     </a>
     <img class="logo" src="assets/images/primeng-example-logo.png"/>
+    <h3 class="topbar-button">Consultant</h3>
+	<p-dropdown [options]="listOfConsultants" [(ngModel)]="selectedConsultant" placeholder="Choisir un consultant" 
+	  optionLabel="nom" optionCode="consultantid" [showClear]="true" topbar-button></p-dropdown>
+
+    <a routerLink="about"> 
+    	<button pButton type="button" label="A propos" iconPos="right" icon="pi pi-arrow-right" class="topbar-button"></button>
+    </a>
+    <a routerLink="deconnect">
+    	<button pButton type="button" label="Déconnexion" iconPos="right" icon="pi pi-arrow-right" class="topbar-button"></button>
+    </a>
     <a href="https://www.primefaces.org/primeng">
         <button pButton type="button" label="Go to PrimeNG" iconPos="right" icon="pi pi-arrow-right" class="topbar-button"></button>
+    </a>
+    <a routerLink="/">
+       <button pButton type="button" label="Maison" iconPos="right" icon="pi pi-arrow-right" class="topbar-button"></button>
     </a>
 </div>
