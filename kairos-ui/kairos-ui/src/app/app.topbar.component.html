@@ -3,7 +3,7 @@
         <i class="fa fa-bars"></i>
     </a>
     <img class="logo" src="assets/images/primeng-example-logo.png"/>
-    <span style="width:280px;">
+    <span *ngIf="selectedConsultant" style="width:280px;">
     <div class="menu-btn">Consultant</div>
 	<p-dropdown [options]="listOfConsultants" [(ngModel)]="selectedConsultant" placeholder="Choisir un consultant" 
 	  optionLabel="nom" optionCode="consultantid" [showClear]="true" menu-btn>

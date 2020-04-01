@@ -25,9 +25,9 @@ export class AppMenuComponent implements OnInit, AfterViewInit {
             {
                 label: 'Entités',
                 items: [
-                         { label: 'Menu', routerLink: 'menu-list'  },
-                         { label: 'Consultant', routerLink: 'consultant-list'  },
-                         { label: 'Liste', routerLink: 'liste-list'  },
+                         { label: 'Menu', routerLink: ['menu-list']  },
+                         { label: 'Consultant', routerLink: ['consultant-list']  },
+                         { label: 'Liste', routerLink: ['liste-list']  },
                         ]
              }
         ];

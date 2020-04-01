@@ -1,14 +1,14 @@
 import { CommonModule } from '@angular/common';  
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule} from '@angular/forms';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { AppComponent } from './app.component';
 //import {DropDown} from 'primeng/dropdown';
 import {SelectItem} from 'primeng/api';
-import { NotificationService } from './services/notification.service';
-import { AuthService } from './services/auth.service';
+// import { NotificationService } from './services/notification.service';
+// import { AuthService } from './services/auth.service';
 
-import { ConsultantService } from './entities/consultant/services/consultant.service';
+// import { ConsultantService } from './entities/consultant/services/consultant.service';
 import { Consultant } from './entities/consultant/consultant.model';
 
 @Component({
@@ -17,16 +17,16 @@ import { Consultant } from './entities/consultant/consultant.model';
 })
 export class AppTopBarComponent {
 
-	listOfConsultants: Consultant[];
+	@Input() listOfConsultants: Consultant[];
 	
-	public selectedConsultant: Consultant;
+	@Input() selectedConsultant: Consultant;
 	
     constructor(public app: AppComponent,
-				private _consultantService: ConsultantService,
-				private _notificationService: NotificationService,
-				private _authService : AuthService
+				//private _consultantService: ConsultantService,
+				//private _notificationService: NotificationService,
+				//private _authService : AuthService
 				) { 
-
+/*
 	    const options: any = {params: [
 	                    {key: 'sort', value: 'nom'}
 	                    ],
@@ -43,7 +43,7 @@ export class AppTopBarComponent {
 	        this._notificationService.error(
 	          'Error',
 	          'An error occured when trying to reach the server');
-	    });	
+	    });
+*/	
 	}
-
 }
