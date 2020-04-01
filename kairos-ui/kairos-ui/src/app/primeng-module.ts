@@ -6,14 +6,16 @@ import { FormsModule} from '@angular/forms';
 //import { DashboardComponent } from './pages/dashboard.component';
 import { ScrollPanelModule } from 'primeng/scrollpanel';
 import { ButtonModule } from 'primeng/button';
-import {DropdownModule} from 'primeng/dropdown';
+import { DropdownModule } from 'primeng/dropdown';
+import { CardModule } from 'primeng/card';
 
 @NgModule({
 	exports: [
 		FormsModule,
         ScrollPanelModule,
         ButtonModule,
-		DropdownModule
+		DropdownModule,
+		CardModule
     ]
 })
 export class PrimengModule {}
