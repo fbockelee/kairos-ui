@@ -62,7 +62,7 @@ export class AppComponent implements OnInit  {
 
 ngOnInit() {
 	    const options: any = {params: [
-	                    {key: 'sort', value: 'nom'}
+	                    {key: 'sort', value: 'nom,prenom'}
 	                    ],
 	                    notPaged:true
 	                  };

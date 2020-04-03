@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';  
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule} from '@angular/forms';
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit, Output} from '@angular/core';
 import { AppComponent } from './app.component';
 //import {DropDown} from 'primeng/dropdown';
 import {SelectItem} from 'primeng/api';
@@ -15,35 +15,47 @@ import { Consultant } from './entities/consultant/consultant.model';
     selector: 'app-topbar',
     templateUrl: './app.topbar.component.html'
 })
-export class AppTopBarComponent {
+export class AppTopBarComponent implements OnInit {
 
 	@Input() listOfConsultants: Consultant[];
 	
 	@Input() selectedConsultant: Consultant;
 	
-    constructor(public app: AppComponent,
-				//private _consultantService: ConsultantService,
-				//private _notificationService: NotificationService,
-				//private _authService : AuthService
-				) { 
-/*
-	    const options: any = {params: [
-	                    {key: 'sort', value: 'nom'}
-	                    ],
-	                    notPaged:true
-	                  };
-		this.selectedConsultant = this._authService.getCurrentConsultant();
-		
-	    this._consultantService.getAll(options).subscribe(
-	      (data: Consultant[]) => {
-	        this.listOfConsultants = data;
-	        //this.setPage(1);
-	      },
-	      error => {
-	        this._notificationService.error(
-	          'Error',
-	          'An error occured when trying to reach the server');
-	    });
-*/	
+	public selectedItem : Consultant =  this.selectedConsultant;
+	
+    constructor(public app: AppComponent) {}
+
+	ngOnInit() {
+	//this.selectedItem.label  = "optionLabel";
+	//this.selectedItem.value = this.selectedConsultant;
+	console.log('Résultat selectedConsultant ' + this.selectedConsultant)
+	if (this.selectedConsultant)
+	  {
+		this.selectedItem =  this.selectedConsultant;
+	    //label: "optionLabel",
+	    // value: this.selectedConsultant.consultantid,
+	    //styleClass?: string;
+	    //icon?: string;
+	    //title?: string;
+	    //disabled?: boolean;
+		console.log('Résultat selectedItem ' + this.selectedItem); 
+  	  }
+	else {
+		console.log('Résultat selectedConsultant ' + this.selectedConsultant); 
+	};
+					
 	}
+	
+	ngAfterViewInit() {
+        //this.parent.currentConsultant = ;
+		console.log('ngAfterViewInit'); 
+    }
+
+    onMenuButtonClick(event: Event) {
+        //this.sidebarActive = !this.sidebarActive;
+
+        //event.preventDefault();
+		console.log('AppTopBarComponent.onMenuButtonClick'); 
+		this.app.onMenuButtonClick(event);
+    }
 }

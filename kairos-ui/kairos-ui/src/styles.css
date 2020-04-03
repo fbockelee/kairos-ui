@@ -2,6 +2,10 @@
   
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
+@import url("~primeicons/primeicons.css");
+@import url("~primeng/resources/primeng.min.css");
+@import url("~primeng/resources/themes/nova-light/theme.css");
+
 body {
   margin: 0;
 }

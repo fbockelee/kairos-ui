@@ -1,12 +1,18 @@
 <div class="layout-topbar">
-    <a href="#" class="menu-btn" (click)="app.onMenuButtonClick($event)">
+    <a href="#" class="menu-btn" (click)="this.onMenuButtonClick($event)">
         <i class="fa fa-bars"></i>
     </a>
     <img class="logo" src="assets/images/primeng-example-logo.png"/>
     <span *ngIf="selectedConsultant" style="width:280px;">
     <div class="menu-btn">Consultant</div>
-	<p-dropdown [options]="listOfConsultants" [(ngModel)]="selectedConsultant" placeholder="Choisir un consultant" 
-	  optionLabel="nom" optionCode="consultantid" [showClear]="true" menu-btn>
+	<p-dropdown [options]="listOfConsultants" [(ngModel)]="selectedItem" placeholder="Choisir un consultant" 
+	  optionLabel="consultantid" optionCode="consultantid" [showClear]="true" menu-btn [style]="{'width': '400px'}">
+	     <ng-template let-item pTemplate="selectedItem">
+            <span>{{item.value.nom}} {{item.value.prenom}}</span>
+         </ng-template>
+         <ng-template let-item pTemplate="item">
+            <span>{{item.value.nom}} {{item.value.prenom}}</span>
+         </ng-template>
 	  </p-dropdown>
     </span>
     <a routerLink="about"> 
