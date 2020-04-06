@@ -24,7 +24,8 @@ export class AppTopBarComponent implements OnInit {
 	
 	// @Input() selectedConsultant: Consultant;
 	
-	public selectedItem : SelectItem;
+	//public selectedItem : SelectItem;
+	public selectedItem : String;
 	public selectedVrai : Boolean = true;
 	
     constructor(public app: AppComponent,
@@ -38,15 +39,8 @@ export class AppTopBarComponent implements OnInit {
 		EmitterService.get(this._authService.authId).subscribe((result: String) => {
 			// Rafraichir App
 			if ( result == this._authService.authIdConnect) {
-				//console.log('AppTopBarComponent.EmitterService')
-			    //this.selectedItem = this._authService.getCurrentConsultant();
-				this.selectedItem = {
-										label : this._authService.getCurrentConsultant().nom + ' ' + this._authService.getCurrentConsultant().prenom,
-										value : this._authService.getCurrentConsultant()
-									};
-				//this.selectedItem.label = this._authService.getCurrentConsultant().trigramme;
-				//this.selectedItem.value = this._authService.getCurrentConsultant();
-				//console.log('AppTopBarComponent.EmitterService rafraichir la dropdown avec '+this.selectedItem.nom)
+				this.selectedItem = this._authService.getCurrentConsultant().nom + ' ' + this._authService.getCurrentConsultant().prenom;
+				console.log('AppTopBarComponent.EmitterService rafraichir la dropdown avec '+this.selectedItem);				
 			}
 			else { //result == this._authService.authIdDisconnect
 				this.selectedItem = null;
@@ -73,6 +67,9 @@ export class AppTopBarComponent implements OnInit {
 		//console.log('AppTopBarComponent.onMenuButtonClick'); 
 		//this.app.onMenuButtonClick(event);
 		console.log('AppTopBarComponent.onDropdownClick selectedItem=' + this.selectedItem);
+		//changer le consultant courant
+		//event.
+		 this.app.onDropdownClick(this.selectedItem);
 		//console.log('AppTopBarComponent.onDropdownClick selectedItem.nom=' + this.selectedItem.nom);
     }
 

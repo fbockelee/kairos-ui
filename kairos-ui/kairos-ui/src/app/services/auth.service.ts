@@ -56,8 +56,8 @@ export class AuthService {
 					//this._consultantService.
 					if ( data.length === 1 ) {
 						isLoggedIn = true;
-						localStorage.setItem(STORAGE_CONNECTED_CONSULTANT,JSON.stringify(data[0]));
-						localStorage.setItem(STORAGE_CURRENT_CONSULTANT,JSON.stringify(data[0]));
+						this.setConnectedConsultant(data[0]);
+						this.setCurrentConsultant(data[0]);
 						// SessionStorage.setItem('connectedConsultant',JSON.stringify(data[0]));
 						// SessionStorage.setItem('currentConsultant',JSON.stringify(data[0]));
 					}
@@ -80,6 +80,14 @@ export class AuthService {
 		);
 	}
 
+	setCurrentConsultant(consultant : Consultant) {
+		localStorage.setItem(STORAGE_CURRENT_CONSULTANT,JSON.stringify(consultant));
+	}
+	
+	setConnectedConsultant(consultant : Consultant) {
+		localStorage.setItem(STORAGE_CONNECTED_CONSULTANT,JSON.stringify(consultant));
+	}
+	
 	getConnectedConsultant(): Consultant {
 		return JSON.parse(localStorage.getItem(STORAGE_CONNECTED_CONSULTANT));
 	}

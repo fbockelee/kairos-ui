@@ -4,6 +4,7 @@ import { AppTopBarComponent } from './app.topbar.component';
 import { AppFooterComponent } from './app.footer.component';
 import { DashboardComponent } from './pages/dashboard.component';
 import { AppMenuComponent, AppSubMenuComponent} from './app.menu.component';
+import {SelectItem} from 'primeng/api';
 
 // Services imports
 import { ConsultantService } from './entities/consultant/services/consultant.service';
@@ -28,6 +29,7 @@ export class AppComponent implements OnInit  {
   public connectedConsultant: Consultant = new Consultant();
 
   public listOfConsultants: Consultant[];
+  public listOfConsultants_itm: SelectItem[];
     sidebarActive: boolean;
 
   public navigation = [
@@ -60,6 +62,15 @@ export class AppComponent implements OnInit  {
         event.preventDefault();
     }
 
+    onDropdownClick(selectedItem : String) {
+       for (let c of this.listOfConsultants) {
+				if ((c.nom + ' ' + c.prenom) == selectedItem) {
+					this._authService.setCurrentConsultant(c);
+					break;					
+				}
+		    } 
+    }
+
 ngOnInit() {
 	    const options: any = {params: [
 	                    {key: 'sort', value: 'nom,prenom'}
@@ -81,7 +92,16 @@ ngOnInit() {
 	    this._consultantService.getAll(options).subscribe(
 	      (data: Consultant[]) => {
 	        this.listOfConsultants = data;
-	        //this.setPage(1);
+
+			this.listOfConsultants_itm = [];
+		    for (let c of this.listOfConsultants) {
+		      this.listOfConsultants_itm.push({ 
+												label: (c.nom + ' ' + c.prenom), 
+												value: (c.nom + ' ' + c.prenom)
+											   });
+			  //this.listOfConsultants_itm.push({ label: (c.trigramme), value: c.consultantid });
+		    }
+			        //this.setPage(1);
 	      },
 	      error => {
 	        this._notificationService.error(

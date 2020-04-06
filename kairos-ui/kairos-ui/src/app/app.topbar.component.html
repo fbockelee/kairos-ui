@@ -6,14 +6,8 @@
     <span *ngIf="selectedItem" style="width:280px;">
     <div class="menu-btn">Consultant</div>
 	<p-dropdown [options]="listOfConsultants" [(ngModel)]="selectedItem" placeholder="Choisir un consultant" 
-	  optionLabel="trigramme" menu-btn [style]="{'width': '400px'}" (click)="this.onDropdownClick($event)">
-	     <ng-template let-item pTemplate="selectedItem">
-            <span>{{item.value.nom}} {{item.value.prenom}}</span>
-         </ng-template>
-         <ng-template let-item pTemplate="item">
-            <span>{{item.value.nom}} {{item.value.prenom}}</span>
-         </ng-template>
-	  </p-dropdown>
+	  menu-btn [style]="{'width': '400px'}" (click)="this.onDropdownClick($event)">
+    </p-dropdown>
     </span>
     <a routerLink="about"> 
     	<button pButton type="button" label="A propos" iconPos="right" icon="pi pi-arrow-right" class="topbar-button"></button>
