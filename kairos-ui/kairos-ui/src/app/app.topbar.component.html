@@ -3,10 +3,10 @@
         <i class="fa fa-bars"></i>
     </a>
     <img class="logo" src="assets/images/primeng-example-logo.png"/>
-    <span *ngIf="selectedConsultant" style="width:280px;">
+    <span *ngIf="selectedItem" style="width:280px;">
     <div class="menu-btn">Consultant</div>
 	<p-dropdown [options]="listOfConsultants" [(ngModel)]="selectedItem" placeholder="Choisir un consultant" 
-	  optionLabel="consultantid" optionCode="consultantid" [showClear]="true" menu-btn [style]="{'width': '400px'}">
+	  optionLabel="trigramme" menu-btn [style]="{'width': '400px'}" (click)="this.onDropdownClick($event)">
 	     <ng-template let-item pTemplate="selectedItem">
             <span>{{item.value.nom}} {{item.value.prenom}}</span>
          </ng-template>

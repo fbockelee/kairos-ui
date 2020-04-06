@@ -74,9 +74,10 @@ ngOnInit() {
 	    });
 		*/
 		
-	    this.currentConsultant = this._authService.getCurrentConsultant();
-	    this.connectedConsultant= this._authService.getConnectedConsultant();
-	    //console.log(this.currentConsultant);
+	    this.currentConsultant = null;  // Au début, on n'est pas connecté'
+	    this.connectedConsultant= null;
+	    
+		// On charge la liste des consultants
 	    this._consultantService.getAll(options).subscribe(
 	      (data: Consultant[]) => {
 	        this.listOfConsultants = data;
@@ -87,6 +88,8 @@ ngOnInit() {
 	          'Error',
 	          'An error occured when trying to reach the server');
 	    });
+
+	
 		// Détecter les connections, reconnections
 		EmitterService.get(this._authService.authId).subscribe((result: String) => {
 			// Rafraichir App
@@ -95,11 +98,12 @@ ngOnInit() {
 			    this.connectedConsultant= this._authService.getConnectedConsultant();
 				this._router.navigate(['/menu-list']); // Page par défaut : peut être mettre autre chose ?
 			}
-			else {
+			else { //result == this._authService.authIdDisconnect
 			    this.currentConsultant = null;
 			    this.connectedConsultant= null;
 				this._router.navigate(['/']); //Etant déconnecté on va arriver au login
 			}
 		});
 	}
+	
 }
