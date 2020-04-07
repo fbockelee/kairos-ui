@@ -61,9 +61,6 @@ export class AboutComponent implements OnInit {
 
 		this.selectedCity3 = { id:3 ,name: 'London', code: 'LDN'};
 		
-		
-		
-		
    }
 
   ngOnInit() {

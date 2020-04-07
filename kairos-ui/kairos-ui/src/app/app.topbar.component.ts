@@ -20,12 +20,12 @@ import { EmitterService } from './services/emitter.service';
 })
 export class AppTopBarComponent implements OnInit {
 
-	@Input() listOfConsultants: Consultant[];
+	@Input() listOfConsultants: SelectItem[];
 	
 	// @Input() selectedConsultant: Consultant;
 	
 	//public selectedItem : SelectItem;
-	public selectedItem : String;
+	public selectedItem : Object;
 	public selectedVrai : Boolean = true;
 	
     constructor(public app: AppComponent,
@@ -39,8 +39,11 @@ export class AppTopBarComponent implements OnInit {
 		EmitterService.get(this._authService.authId).subscribe((result: String) => {
 			// Rafraichir App
 			if ( result == this._authService.authIdConnect) {
-				this.selectedItem = this._authService.getCurrentConsultant().nom + ' ' + this._authService.getCurrentConsultant().prenom;
-				console.log('AppTopBarComponent.EmitterService rafraichir la dropdown avec '+this.selectedItem);				
+				//this.selectedItem = this._authService.getCurrentConsultant().nom + ' ' + this._authService.getCurrentConsultant().prenom;
+				var c:Consultant = this._authService.getCurrentConsultant();
+				var selectedItems: SelectItem[] = this.listOfConsultants.filter((element, index, array) => {return element['value']['id']==c.consultantid;});
+				this.selectedItem = selectedItems[0].value;
+									
 			}
 			else { //result == this._authService.authIdDisconnect
 				this.selectedItem = null;
@@ -49,28 +52,13 @@ export class AppTopBarComponent implements OnInit {
 	}
 	
 	ngAfterViewInit() {
-        //this.parent.currentConsultant = ;
-		//console.log('AppTopBarComponent.ngAfterViewInit'); 
     }
 
     onMenuButtonClick(event: Event) {
-        //this.sidebarActive = !this.sidebarActive;
-
-        //event.preventDefault();
-		//console.log('AppTopBarComponent.onMenuButtonClick'); 
 		this.app.onMenuButtonClick(event);
     }
     onDropdownClick(event: Event) {
-        //this.sidebarActive = !this.sidebarActive;
-
-        //event.preventDefault();
-		//console.log('AppTopBarComponent.onMenuButtonClick'); 
-		//this.app.onMenuButtonClick(event);
-		console.log('AppTopBarComponent.onDropdownClick selectedItem=' + this.selectedItem);
-		//changer le consultant courant
-		//event.
 		 this.app.onDropdownClick(this.selectedItem);
-		//console.log('AppTopBarComponent.onDropdownClick selectedItem.nom=' + this.selectedItem.nom);
     }
 
 }
