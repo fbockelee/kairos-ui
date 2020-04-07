@@ -27,7 +27,8 @@ export class AboutComponent implements OnInit {
     cities2: City[];
     selectedCity1: City_itm;
     selectedCity2: City;
-
+	selectedCity3: Object;// Obligé de mettre object
+	cities3: SelectItem[]; 
   constructor() {
 	//SelectItem API with label-value pairs
         this.cities1 = [
@@ -50,6 +51,19 @@ export class AboutComponent implements OnInit {
             {name: 'Paris', code: 'PRS'}
         ];
 		this.selectedCity2 = {name: 'Istanbul', code: 'IST'};
+		
+		this.cities3 = [];
+		// transformer cities2 en cities3
+		 this.cities2.forEach((c, index) => {
+			console.log((index+1) + ' ' + c.code + ' - ' + c.name);
+			this.cities3.push({label:c.code + ' - ' + c.name, value:{id:index + 1, ...c}});
+		    });
+
+		this.selectedCity3 = { id:3 ,name: 'London', code: 'LDN'};
+		
+		
+		
+		
    }
 
   ngOnInit() {
