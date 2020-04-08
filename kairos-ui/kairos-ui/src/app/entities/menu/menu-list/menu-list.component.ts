@@ -23,6 +23,10 @@ import {ViewChild} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 
+// Ajout primeng
+import {TableModule} from 'primeng/table';
+import {PaginatorModule} from 'primeng/paginator';
+
 @Component({
   selector: 'app-menu-list',
   templateUrl: './menu-list.component.html',
@@ -36,7 +40,7 @@ export class MenuListComponent implements OnInit, OnChanges {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   public dataSource: MatTableDataSource<Menu>;
 
-  private listOfMenus: Menu[];
+  public listOfMenus: Menu[];
   private listId = 'MENU_COMPONENT_LIST';
 
   private menu: Menu;

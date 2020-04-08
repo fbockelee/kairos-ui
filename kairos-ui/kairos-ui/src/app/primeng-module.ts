@@ -4,10 +4,13 @@ import { FormsModule} from '@angular/forms';
 //import { AppTopBarComponent } from './app.topbar.component';
 //import { AppFooterComponent } from './app.footer.component';
 //import { DashboardComponent } from './pages/dashboard.component';
+import {TableModule} from 'primeng/table';
 import { ScrollPanelModule } from 'primeng/scrollpanel';
 import { ButtonModule } from 'primeng/button';
 import { DropdownModule } from 'primeng/dropdown';
 import { CardModule } from 'primeng/card';
+import {PaginatorModule} from 'primeng/paginator';
+
 
 @NgModule({
 	exports: [
@@ -15,7 +18,9 @@ import { CardModule } from 'primeng/card';
         ScrollPanelModule,
         ButtonModule,
 		DropdownModule,
-		CardModule
+		CardModule,
+		TableModule,
+		PaginatorModule
     ]
 })
 export class PrimengModule {}

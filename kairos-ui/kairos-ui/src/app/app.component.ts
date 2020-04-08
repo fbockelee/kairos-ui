@@ -62,12 +62,13 @@ export class AppComponent implements OnInit  {
         event.preventDefault();
     }
 
-    onDropdownClick(selectedItem : Object) {
-		// retirer id de l'objet
-		var c : Object =  selectedItem ;
-		delete c['id'];
-		// et stocker le consultant
-		this._authService.setCurrentConsultant(c as Consultant);
+    onDropdownClick(selectedItem : String) {
+       for (let c of this.listOfConsultants) {
+				if ((c.nom + ' ' + c.prenom) == selectedItem) {
+					this._authService.setCurrentConsultant(c);
+					break;					
+				}
+		    } 
     }
 
 ngOnInit() {
@@ -92,7 +93,6 @@ ngOnInit() {
 	      (data: Consultant[]) => {
 	        this.listOfConsultants = data;
 
-			/*
 			this.listOfConsultants_itm = [];
 		    for (let c of this.listOfConsultants) {
 		      this.listOfConsultants_itm.push({ 
@@ -102,12 +102,6 @@ ngOnInit() {
 			  //this.listOfConsultants_itm.push({ label: (c.trigramme), value: c.consultantid });
 		    }
 			        //this.setPage(1);
-			*/
-			this.listOfConsultants_itm = [];
-			this.listOfConsultants.forEach((c, index) => {
-				this.listOfConsultants_itm.push({label:c.nom + ' - ' + c.prenom, value:{id:c.consultantid, ...c}});
-			    });
-
 	      },
 	      error => {
 	        this._notificationService.error(
