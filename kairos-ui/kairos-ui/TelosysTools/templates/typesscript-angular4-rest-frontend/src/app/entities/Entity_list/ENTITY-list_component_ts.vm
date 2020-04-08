@@ -28,9 +28,9 @@ import { DeleteDialogComponent } from './../../../delete-dialog/delete-dialog.co
 
 import { DatePipe } from '@angular/common';
 
-import {ViewChild} from '@angular/core';
-import {MatPaginator} from '@angular/material/paginator';
-import {MatTableDataSource} from '@angular/material/table';
+// Ajout primeng
+import {TableModule} from 'primeng/table';
+import {PaginatorModule} from 'primeng/paginator';
 
 @Component({
   selector: 'app-${LCentityName}-list',
@@ -42,10 +42,7 @@ export class $listComponentName implements OnInit, OnChanges {
 
   public title = 'Liste de ${entity.name}s';
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  public dataSource: MatTableDataSource<${entity}>;
-
-  private listOf${entity.name}s: ${entity}[];
+  public listOf${entity.name}s: ${entity}[];
   private listId = '$fn.toUpperCase(${entity.name})_COMPONENT_LIST';
 
   private $LCentityName: $entity.name;
@@ -95,8 +92,6 @@ export class $listComponentName implements OnInit, OnChanges {
     this._${LCentityName}Service.getAll({ notPaged: true }).subscribe(
       (data: ${entity.name}[]) => {
         this.listOf${entity.name}s = data;
-        this.dataSource = new MatTableDataSource<${entity}>(this.listOf${entity.name}s);
-        this.dataSource.paginator = this.paginator;
       },
       error => {
         this._notificationService.error(
