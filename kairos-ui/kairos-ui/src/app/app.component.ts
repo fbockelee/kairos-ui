@@ -19,7 +19,8 @@ import { Router } from '@angular/router';
 import { Consultant } from './entities/consultant/consultant.model';
 @Component({
     selector: 'app-root',
-    templateUrl: './app.component.html'
+    templateUrl: './app.component.html',
+	styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit  {
 
