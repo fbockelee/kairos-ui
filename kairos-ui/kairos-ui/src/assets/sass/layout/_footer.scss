@@ -6,9 +6,11 @@
 		width: 100%;
 	
         height: 64px;
-        background-color: $topbarBgColor;
-        border-bottom: 2px dotted $topbarBorderColor;
+        background-color: $footerBgColor;
+        border-top: 2px dotted $footerBorderColor;
         padding: 1em;
+
+        padding: 1em 1.5em;
 
 		.footer-text-right {
 			float:right;
