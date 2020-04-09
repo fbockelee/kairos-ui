@@ -89,7 +89,7 @@ ngOnInit() {
 	    this.currentConsultant = null;  // Au début, on n'est pas connecté'
 	    this.connectedConsultant= null;
 	    
-		//this.sidebarActive = true;
+		this.sidebarActive = true;
 
 		// On charge la liste des consultants
 	    this._consultantService.getAll(options).subscribe(

@@ -4,10 +4,8 @@
         background-color: $topbarBgColor;
         border-bottom: 2px dotted $topbarBorderColor;
         padding: 1em;
-        position: fixed;
         width: 100%;
-        left: 0;
-        top: 0;
+
         z-index: 999;
 
         .menu-btn {
@@ -27,7 +25,7 @@
 
         .topbar-button {
             @include border-radius(20px);
-            border: 2px dotted $topbarButtonBorderColor;
+            border: 2px solid $topbarButtonBorderColor;
             background: $topbarButtonBgColor;
             color: $topbarButtonTextColor;
             height: 2em;
@@ -35,7 +33,11 @@
             float: right;
             display: block;
             font-size: 1em;
-
+			
+			.ui-button-text {
+  				  margin-top: -0.3em; 
+			}
+			
             .ui-button-icon-right {
                 width: 1em;
                 height: 1em;

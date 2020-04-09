@@ -107,7 +107,7 @@ export class AppSubMenuComponent {
 
         // hide menu
         if (!item.items) {
-            this.app.sidebarActive = false;
+            //this.app.sidebarActive = false;
         }
     }
 
