@@ -31,7 +31,7 @@ export class AppComponent implements OnInit  {
 
   public listOfConsultants: Consultant[];
   public listOfConsultants_itm: SelectItem[];
-    sidebarActive: boolean;
+  sidebarActive: boolean;
 
   public navigation = [
     { title: 'Menu', routerLink: 'menu-list' },
@@ -89,6 +89,8 @@ ngOnInit() {
 	    this.currentConsultant = null;  // Au début, on n'est pas connecté'
 	    this.connectedConsultant= null;
 	    
+		//this.sidebarActive = true;
+
 		// On charge la liste des consultants
 	    this._consultantService.getAll(options).subscribe(
 	      (data: Consultant[]) => {
