@@ -1,16 +1,26 @@
 <div class="layout-wrapper" [ngClass]="{'layout-sidebar-active': sidebarActive}">
-
-    <app-menu></app-menu> 
-
-    <app-topbar [listOfConsultants]="listOfConsultants_itm"></app-topbar>
- 
-    <div class="layout-main">
-        <div class="layout-content">
-            <router-outlet></router-outlet>
-        </div>
-		<simple-notifications [options]="optionsForNotifications"></simple-notifications>
+<div class="p-grid">
+    <div class="p-col">
+    	<app-topbar [listOfConsultants]="listOfConsultants_itm"></app-topbar>
+    </div>
+</div>
+<div class="p-grid">
+	<div class="p-col layout-sidebar" [ngClass]="{'layout-sidebar-active': sidebarActive}">
+		<app-menu></app-menu> 
+	</div>
+	<div class="p-col">
+	    <div class="layout-main">
+	        <div class="layout-content">
+	            <router-outlet></router-outlet>
+	        </div>
+			<simple-notifications [options]="optionsForNotifications"></simple-notifications>
+        	<div class="layout-main-mask"></div> 
+    	</div> 
+	</div>
+</div>
+<div class="p-grid layout-main layout-footer p-align-end ">
+    <div class="p-col">
         <app-footer></app-footer> 
-        <div class="layout-main-mask"></div> 
-    </div> 
-
+    </div>
+</div>
 </div>
