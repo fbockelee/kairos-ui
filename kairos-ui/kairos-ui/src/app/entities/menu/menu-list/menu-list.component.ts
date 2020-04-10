@@ -20,8 +20,8 @@ import { DeleteDialogComponent } from './../../../delete-dialog/delete-dialog.co
 import { DatePipe } from '@angular/common';
 
 // Ajout primeng
-import {TableModule} from 'primeng/table';
-import {PaginatorModule} from 'primeng/paginator';
+// import {TableModule} from 'primeng/table';
+// import {PaginatorModule} from 'primeng/paginator';
 
 @Component({
   selector: 'app-menu-list',

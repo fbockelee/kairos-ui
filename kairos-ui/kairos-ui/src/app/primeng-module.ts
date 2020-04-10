@@ -10,6 +10,7 @@ import { ButtonModule } from 'primeng/button';
 import { DropdownModule } from 'primeng/dropdown';
 import { CardModule } from 'primeng/card';
 import {PaginatorModule} from 'primeng/paginator';
+import {InputTextModule} from 'primeng/inputtext';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import {PaginatorModule} from 'primeng/paginator';
 		DropdownModule,
 		CardModule,
 		TableModule,
-		PaginatorModule
+		PaginatorModule,
+		InputTextModule
     ]
 })
 export class PrimengModule {}
