@@ -55,19 +55,8 @@ $jdbcTool.setOrderby("ORDER BY ext2, ext4, ext3")##
 			<td>    	
 				<div>${extattrib.ext1}</div>
 	        </td>
-			<td>    	
-		  		<div style="width: 100%; display: flex; align-items: flex-start;">
-          		<mat-form-field style="width:${attrib.databaseSize}0px !important">
-            		<input matInput [matDatepicker]="picker${attrib.name}" ${requiredmode} formControlName="${attrib.name}">
-            		<mat-datepicker-toggle matSuffix [for]="picker${attrib.name}"></mat-datepicker-toggle>
-            		<mat-datepicker ${SHARP}picker${attrib.name}></mat-datepicker>
-					#if ($attrib.isDatabaseNotNull())
-            		<mat-error *ngIf="!form.controls['${attrib.name}'].errors['required']">
-              		${attrib.name} est requis
-            		</mat-error>
-					#end
-          		</mat-form-field>
-		  		</div>
+			<td>   
+				<p-calendar formControlName="${attrib.name}" dateFormat="dd/mm/yy" ${requiredmode}></p-calendar> 
 	         </td>
 		</tr>
 #elseif ( $attrib.isFK() && $attrib.isKeyElement())
@@ -183,7 +172,7 @@ $jdbcTool.setOrderby("ORDER BY ext2, ext4, ext3")##
 #end
     <p-footer>
     	<button pButton type="button" label="Vider" class="ui-button-rounded" (click)="initForm()"></button>
-    	<button pButton type="button" label="Sauvegarder" class="ui-button-rounded" [disabled]="!form.valid" icon="pi pi-check" ></button>
+    	<button pButton type="button" label="Sauvegarder" class="ui-button-rounded" [disabled]="!form.valid" icon="pi pi-check" (click)="save()"></button>
 #set ($entityNameprefix = "!${LCentityName}?.")
     	<button pButton type="button" label="Supprimer" class="ui-button-rounded ui-button-secondary" [disabled]="${entity.keyAttributesNamesAsString(' && ', $entityNameprefix, '')}" icon="pi pi-trash" (click)="deleteConfirmation()"></button>
 	</p-footer>

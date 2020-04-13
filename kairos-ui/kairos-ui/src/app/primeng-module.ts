@@ -13,6 +13,7 @@ import {PaginatorModule} from 'primeng/paginator';
 import {InputTextModule} from 'primeng/inputtext';
 import {TabViewModule} from 'primeng/tabview';
 import {CheckboxModule} from 'primeng/checkbox';
+import {CalendarModule} from 'primeng/calendar';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import {CheckboxModule} from 'primeng/checkbox';
 		PaginatorModule,
 		InputTextModule,
 		TabViewModule,
-		CheckboxModule
+		CheckboxModule,
+		CalendarModule
     ]
 })
 export class PrimengModule {}

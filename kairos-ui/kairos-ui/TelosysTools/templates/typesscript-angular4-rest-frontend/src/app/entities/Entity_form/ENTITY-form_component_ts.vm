@@ -77,7 +77,7 @@ export class $formComponentName extends Lov implements OnInit {
 #end
   constructor(
 #if ($entity.name != 'Liste')
-	private listeServicelov: ListeService,         // Pour gestion des listes
+	private _listeService: ListeService,         // Pour gestion des listes
 #end 
 #if ($attrsFKs.size() > 0)
 #foreach ( $entitiesFK in $attrsFKs)
