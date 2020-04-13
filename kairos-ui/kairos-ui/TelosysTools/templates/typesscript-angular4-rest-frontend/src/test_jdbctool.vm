@@ -1,7 +1,12 @@
+#foreach ( $attrib in $entity.attributes)
+		${attrib.name} : ${attrib.databaseSize}
+#end
+##
 #set( $jdbcTool = $loader.newInstance("JdbcTool") )
 $jdbcTool.setAllFromConfig($project.specificVariables)##
 $jdbcTool.setOrderby("ORDER BY ext2, ext4, ext3")##
-#set( $extAttributes=$jdbcTool.getExtAttributes($entity))
+#set( $extAttributes=$jdbcTool.getExtFieldAttributes($entity))
+#set( $extTabAttributes=$jdbcTool.getExtTabAttributes($entity))
 ##
 Créer
 

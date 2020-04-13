@@ -1,27 +1,32 @@
+		codemenu : 32
+		url : 255
+		image : 255
+		nom : 255
+		profils : 255
 Créer
 
 Entertabs/Leavetabs
 		codemenu : entete : false : false 
-		nom : tab_1 : true : false 
-		profils : tab_2 : false : false 
-		url : tab_2 : false : false 
-		image : tab_2 : false : true 
+		nom : entete : false : false 
+		profils : entete : false : false 
+		url : entete : false : false 
+		image : entete : false : false 
  : 
 
 Entertab/Leavetab
 		codemenu : entete : false :  false 
-		nom : tab_1 : true :  true 
-		profils : tab_2 : true :  false 
-		url : tab_2 : false :  false 
-		image : tab_2 : false :  true 
+		nom : entete : false :  false 
+		profils : entete : false :  false 
+		url : entete : false :  false 
+		image : entete : false :  false 
  : 
 
 Enterbloc/Leavebloc
-		codemenu : entete : true : true
-		nom : tab_1 : true : true
-		profils : tab_2 : true : false
-		url : tab_2 : false : false
-		image : tab_2 : false : true
+		codemenu : entete : true : false
+		nom : entete : false : false
+		profils : entete : false : false
+		url : entete : false : false
+		image : entete : false : true
  : 
 
 

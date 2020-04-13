@@ -27,7 +27,7 @@ $jdbcTool.setOrderby("ORDER BY ext2, ext4, ext3")##
 	#set ($showsize = "${attrib.databaseSize}0px")
 #end
 #if ($extattrib.entertabs)
-      <mat-tab-group>
+      <p-tabView>
 #end
 #if ($extattrib.entertab)
 #set ($libtab = "")
@@ -36,7 +36,7 @@ $jdbcTool.setOrderby("ORDER BY ext2, ext4, ext3")##
 #set ($libtab = $exttabattrib.ext1)
 #end
 #end
-      <mat-tab label="${libtab}">
+      <p-tabPanel header="${libtab}">
 #end
 #if ($extattrib.enterbloc)
     <table>
@@ -51,35 +51,38 @@ $jdbcTool.setOrderby("ORDER BY ext2, ext4, ext3")##
 	         </td>
 		</tr>
 #elseif ($attrib.isDateType())
-        <mat-grid-tile [colspan]="4">
-			<div class="label_right">${extattrib.ext1}</div>
-        </mat-grid-tile>
-        <mat-grid-tile [colspan]="6">
-		  <div style="width: 100%; display: flex; align-items: flex-start;">
-          <mat-form-field style="width:${attrib.databaseSize}0px !important">
-            <input matInput [matDatepicker]="picker${attrib.name}" ${requiredmode} formControlName="${attrib.name}">
-            <mat-datepicker-toggle matSuffix [for]="picker${attrib.name}"></mat-datepicker-toggle>
-            <mat-datepicker ${SHARP}picker${attrib.name}></mat-datepicker>
-			#if ($attrib.isDatabaseNotNull())
-            <mat-error *ngIf="!form.controls['${attrib.name}'].errors['required']">
-              ${attrib.name} est requis
-            </mat-error>
-			#end
-          </mat-form-field>
-		  </div>
-        </mat-grid-tile>
+    	<tr>
+			<td>    	
+				<div>${extattrib.ext1}</div>
+	        </td>
+			<td>    	
+		  		<div style="width: 100%; display: flex; align-items: flex-start;">
+          		<mat-form-field style="width:${attrib.databaseSize}0px !important">
+            		<input matInput [matDatepicker]="picker${attrib.name}" ${requiredmode} formControlName="${attrib.name}">
+            		<mat-datepicker-toggle matSuffix [for]="picker${attrib.name}"></mat-datepicker-toggle>
+            		<mat-datepicker ${SHARP}picker${attrib.name}></mat-datepicker>
+					#if ($attrib.isDatabaseNotNull())
+            		<mat-error *ngIf="!form.controls['${attrib.name}'].errors['required']">
+              		${attrib.name} est requis
+            		</mat-error>
+					#end
+          		</mat-form-field>
+		  		</div>
+	         </td>
+		</tr>
 #elseif ( $attrib.isFK() && $attrib.isKeyElement())
 #set($referencedEntity = $fn.uncapitalize($attrib.referencedEntityName))
 #set($keyAttrib = $attrib.referencedEntity.keyAttribute.name)
-        <mat-grid-tile [colspan]="4">
-			<div class="label_right">${extattrib.ext1}</div>
-        </mat-grid-tile>
-        <mat-grid-tile [colspan]="6">
-          <mat-select formControlName="${attrib.name}" name="${referencedEntity}" class="form-full-width">
-            <mat-option [value]="">
-              N/A
-            </mat-option>
-            <mat-option *ngFor="let ${referencedEntity} of ${referencedEntity}sData" [value]="${referencedEntity}.$keyAttrib">
+    	<tr>
+			<td>    	
+				<div>${extattrib.ext1}</div>
+	        </td>
+			<td>  
+          		<mat-select formControlName="${attrib.name}" name="${referencedEntity}" class="form-full-width">
+            		<mat-option [value]="">
+              		N/A
+            		</mat-option>
+            		<mat-option *ngFor="let ${referencedEntity} of ${referencedEntity}sData" [value]="${referencedEntity}.$keyAttrib">
 #foreach ( $refAttrib in $attrib.referencedEntity.attributes)
 #if ($foreach.count < $attrib.referencedEntity.attributes.size())
 #if ($refAttrib.isKeyElement())
@@ -91,22 +94,24 @@ $jdbcTool.setOrderby("ORDER BY ext2, ext4, ext3")##
 #set($options = $options + "{{ ${referencedEntity}.${refAttrib.name} }}")
 #end
 #end
-              $options
-            </mat-option>
-          </mat-select>
-		 </mat-grid-tile>
+              		$options
+            		</mat-option>
+          		</mat-select>
+	         </td>
+		</tr>
 #elseif ( $attrib.isFK() )
 #set($referencedEntity = $fn.uncapitalize($attrib.referencedEntityName))
 #set($keyAttrib = $attrib.referencedEntity.keyAttribute.name)
-        <mat-grid-tile [colspan]="4">
-			<div class="label_right">${extattrib.ext1}</div>
-        </mat-grid-tile>
-        <mat-grid-tile [colspan]="6">
-          <mat-select formControlName="${attrib.name}" name="${referencedEntity}" class="form-full-width">
-            <mat-option [value]="">
-              N/A
-            </mat-option>
-            <mat-option *ngFor="let ${referencedEntity} of ${referencedEntity}sData" [value]="${referencedEntity}.$keyAttrib">
+    	<tr>
+			<td>    	
+				<div>${extattrib.ext1}</div>
+	        </td>
+			<td>    
+          		<mat-select formControlName="${attrib.name}" name="${referencedEntity}" class="form-full-width">
+            		<mat-option [value]="">
+              			N/A
+            		</mat-option>
+            		<mat-option *ngFor="let ${referencedEntity} of ${referencedEntity}sData" [value]="${referencedEntity}.$keyAttrib">
 #foreach ( $refAttrib in $attrib.referencedEntity.attributes)
 #if ($foreach.count < $attrib.referencedEntity.attributes.size())
 #if ($refAttrib.isKeyElement())
@@ -118,32 +123,35 @@ $jdbcTool.setOrderby("ORDER BY ext2, ext4, ext3")##
 #set($options = $options + "{{ ${referencedEntity}.${refAttrib.name} }}")
 #end
 #end
-              $options
-            </mat-option>
-          </mat-select>
-        </mat-grid-tile>
+              			$options
+            			</mat-option>
+          		</mat-select>
+	         </td>
+		</tr>
 #elseif ( $attrib.isBooleanType())
     	<tr>
 			<td>    	
 				<div>${extattrib.ext1}</div>
 	        </td>
 			<td>    	
-				<input type="text" pInputText required maxlength="${attrib.databaseSize}" formControlName="${attrib.name}" [ngStyle]="{'width':'${showsize}'}"/>
+				<p-checkbox formControlName="${attrib.name}" binary="true"></p-checkbox>
 	         </td>
 		</tr>
 #elseif ( $extattrib.ext7 != '')
-       <mat-grid-tile [colspan]="4">
-			<div class="label_right">${extattrib.ext1}</div>
-       </mat-grid-tile>
-	   <mat-grid-tile [colspan]="6">
-		  <div style="width: 100%; display: flex; align-items: flex-start;">
-          <mat-form-field style="width:400px !important">
-			  <select matNativeControl maxlength="${attrib.databaseSize}" formControlName="${attrib.name}">
-			  	<option *ngFor="let lov of listOf${extattrib.ext7}" value="{{lov.codeelement}}">{{lov.nomelement}}</option>
-			  </select>            
-          </mat-form-field>
-		  </div>
-        </mat-grid-tile>	
+    	<tr>
+			<td>    	
+				<div>${extattrib.ext1}</div>
+	        </td>
+			<td>  
+		  		<div style="width: 100%; display: flex; align-items: flex-start;">
+          		<mat-form-field style="width:400px !important">
+			  		<select matNativeControl maxlength="${attrib.databaseSize}" formControlName="${attrib.name}">
+			  			<option *ngFor="let lov of listOf${extattrib.ext7}" value="{{lov.codeelement}}">{{lov.nomelement}}</option>
+			  		</select>            
+          		</mat-form-field>
+		  		</div>
+	         </td>
+		</tr>
 #else
     	<tr>
 			<td>    	
@@ -167,10 +175,10 @@ $jdbcTool.setOrderby("ORDER BY ext2, ext4, ext3")##
       </table>
 #end
 #if ($extattrib.leavetab)
-      </mat-tab>
+      </p-tabPanel>
 #end
 #if ($extattrib.leavetabs)
-      </mat-tab-group>
+      </p-tabView>
 #end
 #end
     <p-footer>

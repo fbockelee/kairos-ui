@@ -11,6 +11,8 @@ import { DropdownModule } from 'primeng/dropdown';
 import { CardModule } from 'primeng/card';
 import {PaginatorModule} from 'primeng/paginator';
 import {InputTextModule} from 'primeng/inputtext';
+import {TabViewModule} from 'primeng/tabview';
+import {CheckboxModule} from 'primeng/checkbox';
 
 
 @NgModule({
@@ -22,7 +24,9 @@ import {InputTextModule} from 'primeng/inputtext';
 		CardModule,
 		TableModule,
 		PaginatorModule,
-		InputTextModule
+		InputTextModule,
+		TabViewModule,
+		CheckboxModule
     ]
 })
 export class PrimengModule {}
