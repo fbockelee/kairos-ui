@@ -35,8 +35,10 @@ import { ${referencedEntity}Service } from './../../${fn.uncapitalize($reference
 import * as _ from 'underscore';
 
 // Pour gestion des listes
+#if ($entity.name != 'Liste')
 import { ListeService } from './../../../entities/liste/services/liste.service';
 import { Liste } from './../../../entities/liste/liste.model';
+#end
 
 import { Lov } from './../../../common/lov';
 @Component({
@@ -74,7 +76,9 @@ export class $formComponentName extends Lov implements OnInit {
 #end
 #end
   constructor(
-	private _listeService: ListeService,         // Pour gestion des listes 
+#if ($entity.name != 'Liste')
+	private listeServicelov: ListeService,         // Pour gestion des listes
+#end 
 #if ($attrsFKs.size() > 0)
 #foreach ( $entitiesFK in $attrsFKs)
     private _${fn.uncapitalize($entitiesFK)}Service: ${entitiesFK}Service,
