@@ -41,6 +41,8 @@ import { Liste } from './../../../entities/liste/liste.model';
 #end
 
 import { Lov } from './../../../common/lov';
+import {SelectItem} from 'primeng/api';
+
 @Component({
   selector: 'app-${LCentityName}-form',
   templateUrl: './${LCentityName}-form.component.html',
@@ -63,7 +65,7 @@ export class $formComponentName extends Lov implements OnInit {
   // Définition des LOV
 #foreach ( $extattrib in $extAttributes)
 #if ($extattrib.ext7!='')
-  public listOf${extattrib.ext7}: Liste[];
+  public listOf${extattrib.ext7}_itm: SelectItem[];
 #end
 #end
 
@@ -128,8 +130,8 @@ export class $formComponentName extends Lov implements OnInit {
 	/* Chargement des LOVs */
 #foreach ( $extattrib in $extAttributes)
 #if ($extattrib.ext7!='')
-	this.getLOV ('${extattrib.ext7}').then(data => {
-		this.listOf${extattrib.ext7} = data; 
+	this.getLOV ('${extattrib.ext7}').then(data_itm => {
+		this.listOf${extattrib.ext7}_itm = data_itm; 
 	});
 #end
 #end

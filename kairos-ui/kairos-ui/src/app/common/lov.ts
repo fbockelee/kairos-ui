@@ -5,6 +5,8 @@ import { NotificationService } from './../services/notification.service';
 import { ListeService } from './../entities/liste/services/liste.service';
 import { Liste } from './../entities/liste/liste.model';
 
+import {SelectItem} from 'primeng/api';
+
 export class Lov {
 	
 	
@@ -16,8 +18,8 @@ export class Lov {
 	private _notificationServiceLov: NotificationService 
 	) {};
 	
-  getLOV = (nomliste : string): Promise<Liste[]> => {
-	var listListe: Liste[];
+  getLOV = (nomliste : string): Promise<SelectItem[]> => {
+	//var listListe: Liste[];
 
     /*const options: any = {params: [
 					{key: 'nomliste', value: nomliste },
@@ -45,7 +47,16 @@ export class Lov {
 		      this._listeServicelov.searchByNomliste(nomliste)
 		        .subscribe(
 		         (data: Liste[]) => {
-		         	resolve(data);
+					var data_itm: SelectItem[];
+					
+					data_itm = [];
+				    for (let c of data) {
+						     data_itm.push({ 
+											  label: (c.nomelement), 
+										 	  value: (c.codeelement)
+										   });
+					}
+		         	resolve(data_itm);
 		         },
 		         error => {
 		          	reject(error);
@@ -53,4 +64,9 @@ export class Lov {
 		);
     });
   }  
+
+  onDropdownClickLov(event: Event) {
+
+  }
+
 }

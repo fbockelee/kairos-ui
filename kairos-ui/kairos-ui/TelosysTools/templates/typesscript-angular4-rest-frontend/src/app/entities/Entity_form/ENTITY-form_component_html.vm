@@ -132,13 +132,9 @@ $jdbcTool.setOrderby("ORDER BY ext2, ext4, ext3")##
 				<div>${extattrib.ext1}</div>
 	        </td>
 			<td>  
-		  		<div style="width: 100%; display: flex; align-items: flex-start;">
-          		<mat-form-field style="width:400px !important">
-			  		<select matNativeControl maxlength="${attrib.databaseSize}" formControlName="${attrib.name}">
-			  			<option *ngFor="let lov of listOf${extattrib.ext7}" value="{{lov.codeelement}}">{{lov.nomelement}}</option>
-			  		</select>            
-          		</mat-form-field>
-		  		</div>
+				<p-dropdown [options]="listOf${extattrib.ext7}_itm" formControlName="${attrib.name}" placeholder="" label="codeelement"
+	  					menu-btn [style]="{'width': '400px'}">
+    			</p-dropdown>
 	         </td>
 		</tr>
 #else
