@@ -43,6 +43,14 @@ import { ListeFormComponent } from './entities/liste/liste-form/liste-form.compo
 import { FournisseurListComponent } from './entities/fournisseur/fournisseur-list/fournisseur-list.component';
 import { FournisseurFormComponent } from './entities/fournisseur/fournisseur-form/fournisseur-form.component';
 
+// Periode Components
+import { PeriodeListComponent } from './entities/periode/periode-list/periode-list.component';
+import { PeriodeFormComponent } from './entities/periode/periode-form/periode-form.component';
+
+// Calendrier Components
+import { CalendrierListComponent } from './entities/calendrier/calendrier-list/calendrier-list.component';
+import { CalendrierFormComponent } from './entities/calendrier/calendrier-form/calendrier-form.component';
+
 // Other Components
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AboutComponent } from './about/about.component';
@@ -62,7 +70,9 @@ import { PrimengModule}  from './primeng-module'
 import { MenuService } from './entities/menu/services/menu.service';
 import { ConsultantService } from './entities/consultant/services/consultant.service';
 import { ListeService } from './entities/liste/services/liste.service';
-
+import { FournisseurService } from './entities/fournisseur/services/fournisseur.service';
+import { PeriodeService } from './entities/periode/services/periode.service';
+import { CalendrierService } from './entities/calendrier/services/calendrier.service';
 
 import { EmitterService } from './services/emitter.service';
 import { NotificationService } from './services/notification.service';
@@ -119,6 +129,11 @@ registerLocaleData(localeFr, 'fr-FR', localeFrExtra);
     ListeFormComponent,
     FournisseurListComponent,
     FournisseurFormComponent,
+    PeriodeListComponent,
+    PeriodeFormComponent,
+    CalendrierListComponent,
+    CalendrierFormComponent,
+
     NotFoundComponent,
     AboutComponent,
     DeleteDialogComponent,
@@ -157,6 +172,9 @@ registerLocaleData(localeFr, 'fr-FR', localeFrExtra);
     ConsultantService,
     MenuService,
 	ListeService,
+	FournisseurService,
+	PeriodeService,
+	CalendrierService,
     EmitterService,
     NotificationService,
 	ApplicationStateService,

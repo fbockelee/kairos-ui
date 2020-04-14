@@ -24,6 +24,14 @@ import { MenuFormComponent } from './entities/menu/menu-form/menu-form.component
 import { FournisseurListComponent } from './entities/fournisseur/fournisseur-list/fournisseur-list.component';
 import { FournisseurFormComponent } from './entities/fournisseur/fournisseur-form/fournisseur-form.component';
 
+// Periode
+import { PeriodeListComponent } from './entities/periode/periode-list/periode-list.component';
+import { PeriodeFormComponent } from './entities/periode/periode-form/periode-form.component';
+
+// Calendrier
+import { CalendrierListComponent } from './entities/calendrier/calendrier-list/calendrier-list.component';
+import { CalendrierFormComponent } from './entities/calendrier/calendrier-form/calendrier-form.component';
+
 export const AppRouting = RouterModule.forRoot([
     { path: '', 
       //component: HomeListComponent
@@ -44,6 +52,12 @@ export const AppRouting = RouterModule.forRoot([
         { path: 'fournisseur-list', component: FournisseurListComponent, canActivate : [AuthGuard]},
         { path: 'fournisseur-form/:id', component: FournisseurFormComponent, canActivate : [AuthGuard] },
         { path: 'fournisseur-form', component: FournisseurFormComponent, canActivate : [AuthGuard] },
+		{ path: 'periode-list', component: PeriodeListComponent, canActivate : [AuthGuard]},
+        { path: 'periode-form/:id', component: PeriodeFormComponent, canActivate : [AuthGuard] },
+        { path: 'periode-form', component: PeriodeFormComponent, canActivate : [AuthGuard] },
+		{ path: 'calendrier-list', component: CalendrierListComponent, canActivate : [AuthGuard]},
+        { path: 'calendrier-form/:id1/:id2', component: CalendrierFormComponent, canActivate : [AuthGuard] },
+        { path: 'calendrier-form', component: CalendrierFormComponent, canActivate : [AuthGuard] },
         { path: 'deconnect', component: LoginComponent },
         { path: 'about', component: AboutComponent },
     { path: '**',
