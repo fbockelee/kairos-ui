@@ -39,6 +39,10 @@ import { ConsultantFormComponent } from './entities/consultant/consultant-form/c
 import { ListeListComponent } from './entities/liste/liste-list/liste-list.component';
 import { ListeFormComponent } from './entities/liste/liste-form/liste-form.component';
 
+// Fournisseur Components
+import { FournisseurListComponent } from './entities/fournisseur/fournisseur-list/fournisseur-list.component';
+import { FournisseurFormComponent } from './entities/fournisseur/fournisseur-form/fournisseur-form.component';
+
 // Other Components
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AboutComponent } from './about/about.component';
@@ -113,6 +117,8 @@ registerLocaleData(localeFr, 'fr-FR', localeFrExtra);
     ConsultantFormComponent,
     ListeListComponent,
     ListeFormComponent,
+    FournisseurListComponent,
+    FournisseurFormComponent,
     NotFoundComponent,
     AboutComponent,
     DeleteDialogComponent,

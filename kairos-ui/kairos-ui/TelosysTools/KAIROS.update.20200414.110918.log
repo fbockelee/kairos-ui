@@ -1,0 +1,135 @@
+Update date : Tue Apr 14 11:09:18 CEST 2020
+ 
+ Table 'alerte' found in repository
+ (=) table 'alerte' unchanged
+ 
+ Table 'baremekm' found in repository
+ (=) table 'baremekm' unchanged
+ 
+ Table 'calendrier' found in repository
+ (=) table 'calendrier' unchanged
+ 
+ Table 'client' found in repository
+ (=) table 'client' unchanged
+ 
+ Table 'conge' found in repository
+ (=) table 'conge' unchanged
+ 
+ Table 'consultant' found in repository
+ . Column 'nom' : NotNull changed to true
+ . Column 'nom' : Size changed to 80
+ . Column 'nom' updated
+ . Column 'prenom' : Size changed to 80
+ . Column 'prenom' updated
+ . Column 'user_login' : NotNull changed to true
+ . Column 'user_login' : Size changed to 30
+ . Column 'user_login' updated
+ . Column 'user_password' : NotNull changed to true
+ . Column 'user_password' updated
+ . Column 'email' : Size changed to 80
+ . Column 'email' updated
+ . Column 'comptendf' : Size changed to 20
+ . Column 'comptendf' updated
+ (*) table 'consultant' updated : 6 change(s)
+ 
+ Table 'consultantcontrat' found in repository
+ (=) table 'consultantcontrat' unchanged
+ 
+ Table 'consultantcontratfournisseur' found in repository
+ (=) table 'consultantcontratfournisseur' unchanged
+ 
+ Table 'contrat' found in repository
+ (=) table 'contrat' unchanged
+ 
+ Table 'contratfournisseur' found in repository
+ (=) table 'contratfournisseur' unchanged
+ 
+ Table 'contratfournisseurid' found in repository
+ (=) table 'contratfournisseurid' unchanged
+ 
+ Table 'contratid' found in repository
+ (=) table 'contratid' unchanged
+ 
+ Table 'cra' found in repository
+ (=) table 'cra' unchanged
+ 
+ Table 'craunit' found in repository
+ (=) table 'craunit' unchanged
+ 
+ Table 'document' found in repository
+ (=) table 'document' unchanged
+ 
+ Table 'echeancecontrat' found in repository
+ (=) table 'echeancecontrat' unchanged
+ 
+ Table 'echeancecontratfournisseur' found in repository
+ (=) table 'echeancecontratfournisseur' unchanged
+ 
+ Table 'exercice' found in repository
+ (=) table 'exercice' unchanged
+ 
+ Table 'fournisseur' found in repository
+ (=) table 'fournisseur' unchanged
+ 
+ Table 'frais' found in repository
+ (=) table 'frais' unchanged
+ 
+ Table 'fraiskmunit' found in repository
+ (=) table 'fraiskmunit' unchanged
+ 
+ Table 'fraisunit' found in repository
+ (=) table 'fraisunit' unchanged
+ 
+ Table 'liencontrat' found in repository
+ (=) table 'liencontrat' unchanged
+ 
+ Table 'liste' found in repository
+ (=) table 'liste' unchanged
+ 
+ Table 'listeattr' found in repository
+ (=) table 'listeattr' unchanged
+ 
+ Table 'menu' found in repository
+ (=) table 'menu' unchanged
+ 
+ Table 'periode' found in repository
+ (=) table 'periode' unchanged
+ 
+ Table 'postebudgetaire' found in repository
+ (=) table 'postebudgetaire' unchanged
+ 
+ Table 'profil' found in repository
+ (=) table 'profil' unchanged
+ 
+ Table 'rapport' found in repository
+ (=) table 'rapport' unchanged
+ 
+ Table 'rapportcolonne' found in repository
+ (=) table 'rapportcolonne' unchanged
+ 
+ Table 'rapportcommande' found in repository
+ (=) table 'rapportcommande' unchanged
+ 
+ Table 'rapportparametre' found in repository
+ (=) table 'rapportparametre' unchanged
+ 
+ Table 'rapportparametrepool' found in repository
+ (=) table 'rapportparametrepool' unchanged
+ 
+ Table 'rapportrequete' found in repository
+ (=) table 'rapportrequete' unchanged
+ 
+ Table 'reliquat' found in repository
+ (=) table 'reliquat' unchanged
+ 
+ Table 'rubrique' found in repository
+ (=) table 'rubrique' unchanged
+ 
+ Table 'rubriquefrais' found in repository
+ (=) table 'rubriquefrais' unchanged
+ 
+ Table 'telosys_ext' not found in repository
+ (+) table 'telosys_ext' added
+ 
+ Table 'valocontrat' found in repository
+ (=) table 'valocontrat' unchanged

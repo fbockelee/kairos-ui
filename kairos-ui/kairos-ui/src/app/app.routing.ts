@@ -20,6 +20,10 @@ import { ListeFormComponent } from './entities/liste/liste-form/liste-form.compo
 import { MenuListComponent } from './entities/menu/menu-list/menu-list.component';
 import { MenuFormComponent } from './entities/menu/menu-form/menu-form.component';
 
+// Fournisseur
+import { FournisseurListComponent } from './entities/fournisseur/fournisseur-list/fournisseur-list.component';
+import { FournisseurFormComponent } from './entities/fournisseur/fournisseur-form/fournisseur-form.component';
+
 export const AppRouting = RouterModule.forRoot([
     { path: '', 
       //component: HomeListComponent
@@ -37,6 +41,9 @@ export const AppRouting = RouterModule.forRoot([
         { path: 'menu-list', component: MenuListComponent, canActivate : [AuthGuard]},
         { path: 'menu-form/:id', component: MenuFormComponent, canActivate : [AuthGuard] },
         { path: 'menu-form', component: MenuFormComponent, canActivate : [AuthGuard] },
+        { path: 'fournisseur-list', component: FournisseurListComponent, canActivate : [AuthGuard]},
+        { path: 'fournisseur-form/:id', component: FournisseurFormComponent, canActivate : [AuthGuard] },
+        { path: 'fournisseur-form', component: FournisseurFormComponent, canActivate : [AuthGuard] },
         { path: 'deconnect', component: LoginComponent },
         { path: 'about', component: AboutComponent },
     { path: '**',

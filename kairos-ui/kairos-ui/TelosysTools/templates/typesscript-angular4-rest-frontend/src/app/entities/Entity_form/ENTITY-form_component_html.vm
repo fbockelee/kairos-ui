@@ -47,7 +47,7 @@ $jdbcTool.setOrderby("ORDER BY ext2, ext4, ext3")##
 				<div>${extattrib.ext1}</div>
 	        </td>
 			<td>    	
-				<input type="text" pInputText required maxlength="${attrib.databaseSize}" formControlName="${attrib.name}" [ngStyle]="{'width':'${showsize}'}"/>
+				<input type="text" pInputText $requiredmode maxlength="${attrib.databaseSize}" formControlName="${attrib.name}" [ngStyle]="{'width':'${showsize}'}"/>
 	         </td>
 		</tr>
 #elseif ($attrib.isDateType())
@@ -132,7 +132,7 @@ $jdbcTool.setOrderby("ORDER BY ext2, ext4, ext3")##
 				<div>${extattrib.ext1}</div>
 	        </td>
 			<td>  
-				<p-dropdown [options]="listOf${extattrib.ext7}_itm" formControlName="${attrib.name}" placeholder="" label="codeelement"
+				<p-dropdown [options]="listOf${extattrib.ext7}_itm" $requiredmode formControlName="${attrib.name}" placeholder="" label="codeelement"
 	  					menu-btn [style]="{'width': '400px'}">
     			</p-dropdown>
 	         </td>
@@ -147,7 +147,7 @@ $jdbcTool.setOrderby("ORDER BY ext2, ext4, ext3")##
 #if ($attrib.isNumberType())
 #set ($field_align="text-align: right;")
 #end
-				<input type="text" pInputText required maxlength="${attrib.databaseSize}" formControlName="${attrib.name}" [ngStyle]="{'width':'${showsize}'}"/>
+				<input type="text" pInputText $requiredmode maxlength="${attrib.databaseSize}" formControlName="${attrib.name}" [ngStyle]="{'width':'${showsize}'}"/>
 	         </td>
 		</tr>
 #end
