@@ -43,7 +43,7 @@ export class CalendrierFormComponent extends Lov implements OnInit {
   public calendrier: Calendrier;
   private ids;
 
-  // Définition des LOV
+  // Dï¿½finition des LOV
 
   constructor(
 	private _listeService: ListeService,         // Pour gestion des listes
@@ -64,6 +64,7 @@ export class CalendrierFormComponent extends Lov implements OnInit {
   getIdFromRouteParams = () => {
     this._route.params.subscribe(p => {
         this.ids = _.values(p);
+		console.log('this.ids:'+this.ids);
     });
   }
 
@@ -93,10 +94,11 @@ export class CalendrierFormComponent extends Lov implements OnInit {
 
 
   load = () => {
-	// Concaténer les ids mais séparé par / et non ,
+	// Concatï¿½ner les ids mais sï¿½parï¿½ par / et non ,
 	var param : String = '';
 	
 	for (var i=0;i<this.ids.length;i++) {
+		console.log("param : " + this.ids[i]);
 		param = param + this.ids[i];
 		if (i != (this.ids.length-1)) {
 			param = param + '/';

@@ -56,7 +56,7 @@ export const AppRouting = RouterModule.forRoot([
         { path: 'periode-form/:id', component: PeriodeFormComponent, canActivate : [AuthGuard] },
         { path: 'periode-form', component: PeriodeFormComponent, canActivate : [AuthGuard] },
 		{ path: 'calendrier-list', component: CalendrierListComponent, canActivate : [AuthGuard]},
-        { path: 'calendrier-form/:id1/:id2', component: CalendrierFormComponent, canActivate : [AuthGuard] },
+        { path: 'calendrier-form/:id', component: CalendrierFormComponent, canActivate : [AuthGuard] },
         { path: 'calendrier-form', component: CalendrierFormComponent, canActivate : [AuthGuard] },
         { path: 'deconnect', component: LoginComponent },
         { path: 'about', component: AboutComponent },

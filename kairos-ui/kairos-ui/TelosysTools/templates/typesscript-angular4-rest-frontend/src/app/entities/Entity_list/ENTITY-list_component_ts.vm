@@ -139,7 +139,11 @@ export class $listComponentName implements OnInit, OnChanges {
   }
 
   goTo${entity.name}Form($entity.keyAttributesNamesAsString(', ')) {
-    this._router.navigate(['./${LCentityName}-form', $entity.keyAttributesNamesAsString(', ')]);
+#set ($paramGoto = "$entity.keyAttributesNamesAsString(', ')")
+#if (${LCentityName} == "calendrier")
+#set ($paramGoto = "${paramGoto}.toISOString()")
+#end
+    this._router.navigate(['./${LCentityName}-form', ${paramGoto}]);
   }
 
   deleteConfirmation = ($entity.keyAttributesNamesAsString(', ')) => {
