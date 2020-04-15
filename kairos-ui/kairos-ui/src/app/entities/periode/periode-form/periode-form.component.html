@@ -47,6 +47,14 @@
 				<input type="text" pInputText  maxlength="1" formControlName="actif" [ngStyle]="{'width':'10px'}"/>
 	         </td>
 		</tr>
+		<tr>
+			<td>    	
+				<div>calendrier</div>
+	        </td>
+			<td>    	
+				<app-calendrier-list [filter]="filter"></app-calendrier-list>
+	         </td>
+		</tr>
       </table>
     <p-footer>
     	<button pButton type="button" label="Vider" class="ui-button-rounded" (click)="initForm()"></button>

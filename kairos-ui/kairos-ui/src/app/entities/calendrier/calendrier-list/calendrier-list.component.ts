@@ -3,6 +3,7 @@
 // Modules imports
 import { Component, OnInit, OnChanges, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { ActivatedRoute  } from '@angular/router'; // ajout
 import { MatDialog } from '@angular/material';
 
 // Services imports
@@ -34,6 +35,13 @@ export class CalendrierListComponent implements OnInit, OnChanges {
   public title = 'Liste de Calendriers';
 
   public listOfCalendriers: Calendrier[];
+
+  @Input() filter?: string;
+  @Input() createenable?: boolean = true;
+  @Input() deleteenable?: boolean = true;
+  @Input() updateenable?: boolean = true;
+  @Input() incard?: boolean = true;
+
   private listId = 'CALENDRIER_COMPONENT_LIST';
 
   private calendrier: Calendrier;
@@ -48,10 +56,21 @@ export class CalendrierListComponent implements OnInit, OnChanges {
     private _calendrierService: CalendrierService,
     private _router: Router,
     private _notificationService: NotificationService,
-    public dialog: MatDialog) { }
+    public dialog: MatDialog,
+	private _route: ActivatedRoute // ajout
+) {
+	
+ }
 
   ngOnInit() {
+	// ajout
+	//this._route.params.subscribe(params => {
+    //   this.filter = params['filter']; // (+) converts string 'id' to a number
+       // In a real app: dispatch action to load the details here.
+    //});
+
     // On init get all Calendriers
+	console.log("filter =" + this.filter);
     this.getAllCalendriers();
 
     // Listen to the 'list' emitted event so as populate the model with the event payload

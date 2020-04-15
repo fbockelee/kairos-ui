@@ -24,6 +24,8 @@ import { Liste } from './../../../entities/liste/liste.model';
 import { Lov } from './../../../common/lov';
 import {SelectItem} from 'primeng/api';
 
+import {CalendrierListComponent} from './../../../entities/calendrier/calendrier-list/calendrier-list.component';
+
 @Component({
   selector: 'app-periode-form',
   templateUrl: './periode-form.component.html',
@@ -39,11 +41,12 @@ export class PeriodeFormComponent extends Lov implements OnInit {
 
   public title = 'Formulaire Periode';
   public form: FormGroup;
+  public filter:string;
 
   public periode: Periode;
   private ids;
 
-  // Définition des LOV
+  // Dï¿½finition des LOV
 
   constructor(
 	private _listeService: ListeService,         // Pour gestion des listes
@@ -59,6 +62,7 @@ export class PeriodeFormComponent extends Lov implements OnInit {
   ngOnInit() {
     this.getIdFromRouteParams();
     this.initForm();
+	//this.filter="init";
   }
 
   getIdFromRouteParams = () => {
@@ -99,7 +103,7 @@ export class PeriodeFormComponent extends Lov implements OnInit {
 
 
   load = () => {
-	// Concaténer les ids mais séparé par / et non ,
+	// Concatï¿½ner les ids mais sï¿½parï¿½ par / et non ,
 	var param : String = '';
 	
 	for (var i=0;i<this.ids.length;i++) {
@@ -121,6 +125,10 @@ export class PeriodeFormComponent extends Lov implements OnInit {
         } else {
           this._notificationService.error('Error', 'An error occured when trying to reach the server');
         }
+	  },
+      () => {
+		this.filter = "codelement=" + this.periode.code; 
+		console.log(this.filter);
       });
   }
 
