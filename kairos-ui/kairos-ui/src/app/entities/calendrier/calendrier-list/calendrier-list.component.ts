@@ -36,7 +36,17 @@ export class CalendrierListComponent implements OnInit, OnChanges {
 
   public listOfCalendriers: Calendrier[];
 
-  @Input() filter?: string;
+  _filter : string;
+  @Input('filter') 
+  set filter(value:string) {
+	 this._filter = value;
+    this.getAllCalendriers();
+  }
+
+  get filter():string {
+	return this._filter
+  }
+
   @Input() createenable?: boolean = true;
   @Input() deleteenable?: boolean = true;
   @Input() updateenable?: boolean = true;
@@ -69,10 +79,6 @@ export class CalendrierListComponent implements OnInit, OnChanges {
        // In a real app: dispatch action to load the details here.
     //});
 
-    // On init get all Calendriers
-	console.log("filter =" + this.filter);
-    this.getAllCalendriers();
-
     // Listen to the 'list' emitted event so as populate the model with the event payload
     // Refresh Calendrier list
     EmitterService.get(this.listId).subscribe((data: Calendrier[]) => this.getAllCalendriers());
@@ -95,7 +101,17 @@ export class CalendrierListComponent implements OnInit, OnChanges {
    * Get all Calendrier using the service CalendrierService
    */
   getAllCalendriers = (): void => {
-    this._calendrierService.getAll({ notPaged: true }).subscribe(
+	console.log("getAllCalendriers filter =" + this.filter);
+	var options:any = { notPaged: true };
+	
+	if (this.filter) {
+			var filters = JSON.parse(this.filter);
+			options = {params: filters,
+						   notPaged: true};
+			
+	}
+										
+    this._calendrierService.getAll(options).subscribe(
       (data: Calendrier[]) => {
         this.listOfCalendriers = data;
       },
