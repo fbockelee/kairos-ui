@@ -9,12 +9,15 @@ import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './auth.guard';
 
 #foreach ($entity in $selectedEntities)
-#set ( $listComponentName = $entity.name + "ListComponent" )
 #set ( $LCentityName = $fn.uncapitalize($entity.name) )
+#set ( $listComponentName = $entity.name + "ListComponent" )
 #set ( $listComponentPath = "./entities/" + $LCentityName + "/" + $LCentityName + "-list/" + $LCentityName + "-list.component" )
+#set ( $listheaderComponentName = $entity.name + "ListheaderComponent" )
+#set ( $listheaderComponentPath = "./entities/" + $LCentityName + "/" + $LCentityName + "-list/" + $LCentityName + "-listheader.component" )
 #set ( $formComponentName = $entity.name + "FormComponent" )
 #set ( $formComponentPath = "./entities/" + $LCentityName + "/" + $LCentityName + "-form/" + $LCentityName + "-form.component" )
 // $entity.name
+import { $listheaderComponentName } from '$listheaderComponentPath';
 import { $listComponentName } from '$listComponentPath';
 import { $formComponentName } from '$formComponentPath';
 
@@ -29,10 +32,11 @@ export const AppRouting = RouterModule.forRoot([
     //  children: [
 #foreach ($entity in $selectedEntities)
 #set ( $listComponentName = $entity.name + "ListComponent" )
+#set ( $listheaderComponentName = $entity.name + "ListheaderComponent" )
 #set ( $formComponentName = $entity.name + "FormComponent" )
 #set ( $listPath = $fn.uncapitalize($entity.name) + "-list" )
 #set ( $formPath = $fn.uncapitalize($entity.name) + "-form" )
-        { path: '$listPath', component: $listComponentName, canActivate : [AuthGuard]},
+        { path: '$listPath', component: $listheaderComponentName, canActivate : [AuthGuard]},
 #if ($entity.keyAttributesCount > 1)
 #set ( $formPathID = $formPath )
 #foreach ($keyAttrib in $entity.keyAttributes)

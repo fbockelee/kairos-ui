@@ -12,6 +12,7 @@ $env.setLanguage('TypeScript')
 // Modules imports
 import { Component, OnInit, OnChanges, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { ActivatedRoute  } from '@angular/router';
 import { MatDialog } from '@angular/material';
 
 // Services imports
@@ -43,6 +44,24 @@ export class $listComponentName implements OnInit, OnChanges {
   public title = 'Liste de ${entity.name}s';
 
   public listOf${entity.name}s: ${entity}[];
+
+
+  _filter : string;
+  @Input('filter') 
+  set filter(value:string) {
+	 this._filter = value;
+     this.getAll${entity.name}s();
+  }
+
+  get filter():string {
+	return this._filter
+  }
+
+  @Input() createenable?: boolean = true;
+  @Input() deleteenable?: boolean = true;
+  @Input() updateenable?: boolean = true;
+  @Input() incard?: boolean = true;
+
   private listId = '$fn.toUpperCase(${entity.name})_COMPONENT_LIST';
 
   private $LCentityName: $entity.name;
@@ -61,11 +80,12 @@ export class $listComponentName implements OnInit, OnChanges {
     private $_entityService: $baseServiceName,
     private _router: Router,
     private _notificationService: NotificationService,
-    public dialog: MatDialog) { }
+    public dialog: MatDialog,
+	private _route: ActivatedRoute) { }
 
   ngOnInit() {
     // On init get all ${entity.name}s
-    this.getAll${entity.name}s();
+    //this.getAll${entity.name}s();
 
     // Listen to the 'list' emitted event so as populate the model with the event payload
     // Refresh ${entity.name} list
@@ -89,15 +109,29 @@ export class $listComponentName implements OnInit, OnChanges {
    * Get all ${entity.name} using the service ${entity.name}Service
    */
   getAll${entity.name}s = (): void => {
-    this._${LCentityName}Service.getAll({ notPaged: true }).subscribe(
-      (data: ${entity.name}[]) => {
-        this.listOf${entity.name}s = data;
-      },
-      error => {
-        this._notificationService.error(
-          'Error',
-          'An error occured when trying to reach the server');
-    });
+
+	var options:any = { notPaged: true };
+	
+	if (this.filter) {
+		if (this.filter == 'FULL') {
+			options = { notPaged: true };
+		}
+		else {
+			var filters = JSON.parse(this.filter);
+			options = {params: filters,
+						   notPaged: true};
+		}
+
+    	this._${LCentityName}Service.getAll(options).subscribe(
+      		(data: ${entity.name}[]) => {
+        		this.listOf${entity.name}s = data;
+      		},
+      	error => {
+        	this._notificationService.error(
+          	'Error',
+          	'An error occured when trying to reach the server');
+    	});
+	}
   }
 
   edit${entity.name} = ($entity.keyAttributesNamesAsString(', ')): void => {
