@@ -59,6 +59,13 @@ export class $formComponentName extends Lov implements OnInit {
   public title = 'Formulaire ${entity.name}';
   public form: FormGroup;
 
+  // Définition des filtres
+#foreach ( $extattrib in $extAttributes)
+#if ($extattrib.type=='fieldlink')
+  public filter_${extattrib.columnname}:string;
+#end
+#end
+
   public $LCentityName: ${entity.name};
   private ids;
 
@@ -251,6 +258,14 @@ export class $formComponentName extends Lov implements OnInit {
         } else {
           this._notificationService.error('Error', 'An error occured when trying to reach the server');
         }
+ 	  },
+      () => {
+		// Valorisation des filtres
+#foreach ( $extattrib in $extAttributes)
+#if ($extattrib.type=='fieldlink')
+		this.filter_${extattrib.columnname} = JSON.stringify([{key: '${extattrib.ext4.split(",")[1]}', value: this.${LCentityName}.${extattrib.ext4.split(",")[0]}},]);
+#end
+#end
       });
   }
 

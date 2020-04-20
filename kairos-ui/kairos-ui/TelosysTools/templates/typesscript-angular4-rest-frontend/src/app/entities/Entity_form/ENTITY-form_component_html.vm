@@ -41,6 +41,7 @@ $jdbcTool.setOrderby("ORDER BY ext2, ext4, ext3")##
 #if ($extattrib.enterbloc)
     <table>
 #end
+#if ($extattrib.type == "field")
 #if ($attrib.isKeyElement() && !$attrib.isFK())
     	<tr>
 			<td>    	
@@ -149,6 +150,17 @@ $jdbcTool.setOrderby("ORDER BY ext2, ext4, ext3")##
 #end
 				<input type="text" pInputText $requiredmode maxlength="${attrib.databaseSize}" formControlName="${attrib.name}" [ngStyle]="{'width':'${showsize}'}"/>
 	         </td>
+		</tr>
+#end
+#end
+#if ($extattrib.type == "fieldlink")
+    	<tr>
+			<td>    	
+				<div>${extattrib.ext1}</div>
+	        </td>
+			<td>
+				<app-${extattrib.columnname}-list [filter]="filter_${extattrib.columnname}"></app-${extattrib.columnname}-list>
+	        </td>
 		</tr>
 #end
 #if ($extattrib.ext5 == "o" )
