@@ -130,8 +130,9 @@ export class PeriodeFormComponent extends Lov implements OnInit {
 		this.filter = JSON.stringify([{key: 'codeperiode', value: this.periode.code},]);
 		
 		// "codelement=" + this.periode.code; 
-		console.log(this.filter);
+		console.log('1: ' + this.filter);
       });
+		console.log('2: ' + this.filter);
   }
 
   save = () => {

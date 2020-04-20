@@ -49,6 +49,7 @@ import { PeriodeFormComponent } from './entities/periode/periode-form/periode-fo
 
 // Calendrier Components
 import { CalendrierListComponent } from './entities/calendrier/calendrier-list/calendrier-list.component';
+import { CalendrierListheaderComponent } from './entities/calendrier/calendrier-list/calendrier-listheader.component';
 import { CalendrierFormComponent } from './entities/calendrier/calendrier-form/calendrier-form.component';
 
 // Other Components
@@ -132,6 +133,7 @@ registerLocaleData(localeFr, 'fr-FR', localeFrExtra);
     PeriodeListComponent,
     PeriodeFormComponent,
     CalendrierListComponent,
+	CalendrierListheaderComponent,
     CalendrierFormComponent,
 
     NotFoundComponent,

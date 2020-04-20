@@ -105,21 +105,24 @@ export class CalendrierListComponent implements OnInit, OnChanges {
 	var options:any = { notPaged: true };
 	
 	if (this.filter) {
+		if (this.filter == 'FULL') {
+			options = { notPaged: true };
+		}
+		else {
 			var filters = JSON.parse(this.filter);
 			options = {params: filters,
 						   notPaged: true};
-			
+		}
+	    this._calendrierService.getAll(options).subscribe(
+	      (data: Calendrier[]) => {
+	        this.listOfCalendriers = data;
+	      },
+	      error => {
+	        this._notificationService.error(
+	          'Error',
+	          'An error occured when trying to reach the server');
+	    });
 	}
-										
-    this._calendrierService.getAll(options).subscribe(
-      (data: Calendrier[]) => {
-        this.listOfCalendriers = data;
-      },
-      error => {
-        this._notificationService.error(
-          'Error',
-          'An error occured when trying to reach the server');
-    });
   }
 
   editCalendrier = (datecalendrier): void => {

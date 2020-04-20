@@ -30,6 +30,7 @@ import { PeriodeFormComponent } from './entities/periode/periode-form/periode-fo
 
 // Calendrier
 import { CalendrierListComponent } from './entities/calendrier/calendrier-list/calendrier-list.component';
+import { CalendrierListheaderComponent } from './entities/calendrier/calendrier-list/calendrier-listheader.component';
 import { CalendrierFormComponent } from './entities/calendrier/calendrier-form/calendrier-form.component';
 
 export const AppRouting = RouterModule.forRoot([
@@ -55,7 +56,7 @@ export const AppRouting = RouterModule.forRoot([
 		{ path: 'periode-list', component: PeriodeListComponent, canActivate : [AuthGuard]},
         { path: 'periode-form/:id', component: PeriodeFormComponent, canActivate : [AuthGuard] },
         { path: 'periode-form', component: PeriodeFormComponent, canActivate : [AuthGuard] },
-		{ path: 'calendrier-list', component: CalendrierListComponent, canActivate : [AuthGuard]},
+		{ path: 'calendrier-list', component: CalendrierListheaderComponent, canActivate : [AuthGuard]},
 		{ path: 'calendrier-list/:filter', component: CalendrierListComponent, canActivate : [AuthGuard]},
         { path: 'calendrier-form/:id', component: CalendrierFormComponent, canActivate : [AuthGuard] },
         { path: 'calendrier-form', component: CalendrierFormComponent, canActivate : [AuthGuard] },
