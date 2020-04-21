@@ -53,29 +53,32 @@ export class AppMenuComponent implements OnInit, AfterViewInit {
 		    for (let c of listOfMenus) {
 			    var url = c.url;
 				
-				var consultantid = this._authService.getCurrentConsultant().consultantid;
-				console.log('avant ' + c.url);
-				url = url.replace('/:consultantid/g',consultantid.toString());
-				console.log('apres ' + url);
+				// var consultantid = this._authService.getCurrentConsultant().consultantid;
+				// console.log('avant ' + c.url);
+				// url = url.replace('/:consultantid/g',consultantid.toString());
+				// console.log('apres ' + url);
 				
 				// remplacer :consultantid par l'id du consultant connecté 
 				
 			  	if (c.profils.includes('ADMIN')) {
 				      listOfMenusAdmin_itm.push({ 
 														label: 		(c.nom), 
-														routerLink: (url)
+														routerLink: (url),
+														icon:		(c.image)
 												});
 				}
 			  	if (c.profils.includes('CONSULTANT')) {
 				      listOfMenusConsultant_itm.push({ 
 														label: 		(c.nom), 
-														routerLink: (url)
+														routerLink: (url),
+														icon:		(c.image)
 												});
 				}	
 			  	if (c.profils.includes('ST')) {
 				      listOfMenusSt_itm.push({ 
 														label: 		(c.nom), 
-														routerLink: (url)
+														routerLink: (url),
+														icon:		(c.image)
 												});
 				}							
 			  //this.listOfConsultants_itm.push({ label: (c.trigramme), value: c.consultantid });
@@ -86,12 +89,12 @@ export class AppMenuComponent implements OnInit, AfterViewInit {
 	            {
 	                label: 'Entités',
 	                items: [
-	                         { label: 'Menu', routerLink: ['menu-list']  },
-	                         { label: 'Consultant', routerLink: ['consultant-list']  },
-	                         { label: 'Liste', routerLink: ['liste-list']  },
-							 { label: 'Fournisseur', routerLink: ['fournisseur-list']  },
-						 	 { label: 'Période', routerLink: ['periode-list']  },
-							 { label: 'Calendrier', routerLink: ['calendrier-list']  },
+	                         { label: 'Menu', routerLink: ['menu-list'], icon: 'pi pi-list'  },
+	                         { label: 'Consultant', routerLink: ['consultant-list'], icon: 'pi pi-users'  },
+	                         { label: 'Liste', routerLink: ['liste-list'], icon: 'pi pi-list'  },
+							 { label: 'Fournisseur', routerLink: ['fournisseur-list'], icon: 'pi pi-list'  },
+						 	 { label: 'Période', routerLink: ['periode-list'], icon: 'pi pi-calendar'  },
+							 { label: 'Calendrier', routerLink: ['calendrier-list'], icon: 'pi pi-calendar'  },
 	                        ]
 	             },
 	            {
@@ -133,7 +136,7 @@ export class AppMenuComponent implements OnInit, AfterViewInit {
                 <a (click)="itemClick($event,child,i)" *ngIf="child.routerLink"
                     [routerLink]="child.routerLink" routerLinkActive="active-menuitem-routerlink"
                     [routerLinkActiveOptions]="{exact: true}" [attr.target]="child.target">
-                    <span class="menuitem-text">{{child.label}}</span>
+                    <span class="menuitem-text"><i class="{{child.icon}}">{{child.label}}</i></span>
                     <i class="fa fa-chevron-down layout-submenu-toggler" *ngIf="child.items"></i>
                 </a>
                 <ul app-submenu [item]="child" *ngIf="child.items" [@children]="isActive(i) ? 'visible' : 'hidden'"></ul>

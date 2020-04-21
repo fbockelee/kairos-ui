@@ -14,6 +14,8 @@ import {InputTextModule} from 'primeng/inputtext';
 import {TabViewModule} from 'primeng/tabview';
 import {CheckboxModule} from 'primeng/checkbox';
 import {CalendarModule} from 'primeng/calendar';
+import {PasswordModule} from 'primeng/password';
+import {PanelModule } from 'primeng/primeng';
 
 
 @NgModule({
@@ -28,7 +30,9 @@ import {CalendarModule} from 'primeng/calendar';
 		InputTextModule,
 		TabViewModule,
 		CheckboxModule,
-		CalendarModule
+		CalendarModule,
+		PasswordModule,
+		PanelModule
     ]
 })
 export class PrimengModule {}
