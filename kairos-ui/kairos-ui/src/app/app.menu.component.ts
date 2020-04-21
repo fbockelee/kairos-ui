@@ -3,37 +3,119 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 import { MenuItem, ScrollPanel } from 'primeng/primeng';
 import { AppComponent } from './app.component';
 
+import { NotificationService } from './services/notification.service';
+import { AuthService } from './services/auth.service';
+
+import { MenuService } from './entities/menu/services/menu.service';
+import { Menu } from './entities/menu/menu.model';
+
 @Component({
     selector: 'app-menu',
     templateUrl: './app.menu.component.html'
 })
 export class AppMenuComponent implements OnInit, AfterViewInit {
 
-    model: any[];
+
+
+  model: any[];
+
 
     @ViewChild('scrollPanel') layoutMenuScrollerViewChild: ScrollPanel;
 
-    constructor(public app: AppComponent) { }
+    constructor(public app: AppComponent,
+	   			private _notificationService: NotificationService,
+	    		private _menuService: MenuService,
+				private _authService: AuthService
+				) {}
 
     ngAfterViewInit() {
         setTimeout(() => { this.layoutMenuScrollerViewChild.moveBar(); }, 100);
     }
 
     ngOnInit() {
-        this.model = [
-            { label: 'Dashboard', routerLink: ['/'] },
-            {
-                label: 'Entités',
-                items: [
-                         { label: 'Menu', routerLink: ['menu-list']  },
-                         { label: 'Consultant', routerLink: ['consultant-list']  },
-                         { label: 'Liste', routerLink: ['liste-list']  },
-						 { label: 'Fournisseur', routerLink: ['fournisseur-list']  },
-					 	 { label: 'Période', routerLink: ['periode-list']  },
-						 { label: 'Calendrier', routerLink: ['calendrier-list']  },
-                        ]
-             }
-        ];
+	
+		    const options: any = {params: [
+	                    // {key: 'sort', value: 'nom,prenom'}
+	                    ],
+	                    notPaged:true
+	                  };
+
+	    this._menuService.getAll(options).subscribe(
+	      (data: Menu[]) => {
+		
+			var listOfMenus: Menu[];
+			var listOfMenusAdmin_itm: MenuItem[] = [];
+			var listOfMenusConsultant_itm: MenuItem[] = [];
+			var listOfMenusSt_itm: MenuItem[] = [];
+			
+	        listOfMenus = data;
+
+		    for (let c of listOfMenus) {
+			    var url = c.url;
+				
+				var consultantid = this._authService.getCurrentConsultant().consultantid;
+				console.log('avant ' + c.url);
+				url = url.replace('/:consultantid/g',consultantid.toString());
+				console.log('apres ' + url);
+				
+				// remplacer :consultantid par l'id du consultant connecté 
+				
+			  	if (c.profils.includes('ADMIN')) {
+				      listOfMenusAdmin_itm.push({ 
+														label: 		(c.nom), 
+														routerLink: (url)
+												});
+				}
+			  	if (c.profils.includes('CONSULTANT')) {
+				      listOfMenusConsultant_itm.push({ 
+														label: 		(c.nom), 
+														routerLink: (url)
+												});
+				}	
+			  	if (c.profils.includes('ST')) {
+				      listOfMenusSt_itm.push({ 
+														label: 		(c.nom), 
+														routerLink: (url)
+												});
+				}							
+			  //this.listOfConsultants_itm.push({ label: (c.trigramme), value: c.consultantid });
+		    }
+
+	       this.model = [
+	            { label: 'Dashboard', routerLink: ['/'] },
+	            {
+	                label: 'Entités',
+	                items: [
+	                         { label: 'Menu', routerLink: ['menu-list']  },
+	                         { label: 'Consultant', routerLink: ['consultant-list']  },
+	                         { label: 'Liste', routerLink: ['liste-list']  },
+							 { label: 'Fournisseur', routerLink: ['fournisseur-list']  },
+						 	 { label: 'Période', routerLink: ['periode-list']  },
+							 { label: 'Calendrier', routerLink: ['calendrier-list']  },
+	                        ]
+	             },
+	            {
+	                label: 'Menu Consultant',
+	                items:  listOfMenusConsultant_itm
+	             },
+	            {
+	                label: 'Menu Administrateur',
+	                items: listOfMenusAdmin_itm
+	             },
+	            {
+	                label: 'Menu Sous-traitant',
+	                items: listOfMenusSt_itm
+	             },
+	        ];
+			        //this.setPage(1);
+	      },
+	      error => {
+	        this._notificationService.error(
+	          'Error',
+	          'An error occured when trying to reach the server');
+	    });	
+	
+ 
     }
 }
 
