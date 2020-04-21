@@ -128,16 +128,18 @@ $jdbcTool.setOrderby("ORDER BY ext2, ext4, ext3")##
 	         </td>
 		</tr>
 #elseif ( $extattrib.ext7 != '')
+#if ($extattrib.ext7.substring(0,4)=="lov_")
     	<tr>
 			<td>    	
 				<div>${extattrib.ext1}</div>
 	        </td>
 			<td>  
-				<p-dropdown [options]="listOf${extattrib.ext7}_itm" $requiredmode formControlName="${attrib.name}" placeholder="" label="codeelement"
+				<p-dropdown [options]="listOf${extattrib.ext7.substring(4)}_itm" $requiredmode formControlName="${attrib.name}" placeholder="" label="codeelement"
 	  					menu-btn [style]="{'width': '400px'}">
     			</p-dropdown>
 	         </td>
 		</tr>
+#end
 #else
     	<tr>
 			<td>    	

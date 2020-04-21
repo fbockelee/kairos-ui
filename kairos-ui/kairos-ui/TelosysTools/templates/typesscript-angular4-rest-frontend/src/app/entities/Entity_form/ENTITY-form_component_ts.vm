@@ -71,8 +71,8 @@ export class $formComponentName extends Lov implements OnInit {
 
   // Définition des LOV
 #foreach ( $extattrib in $extAttributes)
-#if ($extattrib.ext7!='')
-  public listOf${extattrib.ext7}_itm: SelectItem[];
+#if ($extattrib.ext7!='' && $extattrib.ext7.substring(0,4)=="lov_")
+  public listOf${extattrib.ext7.substring(4)}_itm: SelectItem[];
 #end
 #end
 
@@ -136,9 +136,9 @@ export class $formComponentName extends Lov implements OnInit {
 
 	/* Chargement des LOVs */
 #foreach ( $extattrib in $extAttributes)
-#if ($extattrib.ext7!='')
-	this.getLOV ('${extattrib.ext7}').then(data_itm => {
-		this.listOf${extattrib.ext7}_itm = data_itm; 
+#if ($extattrib.ext7!='' && $extattrib.ext7.substring(0,4)=="lov_")
+	this.getLOV ('${extattrib.ext7.substring(4)}').then(data_itm => {
+		this.listOf${extattrib.ext7.substring(4)}_itm = data_itm; 
 	});
 #end
 #end
