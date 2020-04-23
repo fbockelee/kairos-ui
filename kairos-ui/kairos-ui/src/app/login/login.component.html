@@ -1,17 +1,24 @@
-<div class="basic-container">
-<form [formGroup]="form" novalidate (ngSubmit)="login()" autocomplete="on">
-<p-card header="Page de Connection" subheader="{{message}}" [style]="{width: '340px'}">
+<form [formGroup]="form" novalidate (ngSubmit)="login()" autocomplete="on" ngClass="login-container">
+<p-card header="Page de Connection" subheader="{{message}}">
 	<table>
-		<tr><td>
-    		<input pInputText placeholder="Utilisateur" required formControlName="name" autocomplete="username">
-		</td></tr>
-		<tr><td>
-    		<input pInputText placeholder="Mot de passe" type="password" autocomplete="current-password" required formControlName="password">
-		</td></tr>
+		<tr >
+			<td >
+    			<hr class="solid">
+			</td>
+		</tr>
+		<tr >
+			<td >
+    			<input pInputText placeholder="Utilisateur" required formControlName="name" autocomplete="username" [ngStyle]="{'width':'300px'}">
+			</td>
+		</tr>
+		<tr>
+			<td>
+    			<input pInputText placeholder="Mot de passe" type="password" autocomplete="current-password" required formControlName="password" [ngStyle]="{'width':'300px'}">
+			</td>
+		</tr>
 	</table>
     <p-footer>
-      <button pButton type="submit" color="primary">Se connecter</button>
+      <button pButton type="submit" color="primary"  class="ui-button-rounded" label="Se connecter"></button>
     </p-footer>
 </p-card>
 </form>
-</div>
