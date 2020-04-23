@@ -49,6 +49,11 @@ import { PeriodeListheaderComponent } from './entities/periode/periode-list/peri
 import { PeriodeListComponent } from './entities/periode/periode-list/periode-list.component';
 import { PeriodeFormComponent } from './entities/periode/periode-form/periode-form.component';
 
+// Exercice Components
+import { ExerciceListheaderComponent } from './entities/exercice/exercice-list/exercice-listheader.component';
+import { ExerciceListComponent } from './entities/exercice/exercice-list/exercice-list.component';
+import { ExerciceFormComponent } from './entities/exercice/exercice-form/exercice-form.component';
+
 // Other Components
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AboutComponent } from './about/about.component';
@@ -69,6 +74,9 @@ import { FournisseurService } from './entities/fournisseur/services/fournisseur.
 import { ListeService } from './entities/liste/services/liste.service';
 import { MenuService } from './entities/menu/services/menu.service';
 import { PeriodeService } from './entities/periode/services/periode.service';
+import { ExerciceService } from './entities/exercice/services/exercice.service';
+
+
 import { EmitterService } from './services/emitter.service';
 import { NotificationService } from './services/notification.service';
 // import { PagerService } from './services/pager.service';
@@ -134,6 +142,10 @@ registerLocaleData(localeFr, 'fr-FR', localeFrExtra);
     PeriodeListheaderComponent,
     PeriodeListComponent,
     PeriodeFormComponent,
+    ExerciceListheaderComponent,
+    ExerciceListComponent,
+    ExerciceFormComponent,
+
     NotFoundComponent,
     AboutComponent,
     DeleteDialogComponent,
@@ -148,7 +160,7 @@ registerLocaleData(localeFr, 'fr-FR', localeFrExtra);
     CommonModule,
     ReactiveFormsModule,
     HttpClientModule,
-    LoginRoutingModule, // doit être avant AppRouting
+    LoginRoutingModule, // doit ï¿½tre avant AppRouting
     AppRouting,
     BrowserAnimationsModule,
 	MaterialModule,
@@ -156,7 +168,7 @@ registerLocaleData(localeFr, 'fr-FR', localeFrExtra);
     PlatformModule,
     SimpleNotificationsModule.forRoot(),
     AngularHalModule.forRoot(),
-    MatMomentDateModule, // permet de gérer la timezone
+    MatMomentDateModule, // permet de gï¿½rer la timezone
     FlexLayoutModule,
 	PrimengModule, // PrimeNg
     //ScrollPanelModule,
@@ -175,6 +187,7 @@ registerLocaleData(localeFr, 'fr-FR', localeFrExtra);
     ListeService,
     MenuService,
     PeriodeService,
+	ExerciceService,
     EmitterService,
     NotificationService,
 	ApplicationStateService,

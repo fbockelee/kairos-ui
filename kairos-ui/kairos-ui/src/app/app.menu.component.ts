@@ -95,6 +95,7 @@ export class AppMenuComponent implements OnInit, AfterViewInit {
 							 { label: 'Fournisseur', routerLink: ['fournisseur-list'], icon: 'pi pi-list'  },
 						 	 { label: 'Période', routerLink: ['periode-list'], icon: 'pi pi-calendar'  },
 							 { label: 'Calendrier', routerLink: ['calendrier-list'], icon: 'pi pi-calendar'  },
+							 { label: 'Exercice', routerLink: ['exercice-list'], icon: 'pi pi-calendar'  },
 	                        ]
 	             },
 	            {

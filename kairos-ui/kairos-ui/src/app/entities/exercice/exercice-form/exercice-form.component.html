@@ -4,41 +4,41 @@
 <p-header>
 <table><tr>
 <td><h2>{{ title }}</h2></td>
-<td><button pButton type="button" label="Liste de Calendrier" class="ui-button-rounded" icon="pi pi-list" routerLink="/calendrier-list"></button></td>
+<td><button pButton type="button" label="Liste de Exercice" class="ui-button-rounded" icon="pi pi-list" routerLink="/exercice-list"></button></td>
 </tr></table>
 </p-header>
 <form [formGroup]="form" novalidate (ngSubmit)="save()">
     <div class="p-grid">
+    	<div class="p-col-1">   	
+			<div class="box">
+				<div>Code</div>
+			</div>
+	    </div>
+    	<div class="p-col-5">
+    		<div class="box">   	
+				<input type="text" pInputText required  maxlength="32" formControlName="code" [ngStyle]="{'width':'320px'}"/>
+			</div>
+	    </div>
+    	<div class="p-col-6"></div>
+    	<div class="p-col-1">   	
+			<div class="box">	
+				<div>Ouvert</div>
+			</div>
+	    </div>
+    	<div class="p-col-5">
+    		<div class="box">   
+				<p-checkbox formControlName="ouvert" binary="true"></p-checkbox>
+			</div>
+	    </div>
+    	<div class="p-col-6"></div>
     	<div class="p-col-1">   	
 			<div class="box">	
 				<div>Période</div>
 			</div>
 	    </div>
     	<div class="p-col-5">
-    		<div class="box"> 	
-				<input type="text" pInputText  maxlength="32" formControlName="codeperiode" [ngStyle]="{'width':'320px'}"/>
-			</div>
-	    </div>
-    	<div class="p-col-6"></div>
-    	<div class="p-col-1">   	
-			<div class="box">
-				<div>Date</div>
-			</div>
-	    </div>
-    	<div class="p-col-5">
-    		<div class="box">   	
-				<input type="text" pInputText required  maxlength="10" formControlName="datecalendrier" [ngStyle]="{'width':'100px'}"/>
-			</div>
-	    </div>
-    	<div class="p-col-6"></div>
-    	<div class="p-col-1">   	
-			<div class="box">	
-				<div>Férié</div>
-			</div>
-	    </div>
-    	<div class="p-col-5">
-    		<div class="box">   
-				<p-checkbox formControlName="ferie" binary="true"></p-checkbox>
+    		<div class="box"> 
+				<app-periode-list [filter]="filter_periode"></app-periode-list>
 			</div>
 	    </div>
     	<div class="p-col-6"></div>
@@ -46,7 +46,7 @@
     <p-footer>
     	<button pButton type="button" label="Vider" class="ui-button-rounded" (click)="initForm()"></button>
     	<button pButton type="button" label="Sauvegarder" class="ui-button-rounded" [disabled]="!form.valid" icon="pi pi-check" (click)="save()"></button>
-    	<button pButton type="button" label="Supprimer" class="ui-button-rounded ui-button-secondary" [disabled]="!calendrier?.datecalendrier" icon="pi pi-trash" (click)="deleteConfirmation()"></button>
+    	<button pButton type="button" label="Supprimer" class="ui-button-rounded ui-button-secondary" [disabled]="!exercice?.code" icon="pi pi-trash" (click)="deleteConfirmation()"></button>
 	</p-footer>
 </form>
 </p-panel>

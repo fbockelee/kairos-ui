@@ -4,22 +4,19 @@
 import { Component, OnInit, OnChanges, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-periode-listheader',
-  templateUrl: './periode-listheader.component.html',
-  styleUrls: ['./periode-listheader.component.css'],
+  selector: 'app-exercice-listheader',
+  templateUrl: './exercice-listheader.component.html',
+  styleUrls: ['./exercice-listheader.component.css'],
   providers: []
 })
-export class PeriodeListheaderComponent implements OnInit, OnChanges {
+export class ExerciceListheaderComponent implements OnInit, OnChanges {
 
-  public title = 'Liste de Periodes';
+  public title = 'Liste de Exercices';
   public filter:string = 'FULL';
 
   private columnDefinitions = [
-      { def: 'codeexercice', showMobile: true },
       { def: 'code', showMobile: true },
-      { def: 'nom', showMobile: true },
       { def: 'ouvert', showMobile: true },
-      { def: 'actif', showMobile: true },
 	];
 
   constructor() { }

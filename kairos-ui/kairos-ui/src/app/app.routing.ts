@@ -38,6 +38,11 @@ import { PeriodeListheaderComponent } from './entities/periode/periode-list/peri
 import { PeriodeListComponent } from './entities/periode/periode-list/periode-list.component';
 import { PeriodeFormComponent } from './entities/periode/periode-form/periode-form.component';
 
+// Exercice
+import { ExerciceListheaderComponent } from './entities/exercice/exercice-list/exercice-listheader.component';
+import { ExerciceListComponent } from './entities/exercice/exercice-list/exercice-list.component';
+import { ExerciceFormComponent } from './entities/exercice/exercice-form/exercice-form.component';
+
 export const AppRouting = RouterModule.forRoot([
     { path: '', 
       //component: HomeListComponent
@@ -64,6 +69,9 @@ export const AppRouting = RouterModule.forRoot([
         { path: 'periode-list', component: PeriodeListheaderComponent, canActivate : [AuthGuard]},
         { path: 'periode-form/:id', component: PeriodeFormComponent, canActivate : [AuthGuard] },
         { path: 'periode-form', component: PeriodeFormComponent, canActivate : [AuthGuard] },
+        { path: 'exercice-list', component: ExerciceListheaderComponent, canActivate : [AuthGuard]},
+        { path: 'exercice-form/:id', component: ExerciceFormComponent, canActivate : [AuthGuard] },
+        { path: 'exercice-form', component: ExerciceFormComponent, canActivate : [AuthGuard] },
         { path: 'deconnect', component: LoginComponent },
         { path: 'about', component: AboutComponent },
     { path: '**',
