@@ -41,35 +41,43 @@ $jdbcTool.setOrderby("ORDER BY ext2, ext4, ext3")##
       <p-tabPanel header="${libtab}">
 #end
 #if ($extattrib.enterbloc)
-    <table>
+    <div class="p-grid">
 #end
 #if ($extattrib.type == "field")
 #if ($attrib.isKeyElement() && !$attrib.isFK())
-    	<tr>
-			<td>    	
+    	<div class="p-col-1">   	
+			<div class="box">
 				<div>${extattrib.ext1}</div>
-	        </td>
-			<td>    	
+			</div>
+	    </div>
+    	<div class="p-col-5">
+    		<div class="box">   	
 				<input type="text" pInputText $requiredmode maxlength="${attrib.databaseSize}" formControlName="${attrib.name}" [ngStyle]="{'width':'${showsize}'}"/>
-	         </td>
-		</tr>
+			</div>
+	    </div>
+    	<div class="p-col-6"></div>
 #elseif ($attrib.isDateType())
-    	<tr>
-			<td>    	
+    	<div class="p-col-1">   	
+			<div class="box">	
 				<div>${extattrib.ext1}</div>
-	        </td>
-			<td>   
+			</div>
+	    </div>
+    	<div class="p-col-5">
+    		<div class="box">  
 				<p-calendar formControlName="${attrib.name}" dateFormat="dd/mm/yy" ${requiredmode}  [showIcon]="true"></p-calendar> 
-	         </td>
-		</tr>
+			</div>
+	    </div>
+    	<div class="p-col-6"></div>
 #elseif ( $attrib.isFK() && $attrib.isKeyElement())
 #set($referencedEntity = $fn.uncapitalize($attrib.referencedEntityName))
 #set($keyAttrib = $attrib.referencedEntity.keyAttribute.name)
-    	<tr>
-			<td>    	
+    	<div class="p-col-1">   	
+			<div class="box">
 				<div>${extattrib.ext1}</div>
-	        </td>
-			<td>  
+			</div>
+	    </div>
+    	<div class="p-col-5">
+    		<div class="box">   
           		<mat-select formControlName="${attrib.name}" name="${referencedEntity}" class="form-full-width">
             		<mat-option [value]="">
               		N/A
@@ -89,16 +97,19 @@ $jdbcTool.setOrderby("ORDER BY ext2, ext4, ext3")##
               		$options
             		</mat-option>
           		</mat-select>
-	         </td>
-		</tr>
+			</div>
+	    </div>
+    	<div class="p-col-6"></div>
 #elseif ( $attrib.isFK() )
 #set($referencedEntity = $fn.uncapitalize($attrib.referencedEntityName))
 #set($keyAttrib = $attrib.referencedEntity.keyAttribute.name)
-    	<tr>
-			<td>    	
+    	<div class="p-col-1">   	
+			<div class="box">	
 				<div>${extattrib.ext1}</div>
-	        </td>
-			<td>    
+			</div>
+	    </div>
+    	<div class="p-col-5">
+    		<div class="box">   
           		<mat-select formControlName="${attrib.name}" name="${referencedEntity}" class="form-full-width">
             		<mat-option [value]="">
               			N/A
@@ -118,64 +129,80 @@ $jdbcTool.setOrderby("ORDER BY ext2, ext4, ext3")##
               			$options
             			</mat-option>
           		</mat-select>
-	         </td>
-		</tr>
+			</div>
+	    </div>
+    	<div class="p-col-6"></div>
 #elseif ( $attrib.isBooleanType())
-    	<tr>
-			<td>    	
+    	<div class="p-col-1">   	
+			<div class="box">	
 				<div>${extattrib.ext1}</div>
-	        </td>
-			<td>    	
+			</div>
+	    </div>
+    	<div class="p-col-5">
+    		<div class="box">   
 				<p-checkbox formControlName="${attrib.name}" binary="true"></p-checkbox>
-	         </td>
-		</tr>
+			</div>
+	    </div>
+    	<div class="p-col-6"></div>
 #elseif ( $extattrib.ext7 != '')
 #if ($extattrib.ext7.substring(0,4)=="lov_")
-    	<tr>
-			<td>    	
+    	<div class="p-col-1">   	
+			<div class="box">	
 				<div>${extattrib.ext1}</div>
-	        </td>
-			<td>  
+			</div>
+	    </div>
+    	<div class="p-col-5">
+    		<div class="box">   
 				<p-dropdown [options]="listOf${extattrib.ext7.substring(4)}_itm" $requiredmode formControlName="${attrib.name}" placeholder="" label="codeelement"
 	  					menu-btn [style]="{'width': '400px'}">
     			</p-dropdown>
-	         </td>
-		</tr>
+			</div>
+	    </div>
+    	<div class="p-col-6"></div>
 #end
 #if ($extattrib.ext7=="inp_password")
-    	<tr>
-			<td>    	
+    	<div class="p-col-1">   	
+			<div class="box">	
 				<div>${extattrib.ext1}</div>
-	        </td>
-			<td>  
+			</div>
+	    </div>
+    	<div class="p-col-5">
+    		<div class="box">   
 				<input type="password" pPassword $requiredmode maxlength="${attrib.databaseSize}" formControlName="${attrib.name}" [ngStyle]="{'width':'${showsize}'}"/>	         
-			</td>
-		</tr>
+			</div>
+	    </div>
+    	<div class="p-col-6"></div>
 #end
 #else
-    	<tr>
-			<td>    	
+    	<div class="p-col-1">   	
+			<div class="box">	
 				<div>${extattrib.ext1}</div>
-	        </td>
-			<td>    	
+			</div>
+	    </div>
+    	<div class="p-col-5">
+    		<div class="box"> 	
 #set ($field_align="")
 #if ($attrib.isNumberType())
 #set ($field_align="text-align: right;")
 #end
 				<input type="text" pInputText $requiredmode maxlength="${attrib.databaseSize}" formControlName="${attrib.name}" [ngStyle]="{'width':'${showsize}'}"/>
-	         </td>
-		</tr>
+			</div>
+	    </div>
+    	<div class="p-col-6"></div>
 #end
 #end
 #if ($extattrib.type == "fieldlink")
-    	<tr>
-			<td>    	
+    	<div class="p-col-1">   	
+			<div class="box">	
 				<div>${extattrib.ext1}</div>
-	        </td>
-			<td>
+			</div>
+	    </div>
+    	<div class="p-col-5">
+    		<div class="box"> 
 				<app-${extattrib.columnname}-list [filter]="filter_${extattrib.columnname}"></app-${extattrib.columnname}-list>
-	        </td>
-		</tr>
+			</div>
+	    </div>
+    	<div class="p-col-6"></div>
 #end
 #if ($extattrib.ext5 == "o" )
 #else
@@ -183,7 +210,7 @@ $jdbcTool.setOrderby("ORDER BY ext2, ext4, ext3")##
 #end
 #end 
 #if ($extattrib.leavebloc)
-      </table>
+      </div>
 #end
 #if ($extattrib.leavetab)
       </p-tabPanel>
