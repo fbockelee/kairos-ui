@@ -32,6 +32,8 @@ $jdbcTool.setOrderby("ORDER BY ext2, ext4, ext3")##
 #else
 #if ( $attrib.isDateType() )
 		        <td>{{${idsPrefix}${attrib.name} | date:'dd/MM/yyyy'}}</td>
+#elseif ( $attrib.isBooleanType())
+				<td><p-checkbox [(ngModel)]="${idsPrefix}${attrib.name}" binary="true" readonly></p-checkbox></td>
 #else
 		        <td>{{${idsPrefix}${attrib.name}}}</td>
 #end
