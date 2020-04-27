@@ -70,8 +70,9 @@ export class $listComponentName implements OnInit, OnChanges {
 #foreach ( $extattrib in $extAttributes)
 #set ($attrib = $entity.attributes.get($extattrib.index))
 #if ($extattrib.ext6 == "")
+      { def: '${extattrib.columnname}', showMobile: true, display:'none', index:$foreach.index},
 #else
-      { def: '${attrib.name}', showMobile: true },
+      { def: '${extattrib.columnname}', showMobile: true, display:'table-cell', index:$foreach.index},
 #end
 #end
 	];

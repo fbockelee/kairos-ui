@@ -1,7 +1,7 @@
 ##
 #set( $jdbcTool = $loader.newInstance("JdbcTool") )
 $jdbcTool.setAllFromConfig($project.specificVariables)##
-$jdbcTool.setOrderby("ORDER BY ext2, ext4, ext3")##
+$jdbcTool.setOrderby("ORDER BY ext6")##
 #set( $extAttributes=$jdbcTool.getExtFieldAttributes($entity))
 ##
 #set ( $LCentityName = $fn.uncapitalize($entity.name) )
@@ -16,10 +16,7 @@ $jdbcTool.setOrderby("ORDER BY ext2, ext4, ext3")##
 			<tr>
 #foreach ( $extattrib in $extAttributes)
 #set ($attrib = $entity.attributes.get($extattrib.index))
-#if ($extattrib.ext6 == "")
-#else
-		        <th>${extattrib.ext1}</th>
-#end
+		        <th [ngStyle]="{'display': columnDefinitions[$foreach.index].display}">${extattrib.ext1}</th>
 #end
 		        <th [ngStyle] = "{'width': '50px'}"></th>
 		    </tr>
@@ -28,15 +25,12 @@ $jdbcTool.setOrderby("ORDER BY ext2, ext4, ext3")##
 		    <tr class="ui-selectable-row" (click)="edit${entity.name}(${entity.keyAttributesNamesAsString(', ', $idsPrefix, '')})">
 #foreach ( $extattrib in $extAttributes)
 #set ($attrib = $entity.attributes.get($extattrib.index))
-#if ($extattrib.ext6 == "")
-#else
 #if ( $attrib.isDateType() )
-		        <td>{{${idsPrefix}${attrib.name} | date:'dd/MM/yyyy'}}</td>
+		        <td [ngStyle]="{'display': columnDefinitions[$foreach.index].display}">{{${idsPrefix}${attrib.name} | date:'dd/MM/yyyy'}}</td>
 #elseif ( $attrib.isBooleanType())
-				<td><p-checkbox [(ngModel)]="${idsPrefix}${attrib.name}" binary="true" readonly></p-checkbox></td>
+				<td [ngStyle]="{'display': columnDefinitions[$foreach.index].display}"><p-checkbox [(ngModel)]="${idsPrefix}${attrib.name}" binary="true" readonly></p-checkbox></td>
 #else
-		        <td>{{${idsPrefix}${attrib.name}}}</td>
-#end
+		        <td [ngStyle]="{'display': columnDefinitions[$foreach.index].display}">{{${idsPrefix}${attrib.name}}}</td>
 #end	
 #end
 		        <td [ngStyle] = "{'width': '50px'}">
