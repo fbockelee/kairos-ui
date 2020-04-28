@@ -144,7 +144,7 @@ export class $listComponentName implements OnInit, OnChanges {
 
     const promise = new Promise((resolve, reject) => {
 		// Call get service
-		this.${_entityService}.get($entity.keyAttributesNamesAsString(', ')).subscribe(
+		this.${_entityService}.get([$entity.keyAttributesNamesAsString(', ')]).subscribe(
         		($LCentityName: $entity.name) => {
           							this.$LCentityName = $LCentityName;
           							resolve('done');
