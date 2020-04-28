@@ -167,9 +167,25 @@ export class AppSubMenuComponent {
 
     hover: boolean;
 
-    constructor(public app: AppComponent, public appMenu: AppMenuComponent) { }
+    constructor(public app: AppComponent, 
+			    public appMenu: AppMenuComponent,
+				private _authService: AuthService
+				) { }
 
     itemClick(event: Event, item: MenuItem, index: number)  {
+		//console.log('itemClick ');
+		
+        if (item.routerLink) {		
+		//var consultantid = this._authService.getCurrentConsultant().consultantid;
+		console.log('itemClick : avant ' + item.routerLink);
+		var url : string = item.routerLink;
+		//url = url.replace(/c/g,'toto');
+		//console.log('itemClick : url ' + url);
+		console.log('itemClick : apres ' + item.routerLink);
+		
+		// remplacer :consultantid par l'id du consultant connecté 	
+		}
+		
         // avoid processing disabled items
         if (item.disabled) {
             event.preventDefault();
