@@ -8,6 +8,7 @@ $jdbcTool.setOrderby("ORDER BY ext3")##
 import { RestService } from 'angular4-hal';
 import { Injectable, Injector } from '@angular/core';
 import { $entity.name } from '../$fn.uncapitalize($LCentityNameModel)';
+import { Observable } from 'rxjs/observable';
 
 @Injectable()
 export class $baseServiceName extends RestService<${entity.name}>  {

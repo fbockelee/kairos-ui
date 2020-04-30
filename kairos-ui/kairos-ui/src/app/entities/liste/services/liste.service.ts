@@ -3,6 +3,7 @@
 import { RestService } from 'angular4-hal';
 import { Injectable, Injector } from '@angular/core';
 import { Liste } from '../liste.model';
+import { Observable } from 'rxjs/observable';
 
 @Injectable()
 export class ListeService extends RestService<Liste>  {

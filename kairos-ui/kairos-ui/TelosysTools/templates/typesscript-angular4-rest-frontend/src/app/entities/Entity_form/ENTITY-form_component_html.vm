@@ -197,12 +197,11 @@ $jdbcTool.setOrderby("ORDER BY ext2, ext4, ext3")##
 				<div>${extattrib.ext1}</div>
 			</div>
 	    </div>
-    	<div class="p-col-5">
+    	<div class="p-col-11">
     		<div class="box"> 
 				<app-${extattrib.columnname}-list [filter]="filter_${extattrib.columnname}"></app-${extattrib.columnname}-list>
 			</div>
 	    </div>
-    	<div class="p-col-6"></div>
 #end
 #if ($extattrib.ext5 == "o" )
 #else
