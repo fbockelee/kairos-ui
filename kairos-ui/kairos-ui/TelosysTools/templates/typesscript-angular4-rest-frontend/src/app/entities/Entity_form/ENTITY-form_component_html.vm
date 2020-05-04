@@ -160,6 +160,21 @@ $jdbcTool.setOrderby("ORDER BY ext2, ext4, ext3")##
 	    </div>
     	<div class="p-col-6"></div>
 #end
+#if ($extattrib.select)
+    	<div class="p-col-1">   	
+			<div class="box">	
+				<div>${extattrib.ext1}</div>
+			</div>
+	    </div>
+    	<div class="p-col-5">
+    		<div class="box">   
+				<p-dropdown [options]="selectOf${extattrib.selectTable}_itm" $requiredmode formControlName="${attrib.name}" placeholder="" label="${extattrib.selectCode}"
+	  					menu-btn [style]="{'width': '400px'}">
+    			</p-dropdown>
+			</div>
+	    </div>
+    	<div class="p-col-6"></div>
+#end
 #if ($extattrib.ext7=="inp_password")
     	<div class="p-col-1">   	
 			<div class="box">	
