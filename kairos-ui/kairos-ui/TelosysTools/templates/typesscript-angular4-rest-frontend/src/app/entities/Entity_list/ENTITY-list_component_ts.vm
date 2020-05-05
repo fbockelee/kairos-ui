@@ -10,7 +10,7 @@ $env.setLanguage('TypeScript')
 #set ( $LCentityName = $fn.uncapitalize($entity.name) )
 #set ( $_entityService = "_" + $fn.uncapitalize($baseServiceName) )
 // Modules imports
-import { Component, OnInit, OnChanges, Input } from '@angular/core';
+import { Component, OnInit, OnChanges, Input, ViewChild  } from '@angular/core';
 import { Router } from '@angular/router';
 import { ActivatedRoute  } from '@angular/router';
 import { MatDialog } from '@angular/material';
@@ -30,8 +30,8 @@ import { DeleteDialogComponent } from './../../../delete-dialog/delete-dialog.co
 import { DatePipe } from '@angular/common';
 
 // Ajout primeng
-import {TableModule} from 'primeng/table';
-import {PaginatorModule} from 'primeng/paginator';
+import {Table} from 'primeng/table';
+
 
 @Component({
   selector: 'app-${LCentityName}-list',
@@ -45,6 +45,10 @@ export class $listComponentName implements OnInit, OnChanges {
 
   public listOf${entity.name}s: ${entity}[];
 
+  public cloned${entity.name}s: { [s: string]: ${entity.name}; } = {};
+  public editable : boolean = false;
+
+  @ViewChild('dt') table: Table;
 
   _filter : string;
   @Input('filter') 
@@ -192,4 +196,20 @@ export class $listComponentName implements OnInit, OnChanges {
     });
   }
 
+  // Fonctions de liste éditable
+    onRowEditInit(${LCentityName}: ${entity.name}) {
+        //this.cloned${entity.name}s[${LCentityName}.annee] = baremekm;
+    }
+
+    onRowEditSave(baremekm: ${entity.name}) {
+        //delete this.cloned${entity.name}s[${LCentityName}.annee];
+		this._notificationService.success(
+      		'Updated',
+      		`The ${LCentityName} entry was updated successfuly`);
+    }
+
+    onRowEditCancel(baremekm: ${entity.name}, index: number) {
+        //this.listOf${entity.name}s[index] = this.cloned${entity.name}s[${LCentityName}.annee];
+        //delete this.cloned${entity.name}s[${LCentityName}.annee];
+    }
 }
